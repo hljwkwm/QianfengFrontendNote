@@ -115,6 +115,29 @@ HTML常见标签：http://www.html5star.com/manual/html5label-meaning/
 </html>
 ```
 
+### 8、HTML注释
+
+HTML注释在浏览器中看不到，只能在代码中看到注释的内容。写法为：`<!-- 注释的内容 -->`
+
+意义：
+
+- 把暂时不用的代码注释起来，方便以后使用。
+- 对开发人员进行提示。
+
+VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
+
+文件位置：[src/06_HTML注释.html](./src/06_HTML注释.html)
+
+
+
+
+
+
+
+
+
+
+
 
 
 

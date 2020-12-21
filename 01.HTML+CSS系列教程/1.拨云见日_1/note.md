@@ -202,15 +202,52 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 文件位置：[src/10_路径.html](./src/10_路径.html)
 
+### 14、链接标签
 
+链接标签是一个双标签，写法为`<a></a>`。
 
+- href属性：链接的地址
+- target属性：可以改变链接打开的方式，默认情况下的值是`_self`，在当前页面打开。如果在新窗口打开，它的值为`_blank`。
 
+如果想修改a标签的默认打开行为，可以在`<head>`中添加一个标签来修改默认行为：`<base target="_blank">`。
 
+```html
+<!-- 在当前页面打开链接 -->
+<a href="http://www.baidu.com">访问百度</a>
+<!-- 为图片加一个链接，在当前页面打开 -->
+<a href="http://www.baidu.com">
+    <img src="./img/animal/dog.jpg" alt="">
+</a>
+<!-- 在新标签页打开链接 -->
+<a href="http://www.baidu.com" target="_blank">访问百度</a>
+```
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 更改链接的默认行为为从新标签页打开 -->
+    <base target="_blank">
+</head>
+<body>
+    <!-- 如果在head标签上加入base，可以更改链接的默认行为 -->
+    <a href="http://www.baidu.com">访问百度</a>
+    <a href="http://www.baidu.com">访问百度</a>
+    <a href="http://www.baidu.com">访问百度</a>
+    <a href="http://www.baidu.com">访问百度</a>
+    <a href="http://www.baidu.com">访问百度</a>
+    <a href="http://www.baidu.com">访问百度</a>
+</body>
+</html>
+```
 
+文件位置：[src/11_链接.html](./src/11_链接.html)
 
-
-
+链接的综合练习：[src/链接的综合练习/index.html](./src/链接的综合练习/index.html)
 
 
 

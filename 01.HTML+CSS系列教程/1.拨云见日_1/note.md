@@ -249,7 +249,153 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 链接的综合练习：[src/链接的综合练习/index.html](./src/链接的综合练习/index.html)
 
+### 15、锚点跳转
 
+锚点跳转有两种实现方法：
+
+- #号加id属性
+- #号加name属性，name属性是给a标签加的
+
+#号加id属性实现：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#javascript">JavaScript</a>
+
+    <h2 id="html">HTML超文本标记语言</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <h2 id="css">CSS层叠样式表</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <h2 id="javascript">JS脚本</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+</body>
+</html>
+```
+
+#号加name属性实现：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+    <a href="#javascript">JavaScript</a>
+
+    <a name="html"></a>    
+    <h2>HTML超文本标记语言</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <a name="css"></a>
+    <h2>CSS层叠样式表</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <a name="javascript"></a>
+    <h2>JS脚本</h2>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+    <p>模拟的段落</p>
+</body>
+</html>
+```
+
+文件位置：[src/12_跳转锚点.html](./src/12_跳转锚点.html)
 
 
 

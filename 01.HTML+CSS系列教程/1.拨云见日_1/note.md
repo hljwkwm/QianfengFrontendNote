@@ -807,13 +807,77 @@ CSS的注释：`/* CSS注释的内容 */`
 
 文件位置：[src/19_CSS基础语法.html](./src/19_CSS基础语法.html)
 
+### 22、CSS样式的引入方式
 
+- 内联（行内）样式：通过style属性来表示
+- 内部样式：通过style标签来表示，一般style标签写在head中；内部样式的代码可以复用、复合W3C的规范标准，进行让结构和样式分开处理。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 内部样式 -->
+    <style>
+    div{ width:100px;height:100px;background-color:red }
+    </style>
+</head>
+<body>
+    <!-- 行内样式 -->
+    <div style="width:100px;height:100px;background-color:red">这是一个块</div>
+    <div style="width:100px;height:100px;background-color:red">另外一个块</div>
+    <div>这是一个块</div>
+    <div>另外一个块</div>
+</body>
+</html>
+```
 
+文件位置：[src/20_内联样式与内部样式.html](./src/20_内联样式与内部样式.html)
 
+- 外部样式：引入一个单独的CSS文件，`name.css`。
 
+通过`link`标签引入外部资源，`rel`属性指定资源跟页面的关系，~属性资源的地址。其中~的属性值可以参考：http://www.w3school.com.cn/tags/att_link_rel.asp，如果是引入样式表，那么rel的属性值为`stylesheet`。
 
+ 还可以通过@import方式引入外部样式（这种方式有很多问题，不建议使用）。
 
+写法：
+
+```html
+<style>
+    @import url('./common.css');
+</style>
+```
+
+link与@import区别：https://www.cnblogs.com/my--sunshine/p/6872224.html，本地html位置：[other/link和@import的区别.html](./other/link和@import的区别.html)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 第一种方式引入，推荐 -->
+    <link rel="stylesheet" href="./common.css">
+    <title>Document</title>
+    <!-- 第二种方式引入，不推荐 -->
+    <style>
+        @import url('./common.css');
+    </style>
+</head>
+
+<body>
+    <div>这是一个块</div>
+</body>
+
+</html>
+```
+
+文件位置：[src/21_外部样式.html](./src/21_外部样式.html)
 
 
 

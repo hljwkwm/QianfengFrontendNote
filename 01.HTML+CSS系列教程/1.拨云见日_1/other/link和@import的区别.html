@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.cnblogs.com/my-%2Dsunshine/p/6872224.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta name="description" content="由link和@import的区别引发的CSS渲染杂谈 我们都知道，外部引入 CSS 有2种方式，link标签和@import。它们有何本质区别，有何使用建议，在考察外部引入 CSS 这部分内容时，经常">
+    <meta property="og:description" content="由link和@import的区别引发的CSS渲染杂谈 我们都知道，外部引入 CSS 有2种方式，link标签和@import。它们有何本质区别，有何使用建议，在考察外部引入 CSS 这部分内容时，经常">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>link和@import的区别 - my~sunshine - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="./link和@import的区别_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./link和@import的区别_files/bundle-red_autumnal_leaves.min.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./link和@import的区别_files/bundle-red_autumnal_leaves-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/my--sunshine/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/my--sunshine/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/my--sunshine/wlwmanifest.xml">
+    <script src="./link和@import的区别_files/osd.js.下载"></script><script async="" src="./link和@import的区别_files/analytics.js.下载"></script><script>
+        var currentBlogId = 312879;
+        var currentBlogApp = 'my--sunshine';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'red_autumnal_leaves';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2017-05-18 10:51';
+        </script>
+    <script src="./link和@import的区别_files/jquery-2.2.0.min.js.下载"></script>
+    <script src="./link和@import的区别_files/blog-common.min.js.下载"></script>
+    
+    
+    
+<script src="./link和@import的区别_files/pubads_impl_2020120801.js.下载" async=""></script><link rel="preload" href="./link和@import的区别_files/f.txt" as="script"><script type="text/javascript" src="./link和@import的区别_files/f.txt"></script><link rel="prefetch" href="https://bad552a157e67c3ad3c5c483168d7b84.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"></head>
+<body class="has-navbar has-bannerbar"><div id="big_banner" style="width: 1024px; margin: 10px auto; display: none;"><a href="https://www.aliyun.com/page-source/developer/important_features/trainingcamp/web/2?taskCode=web1218&amp;recordId=307648&amp;utm_content=g_100022159" target="_blank"><img src="./link和@import的区别_files/1-20201221143333787-1712233814.jpg" style="width: 1024px;"></a><span id="bigbanner_close">x</span></div>
+    <a name="top"></a>
+            <a href="https://brands.cnblogs.com/aws/free?source=blog-bannerbar" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;aws-pc-bannerbar&#39;)">
+                <div class="bannerbar aws forpc">
+                    <img class="left" src="./link和@import的区别_files/bannerbar-aws-logo.png" alt="">
+                    <img class="right" src="./link和@import的区别_files/bannerbar-aws-ssh.png" alt="">
+                </div>
+            </a>
+            <div id="bannerbar" class="bannerbar-mobile formobile">
+                <a href="https://www.cnblogs.com/cmt/p/14152738.html" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;sephora-mobile-bannerbar&#39;)">
+                    <img src="./link和@import的区别_files/35695-20201220150807860-80833722.png" alt="">
+                </a>
+            </div>
+    <div id="top_nav" class="navbar forpc">
+        <nav id="nav_main" class="navbar-main">
+            <ul id="nav_left" class="navbar-list navbar-left">
+                <li class="navbar-branding"><a href="https://www.cnblogs.com/" title="开发者的网上家园"><img src="./link和@import的区别_files/logo.svg" alt="博客园Logo"></a></li>
+                <li><a href="https://www.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-sitehome&#39;)">首页</a></li>
+                <li><a href="https://news.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-news&#39;)">新闻</a></li>
+                <li><a href="https://q.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-q&#39;)">博问</a></li>
+                <li><a id="nav_brandzone" href="https://brands.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-brands&#39;)">专区</a></li>
+                <li><a href="https://ing.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-ing&#39;)">闪存</a></li>
+                <li><a href="https://edu.cnblogs.com/" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;skin-navbar-edu&#39;)">班级</a></li>
+            </ul>
+            <ul id="nav_right" class="navbar-list navbar-right">
+                <li>
+                    <form id="zzk_search" class="navbar-search" action="https://zzk.cnblogs.com/s" method="get">
+                        <input name="w" id="zzk_search_input" placeholder="代码改变世界" type="text" tabindex="3">
+                        <button type="submit" id="zzk_search_button">
+                            <img src="./link和@import的区别_files/search.svg" alt="搜索">
+                        </button>
+                    </form>
+                </li>
+                <li id="navbar_login_status" class="navbar-list">
+                    <a id="navblog-myblog-icon" class="navbar-user-info navbar-blog" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客" style="display: none;">
+                        <img id="myblog_icon" class="navbar-icon" src="./link和@import的区别_files/myblog.svg" alt="我的博客">
+                    </a>
+                    <a class="navbar-user-info navbar-message navbar-icon-wrapper" href="https://msg.cnblogs.com/" alt="短消息" title="短消息" style="display: none;">
+                        <img id="msg_icon" class="navbar-icon" src="./link和@import的区别_files/message.svg" alt="短消息">
+                        <span id="msg_count" style="display: none"></span>
+                    </a>
+                    <div id="user_info" class="navbar-user-info dropdown" style="display: none;">
+                        <a class="dropdown-button" href="https://home.cnblogs.com/">
+                            <img id="user_icon" class="navbar-avatar" src="./link和@import的区别_files/avatar-default.svg" alt="用户头像">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a id="navblog-myblog-text" href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a>
+                            <a href="https://home.cnblogs.com/">我的园子</a>
+                            <a href="https://account.cnblogs.com/settings/account">账号设置</a>
+                            <a href="javascript:void(0)" onclick="logout();">退出登录</a>
+                        </div>
+                    </div>
+                    <a class="navbar-anonymous" href="https://account.cnblogs.com/signup/" style="display: inline;">注册</a>
+                    <a class="navbar-anonymous" href="javascript:void(0);" onclick="login()" style="display: inline;">登录</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/my--sunshine/"><img id="blogLogo" src="./link和@import的区别_files/logo.gif" alt="返回主页"></a>		
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/my--sunshine/">my~sunshine</a>
+</h1>
+<h2></h2>
+
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+<li>
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/my--sunshine/">
+首页</a>
+</li>
+<li>
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+<li>
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/my~sunshine">
+联系</a></li>
+<li>
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/my--sunshine/rss/">
+订阅</a>
+<!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li>
+<li>
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+
+		<div class="blogStats">
+			<span id="stats_post_count">随笔 - 13&nbsp; </span>
+<span id="stats_article_count">文章 - 2&nbsp; </span>
+<span id="stats-comment_count">评论 - 6</span>
+
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="post_detail">
+    <!--done-->
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/my--sunshine/p/6872224.html">
+    <span>link和@import的区别</span>
+    
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                
+<div id="cnblogs_post_body" class="blogpost-body">
+    <h1 class="postTitle"><a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/KilerMino/p/6115803.html">由link和@import的区别引发的CSS渲染杂谈</a></h1>
+<div class="clear">&nbsp;</div>
+<div class="postBody">
+<div id="cnblogs_post_body" class="cnblogs-markdown">
+<p>我们都知道，外部引入 CSS 有2种方式，<code>link</code>标签和<code>@import</code>。<br>它们有何本质区别，有何使用建议，在考察外部引入 CSS 这部分内容时，经常被提起。</p>
+<p>如今，很多学者本着知其然不欲知其所以然的学习态度，不求甚解，只求结论。<br>所以，本文遵循 css hack 的渐进识别原则，<br><strong>结论 → 区别 → 争议 → 细节 → 祖坟 → 感想</strong>，逐渐加深理论层级，<br>力争每个 level 的读者，都能 get 到自己想要的内容，不必继续阅读下去。</p>
+<h4 id="结论">结论</h4>
+<p>就结论而言，强烈建议使用<code>link</code>标签，慎用<code>@import</code>方式。<br>这样可以避免考虑<code>@import</code>的语法规则和注意事项，避免产生资源文件下载顺序混乱和http请求过多的烦恼。</p>
+<h4 id="区别">区别</h4>
+<p><strong>1.从属关系区别</strong><br><code>@import</code>是 CSS 提供的语法规则，只有导入样式表的作用；<code>link</code>是HTML提供的标签，不仅可以加载 CSS 文件，还可以定义 RSS、rel 连接属性等。</p>
+<p><strong>2.加载顺序区别</strong><br>加载页面时，<code>link</code>标签引入的 CSS 被同时加载；<code>@import</code>引入的 CSS 将在页面加载完毕后被加载。</p>
+<p><strong>3.兼容性区别</strong><br><code>@import</code>是 CSS2.1 才有的语法，故只可在 IE5+ 才能识别；<code>link</code>标签作为 HTML 元素，不存在兼容性问题。</p>
+<p><strong>4.DOM可控性区别</strong><br>可以通过 JS 操作 DOM ，插入<code>link</code>标签来改变样式；由于 DOM 方法是基于文档的，无法使用<code>@import</code>的方式插入样式。</p>
+<p><strong>5.权重区别(该项有争议，下文将详解)</strong><br><code>link</code>引入的样式权重大于<code>@import</code>引入的样式。</p>
+<h4 id="争议">争议</h4>
+<p>不知从什么时候开始，当你在网上搜索<code>link</code>和<code>@import</code>的区别时，千篇一律的答案里就悄悄的多了一句“<code>link</code>引入的样式权重大于<code>@import</code>引入的样式”。<br>但是并没有一份答案，附带着对这句话的任何解释或实例。</p>
+<p>这句话究竟是什么意思，该怎么理解呢？</p>
+<p>发扬探索精神，我们不妨继续查阅资料。后来发现，还是有不少文章和帖子，对这句话表示质疑，进而自己写了 demo 去验证，验证的结果，确实无法与这句话相吻合。<br>而且，笔者也并未发现能清楚、正确、有理有据的解释这个结论到底对，还是不对的文章。</p>
+<p>那么这个结论，最初是从哪里来的，可能已经无从考证了。</p>
+<p>换个思维方式，不去争辩它的对错了，探索未果，我们就从这个结论的核心关键词<strong>“权重”</strong>出发，去研究它。</p>
+<p>说到“权重”，有必要再解释一下：CSS 中的权重，指的是选择器的优先级。</p>
+<p>CSS 选择器的权重高，即选择器的优先级高。<br>CSS 的优先级特性表现为，对同一 HTML 元素设置样式时，不同选择器的优先级不同，优先级低的样式将被高优先级的样式层叠掉。</p>
+<p>CSS 权重优先级顺序简单表示为：<br><code>!important &gt; 行内样式 &gt; ID &gt; 类、伪类、属性 &gt; 标签名 &gt; 继承 &gt; 通配符</code></p>
+<p>为了便于理解权重的计算方式，我们按以下方式进行数值假设分析：</p>
+<table>
+<thead>
+<tr class="header"><th align="center">选择器</th><th align="center">权重</th></tr>
+
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">通配符</td>
+<td align="center">0</td>
+
+</tr>
+<tr class="even">
+<td align="center">标签</td>
+<td align="center">1</td>
+
+</tr>
+<tr class="odd">
+<td align="center">类/伪类/属性</td>
+<td align="center">10</td>
+
+</tr>
+<tr class="even">
+<td align="center">ID</td>
+<td align="center">100</td>
+
+</tr>
+<tr class="odd">
+<td align="center">行内样式</td>
+<td align="center">1000</td>
+
+</tr>
+<tr class="even">
+<td align="center">important</td>
+<td align="center">1/0(无穷大)</td>
+
+</tr>
+
+</tbody>
+
+</table>
+<p>再举实例：</p>
+<div class="sourceCode">
+<pre class="sourceCode html"><code class="sourceCode html hljs xml"><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&lt;!DOCTYPE </span><span class="hljs-meta"><span class="hljs-meta"><span class="hljs-meta-keyword">html</span></span><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">lang</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"en"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">meta</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">charset</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"UTF-8"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>Document<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">type</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"text/css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="css"><span class="css">
+        </span><span class="fl"><span class="css"><span class="hljs-selector-id">#myid</span></span><span class="css"><span class="css"> </span><span class="kw"><span class="css">{</span><span class="css"><span class="css"> </span><span class="co"><span class="css"><span class="hljs-comment"><span class="css"><span class="hljs-comment">/* id选择器权重为100 */</span></span><span class="css"><span class="css">
+            </span><span class="kw"><span class="hljs-attribute"><span class="css"><span class="hljs-attribute">background-color</span>:</span><span class="css"><span class="css"> pink</span><span class="kw"><span class="css">;</span><span class="css"><span class="css">
+        </span><span class="kw"><span class="css">}</span><span class="css"><span class="css">
+        </span><span class="fl"><span class="css"><span class="hljs-selector-id">#divid</span></span><span class="css"><span class="css"> </span><span class="fl"><span class="css"><span class="hljs-selector-class">.myspan</span></span><span class="css"><span class="css"> </span><span class="hljs-selector-tag"><span class="css"><span class="hljs-selector-tag">input</span> </span><span class="kw"><span class="css">{</span><span class="css"><span class="css"> </span><span class="co"><span class="css"><span class="hljs-comment"><span class="css"><span class="hljs-comment">/* 权重为 100 + 10 + 1 = 111 */</span></span><span class="css"><span class="css">
+            </span><span class="kw"><span class="hljs-attribute"><span class="css"><span class="hljs-attribute">background-color</span>:</span><span class="css"><span class="css"> </span><span class="dt"><span class="css">yellow</span><span class="kw"><span class="css">;</span><span class="css"><span class="css">
+        </span><span class="kw"><span class="css">}</span><span class="css"><span class="css">
+        </span><span class="hljs-selector-tag"><span class="css"><span class="hljs-selector-tag">input</span></span><span class="ch"><span class="css"><span class="hljs-selector-attr"><span class="css"><span class="hljs-selector-attr">[type=</span></span><span class="st"><span class="css"><span class="hljs-selector-attr"><span class="css"><span class="hljs-selector-attr"><span class="hljs-string">"button"</span></span></span><span class="ch"><span class="css"><span class="hljs-selector-attr"><span class="css"><span class="hljs-selector-attr">]</span></span><span class="css"><span class="css"> </span><span class="kw"><span class="css">{</span><span class="css"><span class="css"> </span><span class="co"><span class="css"><span class="hljs-comment"><span class="css"><span class="hljs-comment">/* 权重为 10 */</span></span><span class="css"><span class="css">
+            </span><span class="kw"><span class="hljs-attribute"><span class="css"><span class="hljs-attribute">color</span>:</span><span class="css"><span class="css"> </span><span class="dt"><span class="css">white</span><span class="css"><span class="css"> </span><span class="kw"><span class="hljs-meta"><span class="css"><span class="hljs-meta">!important</span>;</span><span class="css"><span class="css"> </span><span class="co"><span class="css"><span class="hljs-comment"><span class="css"><span class="hljs-comment">/* !important权重为无穷大 */</span></span><span class="css"><span class="css">
+        </span><span class="kw"><span class="css">}</span><span class="css"><span class="css">
+        </span><span class="hljs-selector-tag"><span class="css"><span class="hljs-selector-tag">input</span></span><span class="fl"><span class="css"><span class="hljs-selector-class">.myclass</span></span><span class="css"><span class="css"> </span><span class="kw"><span class="css">{</span><span class="css"><span class="css"> </span><span class="co"><span class="css"><span class="hljs-comment"><span class="css"><span class="hljs-comment">/* 此为标签指定式选择器，权重为 1 + 10 = 11 */</span></span><span class="css"><span class="css">
+            </span><span class="kw"><span class="hljs-attribute"><span class="css"><span class="hljs-attribute">color</span>:</span><span class="css"><span class="css"> </span><span class="dt"><span class="css">black</span><span class="kw"><span class="css">;</span><span class="css"><span class="css">
+        </span><span class="kw"><span class="css">}</span><span class="css"><span class="css">
+    </span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">id</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"divid"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+        <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">span</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">class</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"myspan"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+            <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">input</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">type</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"button"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">id</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"myid"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">class</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"myclass"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">name</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"myname"</span></span><span class="hljs-tag"><span class="hljs-tag">
+</span><span class="ot"><span class="hljs-tag"><span class="hljs-tag">                </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">value</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"点我"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">style</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">" color: green;"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+                <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- style样式的权重为1000 --&gt;</span>
+        <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">span</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>每个样式的权重值，都在实例中，以注释的形式标明。<br>根据权重值可知，最终，这个按钮的样式一定是，蓝色背景，白色字，结果如下图:<br><img src="./link和@import的区别_files/1066727-20161129224033506-612012731.png" alt=""></p>
+<p>存在<code>!important</code>时，不作他想，一定是权重最大的样式。</p>
+<p>既然我们了解了，CSS 中的权重是怎么回事，那回到主题，“<code>link</code>引入的样式权重大于<code>@import</code>引入的样式”，<br>难道 CSS 的引入方式也有权重吗？其实我们不必纠结它是否有权重之说，我们只需理论结合实际的去分析，各种情况下，结果如何即可。<br>现有如下3个css文件：</p>
+<div class="sourceCode">
+<pre class="sourceCode css"><code class="sourceCode css hljs"><span class="co"><span class="hljs-comment"><span class="hljs-comment">/* green.css */</span>
+<span class="hljs-selector-tag"><span class="hljs-selector-tag">div</span> <span class="kw">{
+    <span class="kw"><span class="hljs-attribute"><span class="hljs-attribute">background-color</span>: <span class="dt">green<span class="kw">;
+    <span class="kw"><span class="hljs-attribute"><span class="hljs-attribute">border</span>: <span class="dt"><span class="hljs-number">3px</span> <span class="dt">solid <span class="dt">red<span class="kw">;
+<span class="kw">}
+
+<span class="co"><span class="hljs-comment"><span class="hljs-comment">/* yellow.css */</span>
+<span class="hljs-selector-tag"><span class="hljs-selector-tag">div</span> <span class="kw">{
+    <span class="kw"><span class="hljs-attribute"><span class="hljs-attribute">background-color</span>: <span class="dt">yellow<span class="kw">;
+    <span class="kw"><span class="hljs-attribute"><span class="hljs-attribute">border</span>: <span class="dt"><span class="hljs-number">3px</span> <span class="dt">solid <span class="dt">black<span class="kw">;
+<span class="kw">}
+
+<span class="co"><span class="hljs-comment"><span class="hljs-comment">/* blue.css */</span>
+<span class="dv"><span class="hljs-keyword">@</span><span class="hljs-keyword"><span class="hljs-keyword">import</span> url(<span class="st"><span class="hljs-string"><span class="hljs-string">"green.css"</span>)<span class="dv">;
+<span class="hljs-selector-tag"><span class="hljs-selector-tag">div</span><span class="kw">{
+    <span class="kw"><span class="hljs-attribute"><span class="hljs-attribute">background-color</span>: <span class="dt">blue<span class="kw">;
+<span class="kw">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>实例1：</p>
+<div class="sourceCode">
+<pre class="sourceCode html"><code class="sourceCode html hljs xml"><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&lt;!DOCTYPE </span><span class="hljs-meta"><span class="hljs-meta"><span class="hljs-meta-keyword">html</span></span><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">lang</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"en"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">meta</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">charset</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"UTF-8"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>Document<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 实例1. link标签引入yellow.css，内联样式引入green.css --&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">link</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">rel</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"stylesheet"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">href</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"yellow.css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">type</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"text/css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="css"><span class="css">
+        </span><span class="dv"><span class="css"><span class="css"><span class="hljs-keyword">@</span></span><span class="hljs-keyword"><span class="css"><span class="hljs-keyword">import</span></span><span class="css"><span class="css"> url(</span><span class="st"><span class="css"><span class="hljs-string"><span class="css"><span class="hljs-string">"green.css"</span></span><span class="css"><span class="css">)</span><span class="dv"><span class="css">;</span><span class="css"><span class="css">
+    </span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">style</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"width: 50px; height: 50px;"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 盒子为，绿色背景，红色边框，即green.css生效 --&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>实例1结果如下图：<br><img src="./link和@import的区别_files/1066727-20161129224109084-1675788619.png" alt=""></p>
+<p>实例2：</p>
+<div class="sourceCode">
+<pre class="sourceCode html"><code class="sourceCode html hljs xml"><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&lt;!DOCTYPE </span><span class="hljs-meta"><span class="hljs-meta"><span class="hljs-meta-keyword">html</span></span><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">lang</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"en"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">meta</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">charset</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"UTF-8"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>Document<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 实例2. 内联样式引入green.css，link标签引入yellow.css --&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">type</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"text/css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="css"><span class="css">
+        </span><span class="dv"><span class="css"><span class="css"><span class="hljs-keyword">@</span></span><span class="hljs-keyword"><span class="css"><span class="hljs-keyword">import</span></span><span class="css"><span class="css"> url(</span><span class="st"><span class="css"><span class="hljs-string"><span class="css"><span class="hljs-string">"green.css"</span></span><span class="css"><span class="css">)</span><span class="dv"><span class="css">;</span><span class="css"><span class="css">
+    </span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">link</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">rel</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"stylesheet"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">href</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"yellow.css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">style</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"width: 50px; height: 50px;"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 盒子为黄色背景，黑色边框，即yellow.css生效 --&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>实例2结果如下图：<br><img src="./link和@import的区别_files/1066727-20161129224123287-1430983945.png" alt=""></p>
+<p>对比实例1和实例2这两个正好相反的结果可知，<code>link</code>和<code>@import</code>并没有产生类似权重的效果，只是单纯的体现了CSS的层叠性，写在后面的样式，覆盖前面的样式。</p>
+<p>实例3：</p>
+<div class="sourceCode">
+<pre class="sourceCode html"><code class="sourceCode html hljs xml"><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&lt;!DOCTYPE </span><span class="hljs-meta"><span class="hljs-meta"><span class="hljs-meta-keyword">html</span></span><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">lang</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"en"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">meta</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">charset</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"UTF-8"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>Document<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 实例3. 内联样式引入green.css，内联样式中设置粉色背景 --&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">type</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"text/css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="css"><span class="css">
+        </span><span class="dv"><span class="css"><span class="css"><span class="hljs-keyword">@</span></span><span class="hljs-keyword"><span class="css"><span class="hljs-keyword">import</span></span><span class="css"><span class="css"> url(</span><span class="st"><span class="css"><span class="hljs-string"><span class="css"><span class="hljs-string">"green.css"</span></span><span class="css"><span class="css">)</span><span class="dv"><span class="css">;</span><span class="css"><span class="css">
+        </span><span class="hljs-selector-tag"><span class="css"><span class="hljs-selector-tag">div</span> </span><span class="kw"><span class="css">{</span><span class="css"><span class="css">
+            </span><span class="kw"><span class="hljs-attribute"><span class="css"><span class="hljs-attribute">background-color</span>:</span><span class="css"><span class="css"> pink</span><span class="kw"><span class="css">;</span><span class="css"><span class="css">
+        </span><span class="kw"><span class="css">}</span><span class="css"><span class="css">
+    </span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">style</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">style</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"width: 50px; height: 50px;"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 盒子为粉色背景，红色边框，即green.css已生效，但背景色被内联样式层叠为粉色 --&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>实例3结果如下图：<br><img src="./link和@import的区别_files/1066727-20161129224140756-131460175.png" alt=""></p>
+<p>实例4：</p>
+<div class="sourceCode">
+<pre class="sourceCode html"><code class="sourceCode html hljs xml"><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&lt;!DOCTYPE </span><span class="hljs-meta"><span class="hljs-meta"><span class="hljs-meta-keyword">html</span></span><span class="dt"><span class="hljs-meta"><span class="hljs-meta">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">lang</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"en"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">meta</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">charset</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"UTF-8"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>Document<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">title</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 实例4. link标签引入blue.css，blue.css中引入green.css --&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">link</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">rel</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"stylesheet"</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">href</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"blue.css"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">head</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+    <span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span></span><span class="ot"><span class="hljs-tag"><span class="hljs-tag"> </span><span class="hljs-attr"><span class="hljs-tag"><span class="hljs-attr">style</span>=</span><span class="st"><span class="hljs-tag"><span class="hljs-string"><span class="hljs-tag"><span class="hljs-string">"width: 50px; height: 50px;"</span></span><span class="kw"><span class="hljs-tag"><span class="hljs-tag">&gt;</span><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">div</span>&gt;</span>
+    <span class="co"><span class="hljs-comment"><span class="hljs-comment">&lt;!-- 盒子为蓝色背景，红色边框，即green.css已生效，但背景色被blue.css层叠为蓝色 --&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">body</span>&gt;</span>
+<span class="kw"><span class="hljs-tag"><span class="hljs-tag">&lt;/</span><span class="hljs-name"><span class="hljs-tag"><span class="hljs-name">html</span>&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>实例4结果如下图：<br><img src="./link和@import的区别_files/1066727-20161129224157912-969350911.png" alt=""></p>
+<p>分析实例3和实例4的结果可知：</p>
+<p>对于实例3，我们看到红色边框，证明内联样式中使用<code>@import</code>引入的<code>green.css</code>已经生效，但其背景样式被内联样式中的粉色背景层叠掉，这个现象表明，<code>@import</code>不只是如我们看到的那样，处于内联样式顶部，其被引入的样式，在结构上，也确实是被置于内联样式之前，所以内联样式才能够层叠掉它。</p>
+<p>同理，实例4中，在<code>link</code>标签引入的<code>blue.css</code>文件内，顶部同样存在<code>@import</code>引入的<code>green.css</code>，红色边框依然可以证明，<code>green.css</code>已经生效，但其背景样式被<code>blue.css</code>本身的蓝色背景层叠掉，<code>@import</code>引入的样式在<code>blue.css</code>中也是被置于它本身样式之前的。</p>
+<p>到此为止，我展开了大胆的猜想，“<code>link</code>引入的样式权重大于<code>@import</code>引入的样式”，这个结论的给出者，是想告诉大家：</p>
+<p>在<code>link</code>标签引入的 CSS 文件中，使用<code>@import</code>时需注意，如果已经存在相同样式，<code>@import</code>引入的这个样式将被该 CSS 文件本身的样式层叠掉，表现出<code>link</code>标签引入的样式权重大于<code>@import</code>引入的样式这样的直观效果。</p>
+<p>对于我设想的结论，似乎挺能说通的，毕竟这是实践出的结果。</p>
+<p>那些验证过此结论的前人，他们都是在一个 HTML 页面中，一前一后分别使用<code>link</code>和内联样式的<code>@import</code>去比较的，我在实例1和实例2中也是如此做的，并不能反推出“<code>link</code>引入的样式权重大于<code>@import</code>引入的样式”这个结论，所以，我不自量力的认为，这个结论其实最初只是丢了个已知条件而已。</p>
+<p>那么我们一起把这个结论重新梳理一下：在<code>link</code>标签引入的 CSS 文件中使用<code>@import</code>时，相同样式将被该 CSS 文件本身的样式层叠。</p>
+<p><code>Ps.首先感谢各种看官的阅读。笔者属于学习阶段，学识尚浅，虽然本文结论已得到笔者编码验证，但不排除笔者大脑短路、措辞有误的可能，有缘阅读到此处的都是真爱，希望诸位大拿、大牛、大仙、大圣、大神们不吝赐教，及时指正，避免诱导萌新误入歧途，再次向你们表达笔者的谢意！</code></p>
+<h4 id="细节">细节</h4>
+<p>既然已经说了这么多，就顺便提一下关于<code>@import</code>使用时的其它细节。</p>
+<p>在《CSS权威指南》中写道：</p>
+<p><code>@import</code>一定要写在除<code>@charset</code>外的其他任何 CSS 规则之前，如果置于其它位置将会被浏览器忽略，而且，在<code>@import</code>之后如果存在其它样式，则<code>@import</code>之后的分号是必须书写，不可省略的。</p>
+<p>到此为止，似乎事情都弄清楚了，但是突然又有个疑点浮现出来：</p>
+<p>在讨论<strong>区别</strong>的时候，不是说加载页面时，<code>link</code>标签引入的 CSS 先于<code>@import</code>引入的 CSS 加载吗，那<code>link</code>标签引入的样式又怎会把<code>@import</code>引入的样式层叠掉呢？</p>
+<p>要回答这个问题，首先我们要一起明确一些有关浏览器的概念：</p>
+<p>浏览器执行过程可以简单分为加载、解析、渲染，这三个步骤。</p>
+<p><strong>加载</strong>：根据请求的URL进行域名解析，向服务器发送请求，接收响应文件（如 HTML、JS、CSS、图片等）。</p>
+<p><strong>解析</strong>：对加载到的资源（HTML、JS、CSS等）进行语法解析，构建相应的内部数据结构（比如HTML的DOM树，JS对象的属性表，CSS的样式规则等）。</p>
+<p><strong>渲染</strong>：构建渲染树，对各个元素进行位置计算、样式计算等，然后根据渲染树完成页面布局及绘制的过程（可以理解为“画”页面元素）。</p>
+<p>这几个过程不是完全孤立的，会有交叉，比如HTML加载后就会进行解析，然后拉取HTML中指定的CSS、JS等。`</p>
+<p>现在，我们应该已经了解了加载和渲染的概念，明白它们是两个不同的过程，那么对上文中抛出的疑问继续追问：</p>
+<p><code>link</code>先于<code>@import</code>加载，是不是也先于<code>@import</code>渲染呢？</p>
+<p>实际上，渲染的动作一般都会执行多次，最后一次渲染，一定是依据之前加载过的所有样式整合后的渲染树进行绘制页面的，已经被渲染过的页面元素，也会被重新渲染。</p>
+<p>那么我们就可以把<code>@import</code>这种导入 CSS 文件的方式理解成一种替换，CSS 解析引擎在对一个 CSS 文件进行解析时，如在文件顶部遇到<code>@import</code>，将被替换为该<code>@import</code>导入的 CSS 文件中的全部样式。</p>
+<p>峰回路转，柳暗花明，终于弄明白为何<code>@import</code>引入的样式，会被层叠掉了。其虽然后被加载，却会在加载完毕后置于样式表顶部，最终渲染时自然会被下面的同名样式层叠。</p>
+<p>至此为止，“<code>link</code>引入的样式权重大于<code>@import</code>引入的样式”这个结论，我终于为它圆了场。但愿此结论的作者，本意真如我的猜测，否则若是我多心而跑偏了的话，不敢想象这背后究竟隐藏着多大的秘密。</p>
+<h4 id="祖坟">祖坟</h4>
+<p>有些细心而专业的读者可能已经发现了，我用自己的思路和措辞，粗略的解释了有关 CSS 加载和渲染的知识，有些涉世未深的前端爱好者可能会一头雾水，无法作为系统学习的依据。这不打紧，出来混，祖坟总是要刨的，想要透彻的学习相关内容，进一步了解底层原理的学者，我早已为你备下了丰厚的见面礼~</p>
+<p>有关<code>link</code>和<code>@import</code>在性能分析方面的比较，国外的高手早在多年前就曾执过笔：</p>
+<p><a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/">爱好母语的请戳我</a>：<a class="uri" href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/">https://www.stevesouders.com/blog/2009/04/09/dont-use-import/</a><br><a href="https://www.qianduan.net/high-performance-web-site-do-not-use-import/">阅读英语的请戳我</a>：<a class="uri" href="https://www.qianduan.net/high-performance-web-site-do-not-use-import/">https://www.qianduan.net/high-performance-web-site-do-not-use-import/</a></p>
+<p>有关浏览器内部工作原理的神作，也是几年前出自歪果仁大牛：</p>
+<p><a href="https://kb.cnblogs.com/page/129756/">1 为普通话</a>：<a class="uri" href="https://kb.cnblogs.com/page/129756/">https://kb.cnblogs.com/page/129756/</a><br><a href="http://taligarsiel.com/Projects/howbrowserswork1.htm">2 for English</a>：<a class="uri" href="http://taligarsiel.com/Projects/howbrowserswork1.htm">http://taligarsiel.com/Projects/howbrowserswork1.htm</a></p>
+<p>对知识有所渴望的你，赶快点击上面的传送门，相信你一定会有丰富的收获。</p>
+<h4 id="感想">感想</h4>
+<p>我喜欢读别人探究类的技术文章，不只是可以学习技术上的知识，更是可以学习别人探索的精神和思考问题的逻辑。或许已经有过不少前人如我一样，对本文的争议结论，有所质疑，前思后想过一番，得出了自己的见解，只是没有成文，或者没有发表而已。</p>
+<p>那么其他人呢，就只是单纯的复制结论或记忆结论么。</p>
+<p><strong>其实我觉得，在咱们这个领域，不求甚解可以，人云亦云不行。一句含有信息量的句子，进入大脑时，总得自己考虑考虑吧，不要让我们的大脑充当转发器，最不济，也得是个解析器吧。</strong></p>
+
+</div>
+
+</div>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="EntryTag">
+    标签: 
+            <a href="https://www.cnblogs.com/my--sunshine/tag/css%E5%BC%95%E5%85%A5/">css引入</a></div>
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(6872224,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;fa3f12ee-4994-e611-845c-ac853d9f53ac&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./link和@import的区别_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./link和@import的区别_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/my--sunshine/" target="_blank"><img src="./link和@import的区别_files/20170612171931.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/my--sunshine/">my~sunshine</a><br>
+            <a href="https://home.cnblogs.com/u/my--sunshine/followees/">关注 - 2</a><br>
+            <a href="https://home.cnblogs.com/u/my--sunshine/followers/">粉丝 - 17</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;fa3f12ee-4994-e611-845c-ac853d9f53ac&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(6872224,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">25</span>
+    </div>
+    <div class="buryit" onclick="votePost(6872224,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/my--sunshine/p/6872179.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/my--sunshine/p/6872179.html" title="发布于 2017-05-18 10:45">first-child与:first-of-type的区别</a>
+    <br>
+    <a href="https://www.cnblogs.com/my--sunshine/p/6894405.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/my--sunshine/p/6894405.html" title="发布于 2017-05-23 15:44">display属性的表格布局相关属性</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2017-05-18 10:51</span>&nbsp;
+<a href="https://www.cnblogs.com/my--sunshine/">my~sunshine</a>&nbsp;
+阅读(<span id="post_view_count">38677</span>)&nbsp;
+评论(<span id="post_comment_count">5</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=6872224" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(6872224);return false;">收藏</a></div>
+        </div>
+	    
+	    
+    </div><!--end: topics 文章、评论容器-->
+</div>
+<script src="./link和@import的区别_files/highlight.min.js.下载"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 312879, cb_blogApp = 'my--sunshine', cb_blogUserGuid = 'fa3f12ee-4994-e611-845c-ac853d9f53ac';
+    var cb_entryId = 6872224, cb_entryCreatedDate = '2017-05-18 10:51', cb_postType = 1;
+    updatePostStats(
+        [cb_entryId],
+        function(id, count) { $("#post_view_count").text(count) },
+        function(id, count) { $("#post_comment_count").text(count) })
+</script>
+<a name="!comments"></a>
+<div id="blog-comments-placeholder">
+
+<div id="comment_pager_top">
+    
+</div>
+
+<br>
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems">
+    <div class="feedbackNoItems"></div>
+</div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#3798317" class="layer">#1楼</a>
+<a name="3798317" id="comment_anchor_3798317"></a>
+ 
+<span class="comment_date">2017-09-27 14:26</span>
+
+ 
+        <a id="a_comment_author_3798317" href="https://home.cnblogs.com/u/756315/" target="_blank">天谴丶之月</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_3798317" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+    受教了。
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(3798317, &#39;Digg&#39;, this.parentElement, false);">
+                支持(0)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(3798317, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        
+
+        </div>
+    </div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#4003917" class="layer">#2楼</a>
+<a name="4003917" id="comment_anchor_4003917"></a>
+ 
+<span class="comment_date">2018-06-23 10:31</span>
+
+ 
+        <a id="a_comment_author_4003917" href="https://home.cnblogs.com/u/1333940/" target="_blank">胭脂泪</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_4003917" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+    好评
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4003917, &#39;Digg&#39;, this.parentElement, false);">
+                支持(0)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4003917, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        
+
+        </div>
+    </div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#4185269" class="layer">#3楼</a>
+<a name="4185269" id="comment_anchor_4185269"></a>
+ 
+<span class="comment_date">2019-02-21 22:41</span>
+
+ 
+        <a id="a_comment_author_4185269" href="https://home.cnblogs.com/u/1606952/" target="_blank">Y_GGG</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_4185269" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+    CSS 权重优先级顺序简单表示为：<br>!important &gt; 行内样式 &gt; ID &gt; 类、伪类、属性 &gt; 标签名 &gt; 继承 &gt; 通配符<br><br>这里有错误，通配符* &gt; 继承
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4185269, &#39;Digg&#39;, this.parentElement, false);">
+                支持(2)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4185269, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        
+
+        </div>
+    </div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#4185660" class="layer">#4楼</a>
+<a name="4185660" id="comment_anchor_4185660"></a>
+ 
+<span class="comment_date">2019-02-22 14:32</span>
+
+ 
+        <a id="a_comment_author_4185660" href="https://www.cnblogs.com/daoke0818/" target="_blank">关中刀客在青岛</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_4185660" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+    谢谢楼主，<br>爱好母语的请戳我：<a href="https://www.stevesouders.com/blog/2009/04/09/dont-use-import/" target="_blank">https://www.stevesouders.com/blog/2009/04/09/dont-use-import/</a><br>阅读英语的请戳我：<a href="https://www.qianduan.net/high-performance-web-site-do-not-use-import/" target="_blank">https://www.qianduan.net/high-performance-web-site-do-not-use-import/</a><br>这两个貌似反了
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4185660, &#39;Digg&#39;, this.parentElement, false);">
+                支持(0)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4185660, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        <span id="comment_4185660_avatar" style="display:none">
+            https://pic.cnblogs.com/face/1054599/20180607140324.png
+        </span>
+
+        </div>
+    </div>
+    <div class="feedbackItem">
+        <div class="feedbackListSubtitle">
+            <div class="feedbackManage">
+                &nbsp;&nbsp;
+
+<span class="comment_actions">
+    
+    
+    
+    
+</span>
+
+
+            </div>
+            
+<a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#4616778" class="layer">#5楼</a>
+<a name="4616778" id="comment_anchor_4616778"></a>
+    <span id="comment-maxId" style="display: none">4616778</span>
+    <span id="comment-maxDate" style="display: none">2020/6/27 上午3:32:37</span>
+ 
+<span class="comment_date">2020-06-27 03:32</span>
+
+ 
+        <a id="a_comment_author_4616778" href="https://www.cnblogs.com/sum41/" target="_blank">sum4196</a>
+
+        </div>
+        <div class="feedbackCon">
+            
+<div id="comment_body_4616778" data-format-type="Markdown" class="blog_comment_body cnblogs-markdown">
+    <p>是作者笔误了吗？第一个例子，按照权重来看，应该是得到的黄底、白字，怎么会是蓝底白字呢。</p>
+
+</div>
+        <div class="comment_vote">
+            <span class="comment_error" style="color: red"></span>
+            <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4616778, &#39;Digg&#39;, this.parentElement, false);">
+                支持(0)
+            </a>
+            <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4616778, &#39;Bury&#39;, this.parentElement, false);">
+                反对(0)
+            </a>
+        </div>
+        <span id="comment_4616778_avatar" style="display:none">
+            https://pic.cnblogs.com/face/1181047/20180422163639.png
+        </span>
+
+        </div>
+    </div>
+
+<div id="comment_pager_bottom">
+    
+</div>
+
+
+</div>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    登录后才能发表评论，立即 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a> 或
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+    <a href="https://www.cnblogs.com/">访问</a> 网站首页
+</div>
+<a href="https://www.cnblogs.com/cmt/p/14003277.html" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-login-tip-aws&#39;)">写给园友们的一封求助信</a>
+</div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"><a href="http://www.softbam.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode-1103&#39;)">【推荐】News: 大型组态、工控、仿真、CADGIS 50万行VC++源码免费下载</a><br><a href="https://www.wenjuan.com/s/UZBZJvjEKs/#%E3%80%8A%E5%8D%9A%E5%AE%A2%E5%9B%AD%E7%94%A8%E6%88%B7%E6%B6%88%E8%B4%B9%E8%A7%82%E8%B0%83%E6%9F%A5%E3%80%8B%EF%BC%8C%E5%BF%AB%E6%9D%A5%E5%8F%82%E4%B8%8E%E5%90%A7%E3%80%82%E3%80%90%E9%97%AE%E5%8D%B7%E7%BD%91%E6%8F%90%E4%BE%9B%E6%94%AF%E6%8C%81%E3%80%91" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-博客园问卷&#39;)">【推荐】有你助力，更好为你——博客园用户消费观调查，附带小惊喜！</a><br><a href="https://www.cnblogs.com/cmt/p/14152738.html" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-丝芙兰-圣诞&#39;)">【推荐】博客园x丝芙兰-圣诞特别活动：圣诞选礼，美力送递</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】了不起的开发者，挡不住的华为，园子里的品牌专区</a><br><a href="https://brands.cnblogs.com/aws/free?source=CH" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-AWS&#39;)">【福利】AWS携手博客园为开发者送免费套餐+50元京东E卡</a><br><a href="https://brands.cnblogs.com/agora" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-声网专区&#39;)">【推荐】未知数的距离，毫秒间的传递，声网与你实时互动</a><br><a href="https://brands.cnblogs.com/aerospike" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-Aerospike专区&#39;)">【推荐】新一代 NoSQL 数据库，Aerospike专区新鲜入驻</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CK_uhb-f4e0CFQUevAodSVQG7g"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="1" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./link和@import的区别_files/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_news"><div class="recomm-block"><b>相关博文：</b><br>·  <a title="link和@import的区别" href="https://www.cnblogs.com/mdr86553/p/12048891.html" target="_blank" onclick="clickRecomItmem(12048891)">link和@import的区别</a><br>·  <a title="link和@import引入外部样式的区别" href="https://www.cnblogs.com/zhangyue690811/p/12069242.html" target="_blank" onclick="clickRecomItmem(12069242)">link和@import引入外部样式的区别</a><br>·  <a title="HowtoCreateDLL(Dynamiclinklibrary)" href="https://www.cnblogs.com/YangARTuan/p/12002917.html" target="_blank" onclick="clickRecomItmem(12002917)">HowtoCreateDLL(Dynamiclinklibrary)</a><br>·  <a title="MoveOverandClickLink" href="https://www.cnblogs.com/Yanss/p/11976942.html" target="_blank" onclick="clickRecomItmem(11976942)">MoveOverandClickLink</a><br>·  <a title="es6importexport" href="https://www.cnblogs.com/shengjunyong/p/12080892.html" target="_blank" onclick="clickRecomItmem(12080892)">es6importexport</a><br>»  <a target="_blank" href="https://recomm.cnblogs.com/blogpost/6872224">更多推荐...</a></div></div>
+    <div id="cnblogs_c2" class="c_ad_block">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;" data-google-query-id="CLDuhb-f4e0CFQUevAodSVQG7g"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C2_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C2_0" width="468" height="60" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" data-google-container-id="2" style="border: 0px; vertical-align: bottom;" data-load-complete="true" src="./link和@import的区别_files/saved_resource(1).html"></iframe></div></div>
+    </div>
+    <div id="under_post_kb">
+<div class="itnews c_ad_block">
+    <b>最新 IT 新闻</b>:
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/683741/" target="_blank">看了沃尔玛美国的直播带货 才对比出中国市场有多值得骄傲</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/683740/" target="_blank">手机电台变味了，在线音频变成语音娱乐、语音交友</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/683739/" target="_blank">719天！玉兔二号月球车走了600米</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/683738/" target="_blank">免费MOBA游戏来了：腾讯 《宝可梦大集结》 明年1月能玩上</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/683737/" target="_blank">周鸿祎称年轻人不要太敏感：以后受到更大的打击 容易受不了</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+       var commentManager = new blogCommentManager();
+       commentManager.renderComments(0);
+       fixPostBody();
+       deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);       deliverT2();
+       deliverC1C2();
+       loadNewsAndKb();
+       loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);       LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+       GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+       loadOptUnderPost();
+       GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+   </script>
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+	<div id="sideBar">
+		<div id="sideBarMain">
+			<div id="sidebar_news" class="newsItem"><!--done-->
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/my--sunshine/">
+            my~sunshine
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/my--sunshine/" title="入园时间：2016-10-17">
+            4年2个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/my--sunshine/followers/">
+            17
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/my--sunshine/followees/">
+            2
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;fa3f12ee-4994-e611-845c-ac853d9f53ac&#39;)">+加关注</a></div>
+        <script>getFollowStatus('fa3f12ee-4994-e611-845c-ac853d9f53ac');</script>
+    </div>
+</div>
+
+</div>
+<div id="sidebar_c3"></div>
+			<div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/11/22&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2020年12月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2021/01/22&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                        <td class="" align="center">
+                            1
+                        </td>
+                        <td class="" align="center">
+                            2
+                        </td>
+                        <td class="" align="center">
+                            3
+                        </td>
+                        <td class="" align="center">
+                            4
+                        </td>
+                    <td class="CalWeekendDay" align="center">
+                        5
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            6
+                        </td>
+                            <td class="" align="center">
+                                7
+                            </td>
+                            <td class="" align="center">
+                                8
+                            </td>
+                            <td class="" align="center">
+                                9
+                            </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            12
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            13
+                        </td>
+                            <td class="" align="center">
+                                14
+                            </td>
+                            <td class="" align="center">
+                                15
+                            </td>
+                            <td class="" align="center">
+                                16
+                            </td>
+                            <td class="" align="center">
+                                17
+                            </td>
+                            <td class="" align="center">
+                                18
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            19
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            20
+                        </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                22
+                            </td>
+                            <td class="" align="center">
+                                23
+                            </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            26
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            27
+                        </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                            <td class="" align="center">
+                                29
+                            </td>
+                            <td class="" align="center">
+                                30
+                            </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            2
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalOtherMonthDay" align="center">
+                            3
+                        </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                5
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                6
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                7
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                8
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            9
+                        </td>
+                </tr>
+    </tbody>
+</table></div><script>loadBlogDefaultCalendar();</script>			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"><!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block"><div class="catListLink">
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/my--sunshine/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/my--sunshine/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/my--sunshine/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/my--sunshine/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/my--sunshine/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block"><div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9Dhttp%E8%AF%B7%E6%B1%82%E2%80%9C/">”http请求“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E2%80%9C/">”方法模式“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E6%9E%84%E9%80%A0%E5%99%A8%E6%A8%A1%E5%BC%8F%E2%80%9C/">”构造器模式“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E5%87%BD%E6%95%B0%E6%A8%A1%E5%BC%8F%E2%80%9C/">”函数模式“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E8%B7%A8%E5%9F%9F%E2%80%9C/">”跨域“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/">”模板引擎<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/%E2%80%9D%E4%B8%8A%E4%B8%8B%E6%96%87%E6%A8%A1%E5%BC%8F/">”上下文模式<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/ajax%E2%80%9C/">ajax“<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/css%E9%80%89%E6%8B%A9%E5%99%A8/">css选择器<span class="tag-count">(1)</span></a>
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/my--sunshine/tag/css%E5%BC%95%E5%85%A5/">css引入<span class="tag-count">(1)</span></a>
+        </li>
+    <li>
+        <a href="https://www.cnblogs.com/my--sunshine/tag/">更多</a>
+    </li>
+
+</ul>
+</div>
+
+</div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+
+    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+        <h3 class="catListTitle">
+            
+随笔档案
+
+
+
+        </h3>
+
+        <ul>
+
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/my--sunshine/archive/2017/08.html" rel="" target="">
+    2017年8月(2)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/my--sunshine/archive/2017/06.html" rel="" target="">
+    2017年6月(5)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/my--sunshine/archive/2017/05.html" rel="" target="">
+    2017年5月(4)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/my--sunshine/archive/2017/04.html" rel="" target="">
+    2017年4月(1)
+</a>
+ 
+
+                </li>                
+                <li data-category-list-item-visible="true" style="display: block">
+                    
+<a href="https://www.cnblogs.com/my--sunshine/archive/2017/01.html" rel="" target="">
+    2017年1月(1)
+</a>
+ 
+
+                </li>                
+            
+        </ul>
+
+
+    </div>    
+</div>
+
+<!-- 最新评论 -->
+<div id="sidebar_recentcomments" class="sidebar-block"><div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+
+	<div class="RecentCommentBlock">
+        <ul>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">1. Re:link和@import的区别</a></li>
+                    <li class="recent_comment_body"><p>是作者笔误了吗？第一个例子，按照权重来看，应该是得到的黄底、白字，怎么会是蓝底白字呢。</p>
+</li>
+                    <li class="recent_comment_author">--sum4196</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">2. Re:link和@import的区别</a></li>
+                    <li class="recent_comment_body">谢谢楼主，爱好母语的请戳我：阅读英语的请戳我：这两个貌似反了...</li>
+                    <li class="recent_comment_author">--关中刀客在青岛</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">3. Re:link和@import的区别</a></li>
+                    <li class="recent_comment_body">CSS 权重优先级顺序简单表示为：!important &gt; 行内样式 &gt; ID &gt; 类、伪类、属性 &gt; 标签名 &gt; 继承 &gt; 通配符这里有错误，通配符* &gt; 继承...</li>
+                    <li class="recent_comment_author">--Y_GGG</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">4. Re:link和@import的区别</a></li>
+                    <li class="recent_comment_body">好评</li>
+                    <li class="recent_comment_author">--胭脂泪</li>
+                    <li class="recent_comment_title"><a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">5. Re:link和@import的区别</a></li>
+                    <li class="recent_comment_body">受教了。</li>
+                    <li class="recent_comment_author">--天谴丶之月</li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block"><div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/7093412.html">
+                            1. Git常用命令总结(68740)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">
+                            2. link和@import的区别(38669)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/7059029.html">
+                            3. 验证url的正则(1663)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/6999808.html">
+                            4. SVG的用法(982)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/6781148.html">
+                            5. yarn的使用(677)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block"><div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">
+                            1. link和@import的区别(5)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/my--sunshine/p/6872224.html">
+                                1. link和@import的区别(25)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/my--sunshine/p/7093412.html">
+                                2. Git常用命令总结(3)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div></div></div>
+                    <script>loadBlogSideColumn();</script>
+			</div>			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		<!--done-->
+Copyright © 2020 my~sunshine
+<br><span id="poweredby">Powered by .NET 5.0.1-servicing.20575.16 on Kubernetes</span>
+
+
+
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+    
+
+
+<iframe id="google_osd_static_frame_6001259818245" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./link和@import的区别_files/saved_resource(2).html"></iframe></body></html>

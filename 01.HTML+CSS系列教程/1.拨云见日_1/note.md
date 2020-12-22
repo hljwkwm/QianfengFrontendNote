@@ -521,6 +521,111 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 ![image-20201222110341162](note_image/image-20201222110341162.png)
 
+文件位置：[src/14_列表标签.html](./src/14_列表标签.html)
+
+### 18、表格标签
+
+表格标签有`table`、`tr`、`th`、`td`、`caption`等，还有语义化标签`tHead`、`tBody`、`tFood`。
+
+- `<table>`：表格的最外层容器
+- `<tr>`：定义表格行
+- `<th>`：定义表头
+- `<td>`：定义表格单元
+- `<caption>`：定义表格标题
+- `tHead`、`tBody`、`tFood`：三个语义化标签，在html中，无实际意义，主要是为了规范和方便阅读。在一个table中，`tBody`是可以出现多次的，但是`tHead`、`tFood`只能出现一次。
+
+**表格属性：**
+
+- `border`：表格边框
+- `cellpadding`：单元格内的空间
+- `cellspacing`：单元格之间的空间
+- `rowspan`：合并行
+- `colspan`：合并列
+- `align`：左右对齐方式
+- `valign`：上下对齐方式	
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 表格的基本使用 -->
+    <table>
+        <caption>天气预报</caption>
+        <tHead>
+            <tr>
+                <th>日期</th>
+                <th>天气情况</th>
+                <th>出行情况</th>
+            </tr>
+        </tHead>
+        <tBody>
+            <tr>
+                <td>2019年1月1日</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td>2019年1月2日</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>有小雨，出门请带伞</td>
+            </tr>
+        </tBody>
+        <tFood>
+
+        </tFood>
+    </table>
+
+    <!-- 属性的演示 -->
+    <table border="1" cellpadding="30" cellspacing="30">
+        <caption>天气预报</caption>
+        <tHead>
+            <tr align="right">
+                <th colspan="2">日期</th>
+                <th>天气情况</th>
+                <th>出行情况</th>
+            </tr>
+        </tHead>
+        <tBody>
+            <tr valign="top">
+                <td rowspan="2">2019年1月1日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr valign="bottom">
+                <td rowspan="2">2019年1月2日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td>有小雨，出门请带伞</td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>有小雨，出门请带伞</td>
+            </tr>
+        </tBody>
+        <tFood>
+
+        </tFood>
+    </table>
+</body>
+</html>
+
+```
+
+文件位置：[src/15_表格标签.html](./src/15_表格标签.html)
+
 
 
 

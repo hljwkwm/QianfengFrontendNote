@@ -414,6 +414,117 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 文件位置：[src/13_特殊符号.html](./src/13_特殊符号.html)
 
+### 17、列表标签
+
+- `<ul>`和`<li>`：无序列表，分别表示的是列表的最外层容器和列表项。`ul`和`li`必须是组合出现的，`ul`和`li`之间不能有其他标签，但是`li`内部可以有其他标签。注意：`ul`有一个type属性，可以改变前面标记的样式，但是这个样式一般用`css`去控制。（参考http://www.w3school.com.cn/tags/att_ul_type.asp）
+- `<ol>`和`<li>`：无序列表，分别表示的是列表的最外层容器和列表项。注意：有序列表用的非常少，经常用的是无序列表，无序列表可以去代替有序列表。`ol`有一个type属性，可以改变前面标记的样式，但是这个样式一般用`css`去控制。（参考http://www.w3school.com.cn/tags/att_ol_type.asp）
+- `<dl>`、`<dt>`和`<dd>`：定义列表，`<dl>`为容器，`<dt>`为定义专业术语或名词，`<dd>`对名词进行解释和描述。
+
+**注：**列表之间可以互相嵌套，形成多层级的列表。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 无序列表 -->
+      <ul>
+        <li><a href="#"><strong>脱贫主题座谈会</strong></a></li>
+        <li><a href="#">考察调研</a></li>
+        <li><a href="#">《求是》杂志上的“人民中心”</a></li>
+        <li><a href="#">一季度财政收入同比增长6.2% 中国经济开局平稳</a></li>
+        <li><a href="#">奔驰女车主和解协议内容：补过生日 十年VIP</a></li>
+    </ul>
+
+    <!-- 有序列表 -->
+    <ol>
+        <li><a href="#">都说</a></li>
+        <li><a href="#">我的祖国</a></li>
+        <li><a href="#">夜空中最亮的星</a></li>
+        <li><a href="#">父亲</a></li>
+        <li><a href="#">青花瓷</a></li>
+    </ol>
+
+    <!-- 定义列表 -->
+    <dl>
+        <dt>HTML</dt>
+        <dd>超文本标记语言</dd>
+        <dt>CSS</dt>
+        <dd>层叠样式表</dd>
+        <dt>JavaScript</dt>
+        <dd>网页脚本语言</dd>
+    </dl>
+
+    <!-- 嵌套列表 -->
+     <ul>
+        <li>
+            辽宁省
+            <ul>
+                <li>沈阳</li>
+                <li>大连</li>
+                <li>丹东</li>
+            </ul>
+        </li>
+        <li>
+            山东省
+            <ul>
+                <li>济南</li>
+                <li>青岛</li>
+                <li>烟台</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- 嵌套列表 -->
+    <dl>
+        <dt>中国</dt>
+        <dd>
+            <dl>
+                <dt>辽宁省</dt>
+                <dd>沈阳</dd>
+                <dd>大连</dd>
+                <dd>丹东</dd>
+            </dl>
+            <dl>
+                <dt>山东省</dt>
+                <dd>济南</dd>
+                <dd>青岛</dd>
+                <dd>烟台</dd>
+            </dl>
+        </dd>
+        <dt>美国</dt>
+        <dd>洛杉矶</dd>
+        <dd>纽约</dd>
+    </dl>
+    
+</body>
+</html>
+```
+
+无序列表：
+
+![image-20201222110131891](note_image/image-20201222110131891.png)
+
+有序列表：
+
+![image-20201222110148971](note_image/image-20201222110148971.png)
+
+定义列表：
+
+![image-20201222110318854](note_image/image-20201222110318854.png)
+
+嵌套列表：
+
+![image-20201222110341162](note_image/image-20201222110341162.png)
+
+
+
+
+
 
 
 

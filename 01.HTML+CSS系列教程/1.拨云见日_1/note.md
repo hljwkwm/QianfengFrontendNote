@@ -715,6 +715,55 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 文件位置：[src/16_表单标签.html](./src/16_表单标签.html)
 
+### 表单和表格的嵌套练习
+
+表单对嵌套规则没有要求，但是表格的嵌套要符合规范，所以表单和表格的嵌套，最好让表单在外面，表格在里面。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <table border="1" cellpadding="30">
+            <tBody>
+                <tr align="center">
+                    <td rowspan="4">总体信息</td>
+                    <td colspan="2">用户注册</td>
+                </tr>
+                <tr align="right">
+                    <td>用户名：</td>
+                    <td><input type="text" placeholder="请输入用户名"></td>
+                </tr>
+                <tr align="right">
+                    <td>密码：</td>
+                    <td><input type="password" placeholder="请输入密码"></td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2">
+                        <input type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="reset">
+                    </td>
+                </tr>
+            </tBody>
+        </table>
+    </form>
+</body>
+
+</html>
+```
+
+文件位置：[src/17_表单表格组合.html](./src/17_表单表格组合.html)
+
+
+
 
 
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://www.baidu.com">
+        <!-- input标签列举 -->
+        <h2>输入框：</h2>
+        <input type="text" placeholder="请输入用户名">
+        <h2>密码框：</h2>
+        <input type="password" placeholder="请输入密码">
+        <h2>复选框</h2>
+        <input type="checkbox" checked>苹果
+        <input type="checkbox" checked>香蕉
+        <input type="checkbox" disabled>葡萄
+        <h2>单选框</h2>
+        <input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+        <h2>上传文件</h2>
+        <input type="file">
+        <h2>提交按钮和重置按钮</h2>
+        <!-- 提交 -->
+        <input type="submit">
+        <!-- 重置 -->
+        <input type="reset">
+
+        <h2>多行文本框</h2>
+        <textarea cols="100" rows="10"></textarea>
+
+        <h2>下拉菜单</h2>
+        <select>
+            <!-- 默认选择第一个，但是第一个不能再被选中 -->
+            <option selected disabled>请选择</option>
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <!-- 显示三个选项 -->
+        <select size="3">
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <!-- 可以多选 -->
+        <select multiple>
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <input type="file" multiple>
+
+        <!-- 让input的id和label中的for属性相同，这样就可以通过点击文字的方式来进行单选 -->
+        <input type="radio" name="gender" id="man"><label for="man">男</label>
+        <input type="radio" name="gender" id="woman"><label for="woman">女</label>
+
+    </form>
+</body>
+</html>

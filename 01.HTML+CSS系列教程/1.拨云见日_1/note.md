@@ -626,8 +626,94 @@ VS Code中快捷添加注释与删除注释：`Ctrl+/`，`Shift+Alt+A`
 
 文件位置：[src/15_表格标签.html](./src/15_表格标签.html)
 
+### 19、表单标签
 
+表单标签为form，它也是一个双标签，是表单的最外层容器，写法为：`<form></form>`。form有一个action属性，表示为要提交表单的地址。
 
+**input标签：**
+
+- input是form标签下常见的一个标签，标签用于搜集用户信息，根据不同的type属性值，展示不同的控件，如输入框、密码框、复选框等。input标签主要有以下几种type属性值：
+- text：普通的文本输入框，它有个属性为placeholder，可以在输入框中添加提示
+- password：密码输入框，它有个属性为placeholder，可以在输入框中添加提示
+- checkbox：复选框，如果添加一个checked，则为选中状态，如果添加一个disabled属性，则为禁用状态
+- radio：单选框，如果有相同的name属性值，则可以成为一组
+- file：上传文件，如果添加multiple属性，则可以选择多个文件
+- submit：提交按钮
+- reset：重置按钮
+
+- textarea：多行文本框，textarea有cols和rows属性，分别代表列数和行数
+- select、option下拉菜单，他们是嵌套关系；option中有selected属性，表示默认被选中，也有disabled属性，表示禁止被选中；select中的size属性表示可以显示多少个选项，multiple属性表示是否可以被多选
+- babel：辅助表单，它没有实际含义，但是可以起到辅助作用，比如在单选框中，默认状态下只有点击文字前面的小圆圈，才能选择，如果使用label，可以通过设置label的for属性和input中的id属性，使input的id属性和label中的for属性相同，就可以通过点击文字的方式来选择了，具体可以见代码。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://www.baidu.com">
+        <!-- input标签列举 -->
+        <h2>输入框：</h2>
+        <input type="text" placeholder="请输入用户名">
+        <h2>密码框：</h2>
+        <input type="password" placeholder="请输入密码">
+        <h2>复选框</h2>
+        <input type="checkbox" checked>苹果
+        <input type="checkbox" checked>香蕉
+        <input type="checkbox" disabled>葡萄
+        <h2>单选框</h2>
+        <input type="radio" name="gender">男
+        <input type="radio" name="gender">女
+        <h2>上传文件</h2>
+        <input type="file">
+        <h2>提交按钮和重置按钮</h2>
+        <!-- 提交 -->
+        <input type="submit">
+        <!-- 重置 -->
+        <input type="reset">
+
+        <h2>多行文本框</h2>
+        <textarea cols="100" rows="10"></textarea>
+
+        <h2>下拉菜单</h2>
+        <select>
+            <!-- 默认选择第一个，但是第一个不能再被选中 -->
+            <option selected disabled>请选择</option>
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <!-- 显示三个选项 -->
+        <select size="3">
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <!-- 可以多选 -->
+        <select multiple>
+            <option>北京</option>
+            <option>上海</option>
+            <option>杭州</option>
+        </select>
+
+        <input type="file" multiple>
+
+        <!-- 让input的id和label中的for属性相同，这样就可以通过点击文字的方式来进行单选 -->
+        <input type="radio" name="gender" id="man"><label for="man">男</label>
+        <input type="radio" name="gender" id="woman"><label for="woman">女</label>
+
+    </form>
+</body>
+</html>
+```
+
+文件位置：[src/16_表单标签.html](./src/16_表单标签.html)
 
 
 

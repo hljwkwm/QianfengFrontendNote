@@ -771,7 +771,41 @@ div和span都是html中非常常见的标签。
 
 文件位置：[src/18_div与span.html](./src/18_div与span.html)
 
+### 21、CCS基础语法
 
+CSS基础写法：`选择器 { 属性1 : 值1 ; 属性2 : 值2 }`
+
+CSS的注释：`/* CSS注释的内容 */`
+
+几个基本的属性：width：宽，height：高，background-color：背景色
+
+长度单位：
+
+- px -> 像素
+- ^ -> 百分比，比如如果外容器的宽为600px，那么当前容器的宽为50%，它的实际像素值为300px。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{ width : 25% ; height : 100px ; background-color : red }
+       /*  span{ background-color:blue;} */
+    </style>
+</head>
+<body>
+    <div>这是一个块</div>
+    <div>又是一个块</div>
+    <span>这是一个内联</span>
+</body>
+</html>
+```
+
+文件位置：[src/19_CSS基础语法.html](./src/19_CSS基础语法.html)
 
 
 

@@ -839,7 +839,7 @@ CSS的注释：`/* CSS注释的内容 */`
 
 - 外部样式：引入一个单独的CSS文件，`name.css`。
 
-通过`link`标签引入外部资源，`rel`属性指定资源跟页面的关系，~属性资源的地址。其中~的属性值可以参考：http://www.w3school.com.cn/tags/att_link_rel.asp，如果是引入样式表，那么rel的属性值为`stylesheet`。
+通过`link`标签引入外部资源，`rel`属性指定资源跟页面的关系，属性资源的地址。其中的属性值可以参考：http://www.w3school.com.cn/tags/att_link_rel.asp，如果是引入样式表，那么rel的属性值为`stylesheet`。
 
  还可以通过@import方式引入外部样式（这种方式有很多问题，不建议使用）。
 
@@ -879,14 +879,37 @@ link与@import区别：https://www.cnblogs.com/my--sunshine/p/6872224.html，本
 
 文件位置：[src/21_外部样式.html](./src/21_外部样式.html)
 
+### 23、CSS中的颜色表示法
 
+- 单词表示法：red、blue、green、yellow...
+- 十六进制表示法：`#000000 - #ffffff`
+- rgb三原色表示法：`rgb(255,255,255);`，范围为0-255
 
+获取颜色的工具：
 
+网页插件，提取颜色的下载地址：https://www.baidufe.com/fehelper；PS工具等。
 
+单词表示法大全：
 
+![image-20201223102555651](note_image/image-20201223102555651.png)
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{ background-color:rgb(0,0,0); }
+    </style>
+</head>
+<body>
+    <div>这是一个块</div>
+</body>
+</html>
+```
 
-
-
-
+文件位置：[src/22_颜色表示法.html](./src/22_颜色表示法.html)
 

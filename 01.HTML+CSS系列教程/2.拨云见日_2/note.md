@@ -219,6 +219,22 @@
 
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">非衬线体</center>
 
+### 4、 CSS段落样式
+
+| 属性            | 含义       | 值以及说明                                                   |
+| --------------- | ---------- | ------------------------------------------------------------ |
+| text-decoration | 文本装饰   | 下划线：underline，删除线：line-through，<br />上划线：overline，不添加任何装饰：none<br />注：添加多个文本修饰：line-through underline overline，中间用空格隔开 |
+| text-transform  | 文本大小写 | 该属性主要针对英文，小写为lowercase，大写为uppercase<br />只针对首字母大写：capitalize |
+|                 |            |                                                              |
+|                 |            |                                                              |
+|                 |            |                                                              |
+|                 |            |                                                              |
+|                 |            |                                                              |
+
+
+
+
+
 
 
 

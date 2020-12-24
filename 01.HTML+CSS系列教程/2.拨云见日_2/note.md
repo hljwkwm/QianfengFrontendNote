@@ -442,7 +442,63 @@
 
 代码文件位置：[src/07_个人简介.html](./src/07_个人简介.html)
 
+### 5、CSS复合样式
 
+一个CSS属性只控制一种样式，叫做单一样式。一个CSS属性控制多种样式，叫做复合样式。复合的写法，是通过空格的方式实现的。复合写法有的是不需要关心顺序，例如background、border；有的是需要关心顺序，例如font。先介绍这三个复合样式：
+
+ **background：**
+
+`background: red url() repeat 0 0;`，分别代表的是背景颜色，背景图，平铺以及背景图位置，这个顺序可以前后调整，但是要保证x和y要在一起。
+
+**border：**
+
+`border: 1px red solid;`，分别代表线宽，线的颜色，线的形状，这个也可以前后调整位置。此外单独设置某一个边，可以使用border-left，border-right等。
+
+**font：**
+
+font这个需要注意顺序，并且至少要有两个参数，分别为size和family，要保证字体的类型在最后，大小和行高在倒数第二个位置，正确举例如下：
+
+`size family`，`weight style size family`，`style weight size family`，`weight style size/line-height family`，其中最后一个写法的实际情况如下：`font : bold italic 30px/100px 宋体;`
+
+**注意：**
+
+CSS的单一样式和复合样式，尽量避免混写，如果一定要混写的话，需要先写复合样式，再写单一样式，避免样式无法生效。因为复合样式中，没有写的属性，会赋默认值，将会覆盖它前面设置的值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            /* 背景样式 */
+            background: url(./img/dog.jpg) no-repeat center center;
+            /* 如果需要单写，那么需要写在复合样式的后面 */
+            background-color: red;
+            /* 边框样式 */
+            border : 2px black solid;
+            /* 单独对右边框设置 */
+            border-right: dashed 2px blue;
+            /* 文字样式，注意顺序，需要把字体放在最后，size放在倒数第二个位置 */
+            font: bold italic 30px/100px 宋体;
+        }
+    </style>
+</head>
+
+<body>
+    <div>这是一段文字</div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/08_复合样式.html](./src/08_复合样式.html)
 
 
 

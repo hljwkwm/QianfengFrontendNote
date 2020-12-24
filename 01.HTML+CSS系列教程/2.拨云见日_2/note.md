@@ -219,17 +219,140 @@
 
 <center style="font-size:14px;color:#C0C0C0;text-decoration:underline">非衬线体</center>
 
-### 4、 CSS段落样式
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-| 属性            | 含义       | 值以及说明                                                   |
-| --------------- | ---------- | ------------------------------------------------------------ |
-| text-decoration | 文本装饰   | 下划线：underline，删除线：line-through，<br />上划线：overline，不添加任何装饰：none<br />注：添加多个文本修饰：line-through underline overline，中间用空格隔开 |
-| text-transform  | 文本大小写 | 该属性主要针对英文，小写为lowercase，大写为uppercase<br />只针对首字母大写：capitalize |
-|                 |            |                                                              |
-|                 |            |                                                              |
-|                 |            |                                                              |
-|                 |            |                                                              |
-|                 |            |                                                              |
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            /* 字体类型 */
+            font-family: 华文彩云, 'Times New Roman', SimSun, 微软雅黑;
+        }
+
+        div {
+            /* 字体大小 */
+            font-size: 30px;
+        }
+
+        div {
+            /* 字体粗细 */
+            font-weight: 600;
+        }
+
+        div {
+            /* 字体样式 */
+            font-style: italic;
+            /* 字体颜色 */
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>这是一段文字</div>
+    <p>这是一段文字</p>
+    <div>this is a text</div>
+    <p>this is a text</p>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/05_CSS文字样式.html](./src/05_CSS文字样式.html)
+
+### 4、CSS段落样式
+
+| 属性                  | 含义         | 值以及说明                                                   |
+| --------------------- | ------------ | ------------------------------------------------------------ |
+| text-decoration       | 文本装饰     | 下划线：underline，删除线：line-through，<br />上划线：overline，不添加任何装饰：none<br />注：添加多个文本修饰：line-through underline overline，中间用空格隔开 |
+| text-transform        | 文本大小写   | 该属性主要针对英文，小写为lowercase，大写为uppercase<br />只针对首字母大写：capitalize |
+| text-indent           | 首行缩进     | 可以使用px，也可以使用em，em单位是一个相对单位，1em的大小是一个字体的大小 |
+| text-align            | 文本对齐方式 | left左对齐、right右对齐、center居中、justify两端点对齐       |
+| line-height           | 行高         | 可以是px，也可以是scale（字体的倍数），scale没有单位，直接写数字即可，如`line-height: 2;` |
+| letter-spacing        | 字间距       |                                                              |
+| word-spacing          | 词间距       | 这个主要针对英文。                                           |
+| word-break: break-all | 强制折行     | 这个折行不会出现空白区域。                                   |
+| word-wrap: break-word | 强制折行     | 这个这行会产生一些空白区域。                                 |
+
+行高的示意图：
+
+![image-20201224103117015](note_image/image-20201224103117015.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p {
+            width: 300px;
+            /* 文本装饰 */
+            text-decoration: line-through underline overline;
+        }
+
+        P {
+            /* 文本大小写 */
+            text-transform: capitalize;
+        }
+
+        p {
+            /* 首行缩进 */
+            text-indent: 2em;
+            /* 字体大小 */
+            font-size: 18px;
+        }
+
+        p {
+            /* 对对齐方式 */
+            text-align: justify;
+        }
+
+        p {
+            /* 行高scale表示 */
+            line-height: 2;
+        }
+
+        p {
+            /* 字间距 */
+            word-spacing: 10px;
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            /* 折行 */
+            word-break: break-all;
+        }
+    </style>
+</head>
+
+<body>
+    <p>据记者从孙杨团队处获悉，孙杨瑞士律师团队通过电子邮件通知孙杨方，他们已收到瑞士联邦最高法院判决结果，其判决结果为撤销国际体育仲裁法庭（CAS）此前涉及孙杨的裁决。截至发稿时，瑞士最高法院和CAS尚无正式表态。记者将跟踪报道此事进展。
+    </p>
+    <p>
+        asd jsakdjsk asjdahsd ahdhjs ajsd39fc dsHRHFC ASFF shdjs ahjsd ajshd asd jsakdjsk asjdahsd ahdhjs ajsd39fc
+        dsHRHFC ASFF shdjs ahjsd ajshd
+    </p>
+    <div>
+        asd jsakdjskjsakdjskjsakdjskjsakdjskjsakdjskjsakdjskjsakdjskjsakdjsk asjdahsd ahdhjs ajsd39fc dsHRHFC ASFF shdjs
+        ahjsd ajshd asd jsakdjsk asjdahsd ahdhjs ajsd39fc dsHRHFC ASFF shdjs ahjsd ajshd
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/06_CSS段落样式.html](./src/06_CSS段落样式.html)
 
 
 

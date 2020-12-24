@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* id选择器 */
+        #div1 {
+            background: red;
+        }
+
+        /* id选择器 */
+        #div2 {
+            background: blue;
+        }
+
+        /* 类选择器 */
+        .box {
+            background: red;
+        }
+
+        /* 选择某个标签下的类 */
+        p.box {
+            background: red;
+        }
+
+        /* 一个标签添加多个样式的时候，样式的优先级根据CSS选择器的前后来决定的 */
+        .content {
+            font-size: 30px;
+            background: blue;
+        }
+
+        /* 群组选择器演示，这样可以同时为div，#text和.title设置背景色 */
+        div,
+        #text,
+        .title {
+            background: red;
+        }
+
+        /* 通配选择器（慎用） */
+        * {
+            border: 1px red solid;
+        }
+
+        /* #list下所有的li都会生效，无论是子还是孙 */
+        #list li {
+            border: 1px red solid;
+        }
+
+        /* #list下儿子关系的li会被选择，孙子的不会被选择 */
+        #list>li {
+            border: 1px red solid;
+        }
+
+        /* 这种情况下，只会选择和#relation同级的后面的所有h2 */
+        #relation~h2 {
+            background: red;
+        }
+
+        /* 这种情况下，只会选择和#relation同级的后面，并且紧挨着#relation的h2 */
+        #relation+h2 {
+            background: red;
+        }
+
+        /* 属性选择器 */
+        /* 选择含有class的div */
+        div[class] {
+            background: red;
+        }
+
+        /* 选择class值为box的div */
+        div[class=box] {
+            background: red;
+        }
+
+        /* 选择class值中含有search的div */
+        div[class*=search] {
+            background: red;
+        }
+
+        /* 选择class的起始值为search的div */
+        div[class^=search] {
+            background: red;
+        }
+
+        /* 选择class的结束值为search的div */
+        div[class$=search] {
+            background: red;
+        }
+
+        /* 选择含有class和id属性的div */
+        div[class][id] {
+            background: red;
+        }
+
+        /* 伪类选择器 */
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        div:hover {
+            background: blue;
+        }
+
+        div:active {
+            background: green;
+        }
+
+        /* 伪类选择器，如果这几个都用，要注意前后顺序 */
+        a:link {
+            color: red;
+        }
+
+        a:visited {
+            color: blue;
+        }
+
+        a:hover {
+            color: green;
+        }
+
+        a:active {
+            color: yellow;
+        }
+
+        /* 一般网站对a设置样式，只需要设置a和a:hover就可以了 */
+        a {
+            color: gray;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        /* 通过伪类的方式给元素后面添加一段文本内容 */
+        div:after {
+            content: "world";
+            color: red;
+        }
+
+        /* 当某个元素具备checked属性时被选择 */
+        :checked {
+            width: 100px;
+            height: 100px;
+        }
+
+         /* 当某个元素具备disabled属性时被选择 */
+        :disabled {
+            width: 100px;
+            height: 100px;
+        }
+
+         /* 当某个元素获取到光标时被选择 */
+        :focus {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在标签上定义id -->
+    <div id="div1">这是一个块</div>
+    <div id="div2">这又是一个块</div>
+    <div id="xiaoming1"></div>
+    <div id="xiaoming2"></div>
+    <div id="searchButton"></div>
+
+    <!-- 在标签上添加class -->
+    <div class="box">这是一个块</div>
+    <!-- 一个标签中可以添加多个class -->
+    <div class="box content">这又是一个块</div>
+    <!-- class可以复用 -->
+    <p class="box">这是一个段落</p>
+
+    <!-- 群组选择器演示 -->
+    <div>这是一个块</div>
+    <p id="text">这是一个段落</p>
+    <h2 class="title">这是一个标题</h2>
+
+    <!-- 层级选择器演示 -->
+    <ul id="list">
+        <li>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </li>
+        <li></li>
+        <li></li>
+    </ul>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
+    <h2>这是一个标题</h2>
+    <div id="relation">这是一个块</div>
+    <h2>这是一个标题</h2>
+    <h2>这是一个标题</h2>
+    <p>这是一个段落</p>
+    <h2>这是一个标题</h2>
+
+    <!-- 属性选择器演示 -->
+    <div>aaaaa</div>
+    <div class="box" id="elem">bbbbb</div>
+    <div class="search">ccccc</div>
+    <div class="search-button">ddddd</div>
+    <div class="button-search">eeeee</div>
+
+    <!-- 伪类选择器演示 -->
+    <div></div>
+    <a href="#">这是一个链接</a>
+
+    <!-- 伪类选择器演示，before和after -->
+    <div>hello </div>
+    <!-- 伪类选择器演示，checked，disabled，focus -->
+    <input type="checkbox">
+    <input type="checkbox" checked>
+    <input type="checkbox" disabled>
+    <input type="text">
+
+</body>
+
+</html>

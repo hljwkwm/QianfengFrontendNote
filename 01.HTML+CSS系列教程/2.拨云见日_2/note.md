@@ -500,9 +500,468 @@ CSS的单一样式和复合样式，尽量避免混写，如果一定要混写�
 
 代码文件位置：[src/08_复合样式.html](./src/08_复合样式.html)
 
+### 6、CSS选择器
 
+选择器的练习可以看这个网站：[CSS Diner](https://flukeout.github.io/)
 
+#### ID选择器
 
+写法：html中，使用属性来定义id，比如`<div id="div1"></div>`，VS code中的快捷写法是div#div1加tab键。css中的写法为`#elem{}`。
+
+**注意：**
+
+- ID是唯一值，在一个页面中只能出现一次，出现多次是不符合规范的。
+- 命名的规范，由字母、下划线、中划线、字母（并且第一个不能是数字）
+- 驼峰写法：searchButton（小驼峰），SearchButton（大驼峰）
+- 短线写法：search-small-button（推荐以这种方式命名）
+- 下划线写法：search_small_button
+
+css命名文件位置：[other/css命名.txt](./other/css命名.txt)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* id选择器 */
+        #div1 {
+            background: red;
+        }
+
+        /* id选择器 */
+        #div2 {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在标签上定义id -->
+    <div id="div1">这是一个块</div>
+    <div id="div2">这又是一个块</div>
+    <div id="xiaoming1"></div>
+    <div id="xiaoming2"></div>
+    <div id="searchButton"></div>
+</body>
+
+</html>
+```
+
+####  CLASS选择器
+
+写法：html中`<div class="box"></div>`，CSS选择器`.elem{}`。
+
+**注意：**
+
+- class选择器是可以复用的，class可以在多个标签中使用；
+- 一个标签上可以添加多个class样式；
+- 一个标签添加多个样式的时候，样式的优先级根据CSS选择器的前后来决定的，而不是class属性中的前后顺序；
+- 在css中，通过标签+类的写法，可以选择某个标签下的某个类，写法为：`p.box {}`，表示p标签下的box类。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 类选择器 */
+            .box {
+                background: red;
+            }
+
+            /* 选择某个标签下的类 */
+            p.box {
+                background: red;
+            }
+
+            /* 一个标签添加多个样式的时候，样式的优先级根据CSS选择器的前后来决定的 */
+            .content {
+                font-size: 30px;
+                background: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 在标签上添加class -->
+        <div class="box">这是一个块</div>
+        <!-- 一个标签中可以添加多个class -->
+        <div class="box content">这又是一个块</div>
+        <!-- class可以复用 -->
+        <p class="box">这是一个段落</p>
+    </body>
+</html>
+```
+
+#### 标签选择器（tag选择器、元素选择器）
+
+写法：html中`<div></div>`，css中`div {}`。
+
+**使用场景：**
+
+- 去掉某些标签的默认样式时
+- 复杂的选择器中，如层次选择器，选择ul下的li或者ol下的li
+
+#### 群组选择器（分组选择器）
+
+可以通过逗号的方式，给多个不同的选择器添加统一的CSS样式，来达到代码的复用。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 群组选择器演示，这样可以同时为div，#text和.title设置背景色 */
+            div, #text, .title {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 群组选择器演示 -->
+        <div>这是一个块</div>
+        <p id="text">这是一个段落</p>
+        <h2 class="title">这是一个标题</h2>
+    </body>
+</html>
+```
+
+#### 通配选择器
+
+写法：`* {}`，作用是给所有标签都添加样式。
+
+尽量避免使用通配选择器，因为会给所有的标签添加样式，慎用。
+
+使用场景：去掉所有标签的默认样式时。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 通配选择器（慎用） */
+            *{ border:1px red solid;}
+        </style>
+    </head>
+    <body>
+        <div>这是一个块</div>
+        <p id="text">这是一个段落</p>
+        <h2 class="title">这是一个标题</h2>
+    </body>
+</html>
+```
+
+#### 层次选择器
+
+后代：`M N { }`，这种情况下，M下面所有的N都会被选择，无论这个N是M的子还是孙。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* #list下所有的li都会生效，无论是子还是孙 */
+            #list li{ border:1px red solid;}
+        </style>
+    </head>
+    <body>
+        <!-- 层级选择器演示 -->
+        <ul id="list">
+            <li>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </body>
+</html>
+```
+
+父子：`M > N { }`，这种情况下，只会选择M下是儿子关系的N，不会选择是孙子关系的N。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* #list下儿子关系的li会被选择，孙子的不会被选择 */
+            #list > li{ border:1px red solid;}
+        </style>
+    </head>
+    <body>
+        <!-- 层级选择器演示 -->
+        <ul id="list">
+            <li>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </body>
+</html>
+```
+
+兄弟：`M ~ N { }`，这种情况下会选择M同级下，M下方所有的N。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 这种情况下，只会选择和#relation同级的后面的所有h2 */
+            #relation ~ h2 { background:red; }
+        </style>
+    </head>
+    <body>
+        <h2>这是一个标题</h2>
+        <div id="relation">这是一个块</div>
+        <h2>这是一个标题</h2>
+        <h2>这是一个标题</h2>
+        <p>这是一个段落</p>
+        <h2>这是一个标题</h2>
+    </body>
+</html>
+```
+
+相邻：`M + N { }`，当前M同级，下面相邻的N标签
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 这种情况下，只会选择和#relation同级的后面，并且紧挨着#relation的h2 */
+            #relation + h2 { background:red; }
+        </style>
+    </head>
+    <body>
+        <h2>这是一个标题</h2>
+        <div id="relation">这是一个块</div>
+        <!-- 如果这里有其他标签，那么下面的h2将不再被选择 -->
+        <h2>这是一个标题</h2>
+        <h2>这是一个标题</h2>
+        <p>这是一个段落</p>
+        <h2>这是一个标题</h2>
+    </body>
+</html>
+```
+
+#### 属性选择器
+
+| 选择器            | 说明                                                     |
+| ----------------- | -------------------------------------------------------- |
+| M[attr]           | M元素选择含有attr属性的集合                              |
+| M[attr=value]     | M元素选择含有attr属性并且该属性的值和value完全匹配的集合 |
+| M[attr*=value]    | M元素选择含有attr属性并且该属性的值包含value的集合       |
+| M[attr^=value]    | M元素选择含有attr属性并且该属性的起始值为value的集合     |
+| M[attr$=value]    | M元素选择含有attr属性并且该属性的结束值为value的集合     |
+| `M[attr1][attr2]` | M元素选择含有attr1属性和attr2属性的集合                  |
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 选择含有class的div */
+            div[class]{ background:red;}
+            /* 选择class值为box的div */
+            div[class=box]{ background:red;}
+            /* 选择class值中含有search的div */
+            div[class*=search]{ background:red;}
+            /* 选择class的起始值为search的div */
+            div[class^=search]{ background:red;}
+            /* 选择class的结束值为search的div */
+            div[class$=search]{ background:red;}
+            /* 选择含有class和id属性的div */
+            div[class][id]{ background:red;}
+        </style>
+    </head>
+    <body>
+        <div>aaaaa</div>    
+        <div class="box" id="elem">bbbbb</div>    
+        <div class="search">ccccc</div>
+        <div class="search-button">ddddd</div>
+        <div class="button-search">eeeee</div>
+    </body>
+</html>
+```
+
+#### 伪类选择器1
+
+CSS伪类用于向某些元素添加特殊的效果。一般用于初始样式添加不上的时候，用伪类来添加。
+
+写法：`M:伪类{}`。
+
+| 伪类     | 功能             | 说明                 |
+| -------- | ---------------- | -------------------- |
+| :link    | 访问前的样式     | 只能添加给a标签      |
+| :visited | 访问后的样式     | 只能添加给a标签      |
+| :hover   | 鼠标移入时的样式 | 可以添加给所有的标签 |
+| :active  | 鼠标按下时的样式 | 可以添加给所有的标签 |
+
+**说明：**
+
+伪类的效果在Chrome控制台中是可以控制的，控制方法如图：
+
+![image-20201224160055925](note_image/image-20201224160055925.png)
+
+链接点击过后，就会变为已访问状态，可以通过清除浏览器的缓存来解决，Chrome清除历史记录的快捷键为`Ctrl+Shift+Delete`。
+
+**注意：**
+
+- link、visited只能给a标签加，hover和active可以给所有的标签加。
+- 如果四个伪类都生效，一定要注意写的顺序：link、visited、hover、active，如果顺序错了，有的伪类会失效。
+- 一般情况下，a标签选择器只设置a和a:hover。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 伪类选择器 */
+            div{ width:200px; height:200px; background:red;}
+            div:hover{ background:blue;}
+            div:active{ background:green;}
+            /* 伪类选择器，如果这几个都用，要注意前后顺序 */
+            a:link{ color:red;}
+            a:visited{ color:blue;}
+            a:hover{ color:green;}
+            a:active{ color:yellow;}
+
+            /* 一般网站对a设置样式，只需要设置a和a:hover就可以了 */
+            a{ color:gray;}
+            a:hover{ color:red;}
+        </style>
+    </head>
+    <body>
+        <!-- 伪类选择器演示 -->
+        <div></div>
+        <a href="#">这是一个链接</a>
+    </body>
+</html>
+```
+
+#### 伪类选择器2
+
+`:after`、`:before`：通过伪类的方式给元素添加一段文本内容，通常使用`content`属性。在控制台中，它实际的表示为`::after`或者是`::before`，前面是两个冒号，这种表示是伪元素。after和before可以用来清除浮动，设置列表的样式等。
+
+:checked：当某个元素具备checked属性时被选择
+
+:disabled：当某个元素具备disabled属性时被选择
+
+:focus：当某个元素获取到光标时被选择
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* 通过伪类的方式给元素后面添加一段文本内容 */
+            div:after {
+                content: "world";
+                color: red;
+            }
+
+            /* 当某个元素具备checked属性时被选择 */
+            :checked {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* 当某个元素具备disabled属性时被选择 */
+            :disabled {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* 当某个元素获取到光标时被选择 */
+            :focus {
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 伪类选择器演示，before和after -->
+        <div>hello </div>
+        <!-- 伪类选择器演示，checked，disabled，focus -->
+        <input type="checkbox">
+        <input type="checkbox" checked>
+        <input type="checkbox" disabled>
+        <input type="text">
+    </body>
+</html>
+```
 
 
 

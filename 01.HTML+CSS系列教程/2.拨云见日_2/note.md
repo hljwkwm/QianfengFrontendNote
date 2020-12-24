@@ -1123,9 +1123,74 @@ type在计算索引时会过滤掉同级下其他标签，而child不会过滤�
 
 代码文件位置：[src/11_CSS继承.html](./src/11_CSS继承.html)
 
+### 8、CSS优先级
 
+**相同样式优先级：**
 
+当设置相同样式时，后面的优先级较高，但不建议出现重复设置样式的情况。
 
+**内部样式与外部样式：**
+
+内部样式与外部样式优先级相同，如果都设置了相同样式，那么后写的引入方式优先级高。
+
+**单一样式优先级：**
+
+style行间 > id > class > tag > * > 继承。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 这两个div是属于相同的选择器，那么下面的优先级更高，所以div会显示蓝色 */
+        div {
+            color: red;
+        }
+
+        div {
+            color: blue;
+        }
+    </style>
+    <!-- 内部样式和外部样式的优先级是一样的，所以后写的优先级更高，所以div显示的是黄色（bass.css里面设置的div是黄色） -->
+    <link rel="stylesheet" href="./base.css">
+
+    <style>
+        /* 行内，id，class，标签，通配符，继承，优先级从高到低 */
+        #elem {
+            color: red;
+        }
+
+        .box {
+            color: blue;
+        }
+
+        div {
+            color: green;
+        }
+
+        * {
+            color: red;
+        }
+
+        body {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elem" style="color:blue;">这是一个块</div>
+    <div id="elem" class="box">这是一个块</div>
+    <div id="elem" style="color:blue;">这是一个块</div>
+</body>
+
+</html>
+```
 
 
 

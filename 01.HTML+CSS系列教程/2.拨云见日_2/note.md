@@ -963,7 +963,114 @@ CSS伪类用于向某些元素添加特殊的效果。一般用于初始样式�
 </html>
 ```
 
+### 伪类选择器3——结构伪类选择器
 
+`:nth-of-type()`、`:nth-child()`：选择索引为某个值的元素，角标是从1开始的，1表示第一项，2表示第二项；也可以用n来表示，n表示从0开始到无穷大；如果是2n，则会选择第二个、第四个……；如果是2n+1，则会选择第一个、第三个……；如果是3n，则会选择第三个、第六个……。
+
+`:first-of-type()`、`first-of-child()`：选择第一个元素
+
+`:last-of-type()`、`last-of-child()`：选择最后一个元素
+
+`:only-of-type()`、only-of-child()`：如果元素在当前层级是唯一的，则会被选择
+
+**type和child的区别：**
+
+type在计算索引时会过滤掉同级下其他标签，而child不会过滤掉其他标签。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 2n+1选择第一个li、第三个li……，type会先过滤掉同级的其他标签，因此div不会被选择 */
+        #test1 li:nth-of-type(2n+1) {
+            background: burlywood;
+        }
+        /* 2n+1选择第二个li、第四个li……，type会先过滤掉同级的其他标签，因此div不会被选择 */
+        #test1 li:nth-of-type(2n) {
+            background: olive;
+        }
+
+        /* type会先过滤掉除li的其他标签，然后选择第一个li标签 */
+        #test2 li:first-of-type {
+            background: red;
+        }
+
+        /* type会先过滤掉除li的其他标签，然后选择最后一个li标签 */
+        #test2 li:last-of-type {
+            background: blue;
+        }
+
+        /* type会先过滤掉除li的其他标签，然后当只有一个li时会被选择，这里演示有多个li，所以什么都不选择 */
+        #test2 li:only-of-type {
+            background: lime;
+        }
+
+        /* type会先过滤掉除li的其他标签，因此这里选择的是div下面的li */
+        #test3 li:nth-of-type(2) {
+            background: rgb(60, 173, 238);
+        }
+
+        /* child不会过滤标签，因此这里选择的第三个li */
+        #test3 li:nth-child(4) {
+            background: rgb(255, 176, 176);
+        }
+
+        /*  type会先过滤掉除div的所有标签，所以只有一个div，会被选择 */
+        #test3 div:only-of-type {
+            background: green;
+        }
+
+        /* child不会过滤标签，因此这里选择的是div下面的li */
+        #test3 div:nth-child(2) {
+            height: 50px;
+        }
+
+        /* child不会过滤标签，但是第三个标签不是div，所以什么都不选择 */
+        #test3 div:nth-child(3) {
+            height: 50px;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <ul id="test1">
+        <li></li>
+        <div>aaaaa</div>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <ul id="test2">
+        <li></li>
+        <div>aaaaa</div>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <ul id="test3">
+        <li></li>
+        <div>aaaaa</div>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>
+
+```
 
 
 

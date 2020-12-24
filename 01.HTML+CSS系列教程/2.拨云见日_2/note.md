@@ -354,6 +354,96 @@
 
 代码文件位置：[src/06_CSS段落样式.html](./src/06_CSS段落样式.html)
 
+### CSS文字样式练习
+
+效果图：
+
+![image-20201224105507414](note_image/image-20201224105507414.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6600;
+        }
+
+        h2 {
+            color: #00a0ff;
+            text-indent: 2em;
+        }
+
+        #p1 {
+            font-style: italic;
+            font-weight: bold;
+            text-indent: 2em;
+        }
+
+        #p2 {
+            color: #66ff00;
+            line-height: 30px;
+            text-indent: 2em;
+        }
+
+        #p3 {
+            color: #00ffff;
+            line-height: 30px;
+            text-indent: 2em;
+            text-decoration: underline;
+            font-style: italic;
+        }
+
+        #p4 {
+            font-weight: bold;
+            letter-spacing: 10px;
+            line-height: 30px;
+            text-indent: 2em;
+        }
+
+        #p5 {
+            color: #cc00cc;
+            line-height: 30px;
+            text-indent: 2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Angelababy简介</h1>
+        <h2>基本信息</h2>
+        <p id="p1">杨颖（Angelababy），1989年2月28日出生于上海，13岁时移居香港，中国影视女演员。</p>
+        <p id="p2">
+            2009年主演电影《全城热恋》。2012年，凭借爱情片《第一次》获得第十三届华语电影传媒大奖“最受瞩目女演员奖”。2013年1月，《南都娱乐周刊》举办新生代四小花旦的评选活动，杨颖以总分70分的综合得分与刘诗诗、杨幂、倪妮共同当选为新一代“四小花旦”；同年在徐克导演的影片《狄仁杰之神都龙王》中担任女主角，并且获得第21届北京大学生电影节最受欢迎女演员奖；4月，Angelababy主演电视剧《大汉情缘之云中歌》。2014年加盟综艺节目《奔跑吧兄弟》并主演电影版；同年主演顾长卫导演的电影《微爱之渐入佳境》，票房突破2.8亿。2015年5月参演好莱坞电影《独立日2》；7月，主演电影《摆渡人》。
+        </p>
+        <h2>早年经历</h2>
+        <p id="p3"> 1989年2月28日，Angelababy出生在上海，中文名杨颖。杨颖自小随家人到上海定居，在上海的演艺学校学演戏及跳舞。13岁时，杨颖回香港加入了Talent Bang，还担任Viva Club
+            Disney主持。</p>
+        <h2>个人生活</h2>
+        <p id="p4"> 2015年5月27日，黄晓明和Angelababy（杨颖）在青岛民政局领证完婚。</p>
+        <p id="p5"> 2015年10月8日，黄晓明和Angelababy在上海展览中心正式举办婚礼。上午8点，Angelababy工作室曝光了一两人的婚纱照，照片中，两人以巴黎地标建筑为背景，浪漫亲吻。</p>
+    </div>
+
+</body>
+
+</html>
+```
+
+代码文件位置：[src/07_个人简介.html](./src/07_个人简介.html)
+
+
+
 
 
 

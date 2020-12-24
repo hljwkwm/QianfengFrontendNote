@@ -963,7 +963,9 @@ CSS伪类用于向某些元素添加特殊的效果。一般用于初始样式�
 </html>
 ```
 
-### 伪类选择器3——结构伪类选择器
+代码文件位置：[src/09_CSS选择器.html](./src/09_CSS选择器.html)
+
+#### 伪类选择器3——结构伪类选择器
 
 `:nth-of-type()`、`:nth-child()`：选择索引为某个值的元素，角标是从1开始的，1表示第一项，2表示第二项；也可以用n来表示，n表示从0开始到无穷大；如果是2n，则会选择第二个、第四个……；如果是2n+1，则会选择第一个、第三个……；如果是3n，则会选择第三个、第六个……。
 
@@ -1071,6 +1073,59 @@ type在计算索引时会过滤掉同级下其他标签，而child不会过滤�
 </html>
 
 ```
+
+代码文件位置：[src/10_结构伪类选择器.html](./src/10_结构伪类选择器.html)
+
+### 7、CSS继承
+
+文字相关的样式可以被继承，布局相关的样式默认是不被继承的，如果想继承，可以设置继承属性inherit值。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            border: 1px red solid;
+            color: red;
+            font-size: 30px;
+        }
+
+        p {
+            border: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>这是一个段落</p>
+    </div>
+</body>
+
+</html>
+```
+
+**小知识：**
+
+在Chrome浏览器中，是可以查看继承关系的，如下图所示：
+
+![image-20201224213039614](note_image/image-20201224213039614.png)
+
+通过Inherited from div就可以查看到继承关系，其中深色的是默认被继承的，浅色的是默认没被继承的。
+
+代码文件位置：[src/11_CSS继承.html](./src/11_CSS继承.html)
+
+
+
+
 
 
 

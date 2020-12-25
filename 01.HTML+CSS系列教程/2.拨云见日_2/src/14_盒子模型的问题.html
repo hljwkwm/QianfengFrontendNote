@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 当两个盒子出现在上下margin同时存在的时候，会取上下中值较大的作为叠加的值*/
+        #box1{ width:200px; height: 200px; background:rgb(255, 194, 194); margin-bottom: 30px;}
+        #box2{ width:200px; height: 200px; background:rgb(219, 219, 255); margin-top: 40px;}
+
+        /* 当几个盒子模型出现嵌套的的结构中时，margin-top会出现传递问题 */
+        #box3{ width:200px; height:200px; background:rgb(218, 255, 149);}
+        #box4{ width:100px; height:100px; background:rgb(134, 158, 194); margin-top:100px;}
+
+        /* 解决办法是可以通过把子元素的margin-top改成父元素的padding-top */
+        #box5{ width:200px; height:100px; background:rgb(106, 172, 112); padding-top:100px;}
+        #box6{ width:100px; height:100px; background:rgb(59, 68, 58);}
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <div id="box3">
+        <div id="box4"></div>
+    </div>
+
+    <div id="box5">
+        <div id="box6"></div>
+    </div>
+</body>
+</html>

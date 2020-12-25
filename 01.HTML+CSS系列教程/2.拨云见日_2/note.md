@@ -1232,7 +1232,255 @@ ul li .box p input{}    li p input{}
 因此下面带id的优先级更高一些。
 ```
 
+代码文件位置：[src/12_CSS优先级.html](./src/12_CSS优先级.html)
 
+### 9、CSS盒子模型
+
+盒子的组成：由内到外，content->padding->border->margin，分别为内容区域，默认状态下，由width和height组成；padding为内边距，border为边框，margin为外边距。
+
+**content：**
+
+内容区域，默认由width和height组成。
+
+**padding：**
+
+内边距（内填充）
+
+- 只写一个值：30px，表示上下左右；
+- 写两个值：30px 40px，表示上下、左右；
+- 写四个值：30px 40px 50px 60px，表示上，右，下，左
+
+才外，padding还可以用单一样式来控制，分别为padding-left，padding-right，padding-top和padding-bottom。
+
+**margin：**
+
+外边距（外填充）
+
+- 只写一个值：30px，表示上下左右；
+- 写两个值：30px 40px，表示上下、左右；
+- 写四个值：30px 40px 50px 60px，表示上，右，下，左
+
+才外，margin还可以用单一样式来控制，分别为margin-left，margin-right，margin-top和margin-bottom。
+
+**盒子模型图：**
+
+![image-20201225143833698](note_image/image-20201225143833698.png)
+
+**注意：**
+
+背景色填充到margin以内的区域，border也会被填充，不包括margin区域。
+
+背景图片会填充到border，但是位置是从padding开始算的。
+
+文字在content区域添加。
+
+padding不能为负数，而margin可以为负数。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            border: 10px green solid;
+            padding: 30px 50px;
+            margin: 10px;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">这是一个盒子</div>
+    <div id="box2">又是一个盒子</div>
+</body>
+
+</html>
+```
+
+**box-sizing（很重要）：**
+
+盒子的尺寸，通过该属性可以修改盒子模型的展现形式。该属性有两个值：
+
+- content-box（默认值）：表示width和height是作用于content上的，padding和border与width和height无关。
+- border-box：表示width和height将会作用于content、padding和border，即这三个属性同时组成width和height。
+
+应用场景：
+
+- 不用再去计算一些值，比如我希望盒子的总大小就是200*200，那么我可以把宽和高都设置成200，并且box-sizing设置为border-box，这样就能保证盒子的大小，content需要减去两个padding和两个border的值。
+- 解决一些百分比的问题，比如对于一个input来说，如果设置了宽度为100%，再设置padding的时候，就会溢出，通过设置border-box，就可以解决这个问题。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            #box {
+                width: 200px;
+                height: 200px;
+                background: red;
+                border: 10px blue solid;
+                padding: 30px 50px;
+                box-sizing: border-box;
+            }
+
+            input {
+                width: 100%;
+                padding: 30px;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="box">这是一个盒子</div>
+        <input type="text">
+    </body>
+
+</html>
+```
+
+代码文件位置：[src/13_CSS盒子模型.html](./src/13_CSS盒子模型.html)
+
+**盒子模型的几个问题：**
+
+1、margin叠加问题。当两个盒子出现在上下margin同时存在的时候，会取上下中值较大的作为叠加的值。解决方法：通过BFC规范（这个会在第二部分讲解）；想办法只给一个元素添加间距。
+
+2、margin传递问题。当几个盒子模型出现嵌套的的结构中时，margin-top会出现传递问题，即如果对子元素这是margin-top，那么这个值实际上会给父元素，而父元素和子元素的top依然是挨在一起的。解决办法：BFC规范（这个也会在第二部分讲解）；给父容器加边框；把子元素的margin换成父元素的padding。
+
+第一个问题截图：
+
+![image-20201225161938032](note_image/image-20201225161938032.png)
+
+第二个问题截图：
+
+![image-20201225162023908](note_image/image-20201225162023908.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 当两个盒子出现在上下margin同时存在的时候，会取上下中值较大的作为叠加的值*/
+        #box1{ width:200px; height: 200px; background:rgb(255, 194, 194); margin-bottom: 30px;}
+        #box2{ width:200px; height: 200px; background:rgb(219, 219, 255); margin-top: 40px;}
+
+        /* 当几个盒子模型出现嵌套的的结构中时，margin-top会出现传递问题 */
+        #box3{ width:200px; height:200px; background:rgb(218, 255, 149);}
+        #box4{ width:100px; height:100px; background:rgb(134, 158, 194); margin-top:100px;}
+
+        /* 解决办法是可以通过把子元素的margin-top改成父元素的padding-top */
+        #box5{ width:200px; height:100px; background:rgb(106, 172, 112); padding-top:100px;}
+        #box6{ width:100px; height:100px; background:rgb(59, 68, 58);}
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <div id="box3">
+        <div id="box4"></div>
+    </div>
+
+    <div id="box5">
+        <div id="box6"></div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/14_盒子模型的问题.html](./src/14_盒子模型的问题.html)
+
+**关于盒子问题的扩展：**
+
+1、margin左右自适应是可以的 ，但是上下自适应是不行的。（如果想实现上下自适应的话，需要在第二大部分来进行学习）
+
+2、不设置width时，padding和border对盒子宽度的影响，会自动去计算。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* margin左右自适应是可以的 ，但是上下自适应是不行的。 */
+        #box {
+            width: 400px;
+            height: 100px;
+            background: red;
+            margin: auto auto;
+        }
+
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        /* 如果对div设置了宽度，那么当在设置padding和border时，就会有溢出的可能 */
+        #box2 {
+            width: 100%;
+            height: 100px;
+            background: blue;
+            color: white;
+            padding-left: 30px;
+            border-left: 10px black solid;
+        }
+
+        #box3 {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        /* 如果不设置宽度，那么设置了padding和border后，宽度会自动计算 */
+        #box4 {
+            height: 100px;
+            background: blue;
+            color: white;
+            padding-left: 30px;
+            border-left: 10px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box1">
+        <div id="box2">这是一些内容</div>
+    </div>
+    <div id="box3">
+        <div id="box4">这是一些内容</div>
+    </div>
+</body>
+
+</html>
+```
 
 
 

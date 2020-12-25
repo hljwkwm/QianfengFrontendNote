@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* margin左右自适应是可以的 ，但是上下自适应是不行的。 */
+        #box {
+            width: 400px;
+            height: 100px;
+            background: red;
+            margin: auto auto;
+        }
+
+        #box1 {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        /* 如果对div设置了宽度，那么当在设置padding和border时，就会有溢出的可能 */
+        #box2 {
+            width: 100%;
+            height: 100px;
+            background: blue;
+            color: white;
+            padding-left: 30px;
+            border-left: 10px black solid;
+        }
+
+        #box3 {
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        /* 如果不设置宽度，那么设置了padding和border后，宽度会自动计算 */
+        #box4 {
+            height: 100px;
+            background: blue;
+            color: white;
+            padding-left: 30px;
+            border-left: 10px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box1">
+        <div id="box2">这是一些内容</div>
+    </div>
+    <div id="box3">
+        <div id="box4">这是一些内容</div>
+    </div>
+</body>
+
+</html>

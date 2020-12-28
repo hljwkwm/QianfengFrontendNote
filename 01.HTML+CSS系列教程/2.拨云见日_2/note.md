@@ -1484,6 +1484,81 @@ padding不能为负数，而margin可以为负数。
 
 代码文件位置：[src/15_盒模型扩展.html](./src/15_盒模型扩展.html)
 
+### CSS盒子嵌套练习
+
+效果图：
+
+![image-20201228133913585](note_image/image-20201228133913585.png)
+
+实现：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 350px;
+            height: 350px;
+            border: 1px black dashed;
+            padding: 27px;
+        }
+
+        #box2 {
+            border: 5px #d7effe solid;
+            padding: 20px;
+        }
+
+        #box3 {
+            background: #ffa0df;
+            padding: 41px;
+        }
+
+        #box4 {
+            border: 1px white dashed;
+            padding: 3px;
+        }
+
+        #box5 {
+            border: 1px white dashed;
+            padding: 49px;
+        }
+
+        #box6 {
+            width: 100px;
+            height: 100px;
+            background: #96ff38;
+            border: #fcff00 5px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3">
+                <div id="box4">
+                    <div id="box5">
+                        <div id="box6"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/16_嵌套盒子的练习.html](./src/16_嵌套盒子的练习.html)
+
+
+
 
 
 

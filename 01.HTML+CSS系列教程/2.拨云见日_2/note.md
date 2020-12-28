@@ -1819,7 +1819,86 @@ a嵌套div符合规范，因为a在解析后，只剩下a嵌套的内容了。
 
 代码文件位置：[src/20_透明度与手势.html](./src/20_透明度与手势.html)
 
+### 15、最大、最小宽高以及百分比的理解
 
+min-width、min-height、max-width、max-height：设置最小/最大的宽度和高度。
+
+%单位：百分比单位的换算是根据父容器的大小进行换算的，如果父容器没有值，也不会根据爷爷容器来换算。因此，如果想让一个容器适应屏幕的高度，那么就需要给html、body都设置height为100%，然后再给要适应屏幕的容器的高度设置成100%。
+
+```
+ html,body{ height:100%;}
+.container{ height:100%;}
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*  div{ width:200px; max-height:200px; border:1px red solid;} */
+        body {
+            height: 500px;
+        }
+
+        /* 如果box1没有设置高，那么即使body设置了高，box2的百分比也不生效 */
+        #box1 {
+            width: 200px;
+            /* height:200px; */
+            height: 100%;
+            background: red;
+        }
+
+        #box2 {
+            width: 100%;
+            height: 80%;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+        这是一段内容
+    </div> -->
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/21_最大最小宽高.html](./src/21_最大最小宽高.html)
 
 
 

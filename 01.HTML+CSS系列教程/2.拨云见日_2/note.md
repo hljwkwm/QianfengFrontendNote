@@ -1557,6 +1557,56 @@ padding不能为负数，而margin可以为负数。
 
 代码文件位置：[src/16_嵌套盒子的练习.html](./src/16_嵌套盒子的练习.html)
 
+### 10、标签的分类
+
+#### 按照类型分类
+
+**block类型： div、p、ul、li、h1……**
+
+- 独占一行
+- 支持所有的样式
+- 不写宽的时候，跟父元素的宽相同
+- 所占区域是一个矩形
+
+**inline类型：span、a、em、strong、img……**
+
+- 挨在一起的
+- 有些样式不支持，例如：width、height、margin（左右生效，上下不生效）、padding（上下左右生效，但是不会因为padding的设置，而改变元素的位置）
+-  不写宽的时候，宽度由内容决定
+- 所占的区域不一定是矩形，因为inline属于行内样式，它可以折行
+- 内联标签之间会有空隙，这个是由于换行产生的，比如两个span没有写在同一行上，而是写在了两行上，这样就在网页上就会看到空隙，解决办法：可以将span写在同一行，也可以对body设置一个0的fontsize，然后再对span设置一个正常的fontsize
+
+**inline-block类型：input、select……**
+
+它具有block和inline的特性，挨在一起，但是支持宽和高。
+
+**注**：布局一般用块标签，修饰文本一般用内联标签。
+
+如果想知道一个标签是什么类型的标签，可以通过Chrome的F12，元素下的styles来查看。
+
+#### 按照内容分类
+
+- Flow：流内容，指的是我们可以感知到的标签
+- Metadata：元数据，一般在head当中，也包括标题title等
+- Sectioning：分区，一般指的是div，nav，footer等
+- Heading：标题，一般指的是h1到h6
+- Phrasing：措辞，指的是strong，em等
+- Embedded：嵌入的，如img，audio，video等
+- Interactive：互动的，如输入框，下拉菜单等
+
+详情：https://www.w3.org/TR/html5/dom.html。
+
+![image-20201228142852598](note_image/image-20201228142852598.png)
+
+#### 按照显示分类
+
+- 替换元素：浏览器根据元素的标签和属性，来决定元素的具体显示内容。比如img、input等
+- 非替换元素：将内容直接告诉浏览器，将其显示出来。比如div、h1、p等
+
+**注**：img虽然属于inline，但是img是可以设置宽和高的，而且是以矩形形式显示的。
+
+代码文件位置：[src/17_标签分类.html](./src/17_标签分类.html)
+
 
 
 

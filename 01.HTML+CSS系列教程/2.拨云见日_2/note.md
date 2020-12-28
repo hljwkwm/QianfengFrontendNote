@@ -1607,6 +1607,16 @@ padding不能为负数，而margin可以为负数。
 
 代码文件位置：[src/17_标签分类.html](./src/17_标签分类.html)
 
+### 11、显示框类型
+
+显示框类型就是display的属性，根据之前学习的内容，我们可以用到的有block、inline、inline-block、none，其他的比如flex等，以后再说。
+
+注意：css中还有个属性是`visibility: hidden`，这个是占用空间的隐藏，而`display: none`是不占用空间的隐藏。
+
+代码文件位置：[src/18_显示框类型.html](./src/18_显示框类型.html)
+
+
+
 
 
 

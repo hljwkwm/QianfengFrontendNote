@@ -1663,7 +1663,161 @@ table、tr、td
 a嵌套div符合规范，因为a在解析后，只剩下a嵌套的内容了。
 ```
 
+### 13、溢出隐藏
 
+溢出隐藏的设置方法是使用overflow，它主要有以下几个值：
+
+- visible：默认
+- hidden：溢出的部分会被裁剪掉，因此可能会出现一行文字一半显示一半不显示的情况
+- scroll：强制显示滚动条，无论文字多还是少，多的时候，滚动条可用，少的时候，滚动条不可用，变成灰色的
+- auto：自适应，然后没溢出，那么就不显示滚动条，如果溢出了，会显示纵向滚动条
+
+此外，还可以单独设置x轴和y轴，可以通过overflow-x、overflow-y来设置。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            border: 1px black solid;
+        }
+
+        div {
+            /* 隐藏 */
+            overflow: hidden;
+        }
+
+        div {
+            /* 强制添加滚动条 */
+            overflow: scroll;
+        }
+
+        div {
+            /* 自适应 */
+            overflow: auto;
+        }
+
+        div {
+            /* 单独为x轴和y轴设置 */
+            overflow-y: auto;
+            overflow-x: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+        溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏 溢出隐藏
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/19_溢出隐藏.html](./src/19_溢出隐藏.html)
+
+### 14、透明度与手势
+
+#### 透明度
+
+透明度主要有两种设置方法：
+
+- opacity：0（透明）~1（不透明），0.5半透明，通过这个属性设置透明度，是会占用空间的，并且所有的子内容也会透明
+- rgba()的第四个参数：0（透明）~1（不透明），通过这个参数，可以让指定的样式透明，而不影响其他样式
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            opacity: 0.5;
+        }
+
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">这是一个块</div>
+    <p>这是一个段落</p>
+    <div id="div2">这又是一个块</div>
+</body>
+
+</html>
+```
+
+#### 手势
+
+手势可以通过cursor这个属性来设置。
+
+- default：默认箭头
+- help：问号
+- pointer：小手
+- ……
+- 自定义：需要准备.cur或者.ico格式的文件，写法： `cursor: url(./img/cursor.ico),auto;`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 0, 0, 0.5);
+            /* 使用系统自带的图标 */
+            cursor:help;
+            /* 使用自定义图标 */
+            cursor: url(./img/cursor.ico), auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div2">这又是一个块</div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/20_透明度与手势.html](./src/20_透明度与手势.html)
 
 
 

@@ -448,15 +448,306 @@ after伪类清除浮动：推荐，是空标签的加强版，目前各大公司
 
 代码文件位置：[src/06_浮动的练习.html](./src/06_浮动的练习.html)
 
+### 3、CSS定位
 
+CSS的定位由position来设置，主要有这几个值：static（默认），relative，absolute，fixed以及sticky。
 
+#### relative相对定位
 
+如果没有定位偏移量，对元素本身没有任何影响；不使元素脱离文档流；不影响其他元素布局；left、top、right、bottom是相对于当前元素自身进行偏移的。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1{ width:100px; height:100px; background:red;}
+        /* 当position修改为relative，可以使用left、right、top和bottom对自身进行偏移 */
+        #box2{ width:100px; height:100px; background:blue; position: relative; left:100px; top:100px;}
+        #box3{ width:100px; height:100px; background:yellow;}
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+</body>
+</html>
+```
 
+效果图：
 
+![image-20201229154854473](note_image/image-20201229154854473.png)
 
+#### absolute绝对定位
 
+使元素完全脱离文档流，这个有点类似float：
 
+```html
+<style>
+    #box1{ width:100px; height:100px; background:red; position: absolute;}
+    #box2{ width:200px; height:200px; background:blue;}
+</style>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+```
+
+![image-20201229160514511](note_image/image-20201229160514511.png)
+
+使内联元素支持宽高，让内联具备块特性：
+
+```html
+<style>
+    span{ width:100px; height:100px; background:red; position: absolute;}
+</style>
+<body>
+    <span>这是一个内联的</span>
+</body>
+```
+
+![image-20201229160739957](note_image/image-20201229160739957.png)
+
+使块元素默认宽根据内容决定，让块具备内联的特性，默认情况下，block如果不设置宽度，那么会填满正行，而如果设置了absolute之后，block如果不设置宽度，那么宽度由内部的内容决定，这个有点像float的情况。
+
+```html
+<style>
+    div{ background:red; position:absolute;}
+</style>
+<body>
+     <div>这是一个块</div>
+</body>
+```
+
+![image-20201229161345430](note_image/image-20201229161345430.png)
+
+如果该元素的祖先元素有绝对、相对或者固定定位，并且设置了偏移，比如left、top，那么该元素就相对于有这几种定位的元素发生偏移；如果该元素的祖先元素没有这些定位，那么该元素就相对于整个文档发生偏移。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        margin: 30px;
+    }
+
+    #box2 {
+        width: 20px;
+        height: 20px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+</body>
+</html>
+
+```
+
+![image-20201229162802195](note_image/image-20201229162802195.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        margin: 30px;
+        position: relative;
+    }
+
+    #box2 {
+        width: 20px;
+        height: 20px;
+        background: red;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+</body>
+</html>
+
+```
+
+![image-20201229162845300](note_image/image-20201229162845300.png)
+
+#### fixed固定定位
+
+使元素完全脱离文档流，同absolute；使内联元素支持宽高，让内联具备块特性，同absolute；使块元素默认宽根据内容决定，让块具备内联的特性，同absolute；相对于整个浏览器窗口进行偏移，不受浏览器滚动条的影响，这个可以理解为那种浮窗广告。
+
+#### sticky黏性定位
+
+在指定的位置，进行黏性操作。可以理解为一个导航栏，向上滚动后，就会固定在浏览器的最上面，如果设置top，那么就会向下偏移。
+
+#### z-index定位层级
+
+通过z-index，可以定义哪个元素在上面，哪个元素在下面。这里有几个地方需要注意：
+
+z-index是同级之间的比较，不受子元素的影响。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        position: absolute;
+        z-index: 1;
+    }
+
+    #box2 {
+        width: 90px;
+        height: 90px;
+        background: red;
+        z-index: -1;
+    }
+
+    #box3 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background: aquamarine;
+        left: 50px;
+        top: 50px;
+        z-index: 0;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+<div id="box3"></div>
+</body>
+</html>
+
+```
+
+![image-20201229165705400](note_image/image-20201229165705400.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        position: absolute;
+        z-index: -1;
+    }
+
+    #box2 {
+        width: 90px;
+        height: 90px;
+        background: red;
+        z-index: 2;
+    }
+
+    #box3 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background: aquamarine;
+        left: 50px;
+        top: 50px;
+        z-index: 0;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+<div id="box3"></div>
+</body>
+</html>
+
+```
+
+![image-20201229165750549](note_image/image-20201229165750549.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        position: absolute;
+    }
+
+    #box2 {
+        width: 90px;
+        height: 90px;
+        background: red;
+        z-index: 100;
+    }
+
+    #box3 {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        background: aquamarine;
+        left: 50px;
+        top: 50px;
+        z-index: 1;
+    }
+</style>
+<body>
+<div id="box1">
+    <div id="box2"></div>
+</div>
+<div id="box3"></div>
+</body>
+</html>
+
+```
+
+![image-20201229170131601](note_image/image-20201229170131601.png)
+
+代码文件位置：[src/07_position定位.html](./src/07_position定位.html)
 
 
 

@@ -111,9 +111,247 @@ PS推荐使用CC版本，因为CC版本有切图工具。
 
 设计师通过sketch或者PS设计好文稿后，可以将文稿上传到蓝湖：https://lanhuapp.com。设计师在蓝湖中下载对应软件的插件就可以进行上传操作。此外，设计师还可以对图层进行切图，做好的切图，前端开发人员可以在蓝湖中下载该切图。
 
+### 2、float浮动
 
+文档流：文档流是文档中可显示对象在排列时所占用的位置。
 
+float特性：加浮动的元素，会脱离文档流，会沿着父容器靠左或靠右排列，如果之前已经有浮动的元素，会挨着浮动的元素进行排列。
 
+float可以取的值：left、right、none（none为默认值）
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{ border:1px black solid;}
+    #box1{ width:100px; height:100px; background:yellow; float:left;}
+    #box2{ width:200px; height:200px; background:red;}
+    </style>
+</head>
+<body>
+    <!-- 当box1添加float后，box1就会脱离文档流，成为浮动的元素，因此它就不占实际的文档流的空间，box2就会会box1覆盖 -->
+    <!-- 因为box1会脱离文档流，所以box1无法撑开body，body是由box2撑开的 -->
+    <!-- 如果box2也添加了float，那么box1和box2都会浮动，都会脱离文档流，那么body就会塌陷，没有高度，只有边框 -->
+    <!-- 如果box1和box2都添加left的浮动，那么box1会在最左面，box2会挨在box1的右面 -->
+    <!-- 如果box1添加left，box2添加right，那么box1会在左面浮动，box2胡在右面浮动 -->
+    <!-- 如果box1添加right，box2添加left，那么box1会在右面浮动，box2胡在左面浮动 -->
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/03_float浮动.html](./src/03_float浮动.html)
+
+**注意：**
+
+只会影响后面的元素，对于浮动之前的元素，不会造成任何影响，如图，对红色的块添加了float后，只会影响他下面的蓝色，黄色的不受影响：
+
+![image-20201229111128891](note_image/image-20201229111128891.png)
+
+内容默认提升半层，文字相当于半层，所以红色的块和文字属于同层，因此文字会被挤到右面，如图：
+
+![image-20201229111328344](note_image/image-20201229111328344.png)
+
+默认的块元素，宽度会填满父容器，但是float的元素，如果不给宽度的话，默认的宽度是由内部的内容决定的，类似inline的特性。
+
+浮动元素如果在一个容器中，一行放不下的话，会换行排列。但是有一点注意的是，如果前一行的前几个元素高出来一块，那么就会把第二行的元素向后挤，如图所示：
+
+![image-20201229111955574](note_image/image-20201229111955574.png)
+
+但是如果前几个元素中有的元素很低，也不会顶上去，而是跟后面的元素一样高，如图：
+
+![image-20201229112146854](note_image/image-20201229112146854.png)
+
+主要给块元素添加，但也可以给内联元素添加。
+
+代码文件位置：[src/04_float注意点.html](./src/04_float注意点.html)
+
+#### 清除浮动：
+
+**并列排列的情况：**
+
+clear属性，表示清除浮动的，有三个值，left、right、both，推荐使用both。
+
+注意：加了clear后，下面的div和上面的div并不在一个层，float的层更高一些。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box1{ width:100px; height:100px; background:red; float:left;}
+        #box2{ width:200px; height:200px; background:blue; clear:both;}
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>
+```
+
+**嵌套排列：**
+
+嵌套排列，会出现以下的情况：
+
+![image-20201229135453689](note_image/image-20201229135453689.png)
+
+固定宽高：但是这样做不好，不推荐把高度固定死，因为不适合做自适应的效果。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; height: 200px; border:1px black solid;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
+
+父元素浮动：不推荐 , 因为父容器浮动也会影响到后面的元素。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; border:1px black solid; float:left;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
+
+`overflow: hidden`（BFC规范）：这个办法可行，但是特殊情况下，如果有子元素想溢出，那么会受到影响。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; border:1px black solid; overflow: hidden;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
+
+`display: inline-block`（BFC规范）：不推荐，父容器会影响到后面的元素，因为更改了盒子模型。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; border:1px black solid; display: inline-block;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
+
+设置空标签：可以通过添加一个空标签然后设置clear属性，来消除float的影响，但是这个不是很推荐，因为会多添加一个标签。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; border:1px black solid;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    .clear{ clear:both;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+        <div class="clear"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
+
+after伪类清除浮动：推荐，是空标签的加强版，目前各大公司的做法。但是需要注意的是，clear属性只对block标签生效，对inline不生效，而after伪类是inline。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:200px; border:1px black solid;}
+    #box2{ width:100px; height:200px; background:red; float:left;}
+    .clear:after{ content:''; clear:both; display: block;}
+    </style>
+</head>
+<body>
+    <div id="box1" class="clear">
+        <div id="box2"></div>
+    </div>
+    aaaaaaa
+</body>
+</html>
+```
 
 
 

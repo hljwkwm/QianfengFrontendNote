@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{ border:1px black solid;}
+    #box1{ width:100px; height:100px; background:yellow; float:left;}
+    #box2{ width:200px; height:200px; background:red;}
+    </style>
+</head>
+<body>
+    <!-- 当box1添加float后，box1就会脱离文档流，成为浮动的元素，因此它就不占实际的文档流的空间，box2就会会box1覆盖 -->
+    <!-- 因为box1会脱离文档流，所以box1无法撑开body，body是由box2撑开的 -->
+    <!-- 如果box2也添加了float，那么box1和box2都会浮动，都会脱离文档流，那么body就会塌陷，没有高度，只有边框 -->
+    <!-- 如果box1和box2都添加left的浮动，那么box1会在最左面，box2会挨在box1的右面 -->
+    <!-- 如果box1添加left，box2添加right，那么box1会在左面浮动，box2胡在右面浮动 -->
+    <!-- 如果box1添加right，box2添加left，那么box1会在右面浮动，box2胡在左面浮动 -->
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

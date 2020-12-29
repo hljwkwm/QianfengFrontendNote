@@ -172,7 +172,7 @@ float可以取的值：left、right、none（none为默认值）
 
 代码文件位置：[src/04_float注意点.html](./src/04_float注意点.html)
 
-#### 清除浮动：
+#### 清除浮动
 
 **并列排列的情况：**
 
@@ -352,6 +352,111 @@ after伪类清除浮动：推荐，是空标签的加强版，目前各大公司
 </body>
 </html>
 ```
+
+代码文件位置：[src/05_清除浮动.html](./src/05_清除浮动.html)
+
+### float练习
+
+注意：background可以同时设置多个背景，设置的多个背景用逗号隔开，在前面的在上面，在后面的在下面。练习图：
+
+![image-20201229153430704](note_image/image-20201229153430704.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+    a{ text-decoration: none; color:#666;}
+    h1,h2,h3{ font-size: 16px;}
+
+    .l{ float:left;}
+    .r{ float:right;}
+    .clear:after{ content:""; display: block; clear:both; }
+
+    #main{ width:366px; margin:20px auto;}
+    #main .title{ height:23px; line-height: 23px; font-size:12px; font-weight: bold; padding-left:30px;
+        background:url(./img2/bg_title.png) no-repeat 6px 4px , url(./img2/bg_line.png) repeat-x;
+    }
+    #main ul{ overflow: hidden; margin-top:13px;}
+    #main li{ margin-bottom:22px;}
+    #main .pic{ width:99px; border:1px solid #c8c4d3; margin-left:5px;}
+    #main .pic img{ margin:2px;}
+    #main .content{ width:240px; margin-left:13px;}
+    #main .content h2{ font-size:12px; line-height: 24px;}
+    #main .content p{ font-size:12px; line-height: 20px;}
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2 class="title">外媒评论精选</h2>
+        <ul>
+            <li class="clear">
+                <div class="l pic">
+                    <a href="#">
+                        <img src="./img2/img.png" alt="">
+                    </a>
+                </div>
+                <div class="l content">
+                    <h2>测试标题测试标题</h2>
+                    <p>
+                        测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落...
+                        <a href="#">[详细]</a>
+                    </p>
+                </div>
+            </li>
+            <li class="clear">
+                <div class="l pic">
+                    <a href="#">
+                        <img src="./img2/img.png" alt="">
+                    </a>
+                </div>
+                <div class="l content">
+                    <h2>测试标题测试标题</h2>
+                    <p>
+                        测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落...
+                        <a href="#">[详细]</a>
+                    </p>
+                </div>
+            </li>
+            <li class="clear">
+                <div class="l pic">
+                    <a href="#">
+                        <img src="./img2/img.png" alt="">
+                    </a>
+                </div>
+                <div class="l content">
+                    <h2>测试标题测试标题</h2>
+                    <p>
+                        测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落测试段落...
+                        <a href="#">[详细]</a>
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/06_浮动的练习.html](./src/06_浮动的练习.html)
+
+
+
+
+
+
+
+
+
+
 
 
 

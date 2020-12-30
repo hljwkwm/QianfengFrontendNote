@@ -749,6 +749,55 @@ z-index是同级之间的比较，不受子元素的影响。
 
 代码文件位置：[src/07_position定位.html](./src/07_position定位.html)
 
+### 4、定位的下拉菜单
+
+效果图：
+
+![image-20201230093757853](note_image/image-20201230093757853.png)
+
+当鼠标放在卖家中心上时，可以出现下拉菜单，这个下拉菜单可以覆盖下面的段落，并且不影响下面的段落，因此这个需要使下拉菜单脱离文档流，这里可以使用absolute的position来实现。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    #menu{ width:100px; height: 30px; margin:20px auto; border:1px black solid; position: relative;}
+    #menu ul{ width:100px; border:1px black solid; position: absolute; left:-1px; top:30px; background:white;
+        display: none;
+    }
+    #menu:hover ul{ display: block;}
+    #menu ul li:hover{ background:gray;}
+    p{ text-align: center;}
+    </style>
+</head>
+<body>
+    <div id="menu">
+        卖家中心
+        <ul>
+            <li>列表项1</li>
+            <li>列表项2</li>
+            <li>列表项3</li>
+            <li>列表项4</li>
+        </ul>
+    </div>
+    <p>测试段落测试段落测试段落测试段落</p>
+</body>
+</html>
+```
+
+代码文件位置：[src/08_定位的下拉菜单.html](./src/08_定位的下拉菜单.html)
+
+
+
+
+
 
 
 

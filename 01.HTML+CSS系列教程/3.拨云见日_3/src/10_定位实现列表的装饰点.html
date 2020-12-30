@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin : 0; padding: 0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+    a{ text-decoration: none; color:#666666;}
+    h1,h2,h3,h4,h5,h6{ font-size:16px; font-weight: normal;}
+
+    #main{ margin:20px auto; width:238px; border:1px solid #d9e0ee; border-top:3px #ff8400 solid;}
+    #main h2{ height:35px; border-bottom:1px solid #d9e0ee; line-height: 35px; padding-left:11px;}
+    #main h2 a{ color:black;}
+    #main h2 a:hover{ color:#ff8400;}
+    #main div img{ margin:8px auto 3px auto;}
+    #main ul{ font-size:12px; line-height: 24px; margin-bottom: 8px;}
+    #main ul li{ padding-left:18px; position: relative;}
+    #main ul li:before{ content: ""; display: block; width:3px; height:3px; background:red; position: absolute; left:8px; top:50%; margin-top:-2px;}
+    #main ul li.first-line{ border-bottom:1px solid #d9e0ee; padding-bottom:3px; margin-bottom:8px;}
+    #main ul a{}
+    #main ul a:hover{ color:#ff8400; text-decoration: underline;}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h2>
+            <a href="#">探索趣图</a>
+        </h2>
+        <div>
+            <a href="#">
+                <img src="./img/img.png" alt="">
+            </a>
+        </div>
+        <ul>
+            <li class="first-line">
+                <a href="#">测试文字测试文字测试文字</a>
+            </li>
+            <li>
+                <a href="#">测试文字测试文字测试文字</a>
+            </li>
+            <li>
+                <a href="#">测试文字测试文字测试文字</a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

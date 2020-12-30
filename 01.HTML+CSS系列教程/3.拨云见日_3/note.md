@@ -895,11 +895,135 @@ z-index是同级之间的比较，不受子元素的影响。
 
 代码文件位置：[src/10_定位实现列表的装饰点.html](./src/10_定位实现列表的装饰点.html)
 
+### 7、CSS添加省略号
 
+**条件：**
 
+- `width`：必须有一个固定宽度；
+- `white-space: nowrap`：不让内容折行；
+- `overflow: hidden`：隐藏溢出的内容；
+- `text-overflow: ellipsis`：添加省略号
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #content{ width:200px; border:1px black solid; white-space: nowrap; overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    </style>
+</head>
+<body>
+    <div id="content">测试文字测试文字测试文字测试文字测试文字测试文字</div>
+</body>
+</html>
+```
 
+代码文件位置：[src/11_添加省略号.html](./src/11_添加省略号.html)
 
+### 8、CSS Sprite（CSS雪碧图）
+
+CSS雪碧也叫做CSS精灵，是一种网页图片应用处理方式。它允许你将一个页面涉及到的所有零星图片都包含到一张大图中去加载。雪碧图可以减少图片的质量，网页的图片加载速度快，减少图片的请求的次数，加快网页的打开。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:20px; height:21px; background:url(./sprite_icon.png) no-repeat left -596px;}
+    #box2{ width: 300px; height:50px; border:1px black solid; line-height: 50px; padding-left: 30px; background:url(./sprite_icon.png) no-repeat right -516px;}
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2">产品中心</div>
+</body>
+</html>
+```
+
+代码文件位置：[src/12_css雪碧图.html](./src/12_css雪碧图.html)
+
+### 9、CSS圆角
+
+CSS可以通过border-radius来给一个元素添加圆角。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            /* 给box添加一个半径为100px的圆角 */
+            border-radius: 100px;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+            /* 给box添加是宽和高一半的半径的圆角 */
+            border-radius: 50%;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+            /* 给左上和右下添加10px的圆角，给右上和左下添加20px的圆角 */
+            border-radius: 10px 20px;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+            /* 分别给左上，右上，右下，左下添加圆角 */
+            border-radius: 10px 20px 30px 40px;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            background: red;
+            /* 添加一个x为20px，y为40px的圆角（椭圆） */
+            border-radius: 20px / 40px;
+        }
+
+        #box {
+            width: 300px;
+            height: 150px;
+            background: red;
+            /* 制作半圆 */
+            border-radius: 150px 150px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/13_css圆角.html](./src/13_css圆角.html)
 
 
 

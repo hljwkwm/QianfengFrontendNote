@@ -338,7 +338,7 @@ map的属性：
 
 代码文件位置：[src/08_map与area.html](./src/08_map与area.html)
 
-8、embed和object
+### 8、embed和object
 
 embed和object都表示能够嵌入一些多媒体，如flash动画、插件等。基本使用没有太多区别，主要是为了兼容不同的浏览器而已。object元素需要配合param元素一起完成。
 
@@ -363,7 +363,49 @@ embed和object都表示能够嵌入一些多媒体，如flash动画、插件等�
 
 代码文件位置：[src/09_embed与object.html](./src/09_embed与object.html)
 
+### 9、audio和video
 
+audio标签表示嵌入音频文件，video标签表示嵌入视频文件。默认控件是不显示的，可通过controls属性来显示控件。
+
+为了能够支持多个备选文件的兼容支持，可以配合source标签。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- controls可以显示控件，loop可以控制循环，autoplay可以让音视频自动播放 -->
+    <audio src="./img/johann_sebastian_bach_air.mp3" controls loop autoplay></audio>
+    <video src="./img/Intermission-Walk-in_512kb.mp4" controls></video>
+    <!-- 通过source可以提高浏览器的兼容性，当第一个source可以播放，后面的就会被忽略，如果前面的无法播放，就会向下找 -->
+    <video>
+        <source src="./img/Intermission-Walk-in.ogv">
+        </source>
+        <source src="./img/Intermission-Walk-in_512kb.mp4">
+        </source>
+    </video>
+
+    <div style="position: relative; height:250px; overflow: hidden;">
+        <!-- 通过设置min-width:100%; min-height:100%;可以实现视频宽度适应整个浏览器，然后视频下面被挡住的效果 -->
+        <!-- webkit和x5等是用来适应移动端的 -->
+        <video style="min-width:100%; min-height:100%;" loop="" playsinline="true" webkit-playsinline="true"
+            x-webkit-airplay="true" x5-video-player-fullscreen="false" x5-video-player-type="h5" id="introvideo"
+            autoplay="">
+            <source src="./img/Intermission-Walk-in.ogv" type="video/mp4">
+            <source src="./img/Intermission-Walk-in_512kb.mp4" type="video/webm">
+        </video>
+    </div>
+</body>
+
+</html>
+```
 
 
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- controls可以显示控件，loop可以控制循环，autoplay可以让音视频自动播放 -->
+    <audio src="./img/johann_sebastian_bach_air.mp3" controls loop autoplay></audio>
+    <video src="./img/Intermission-Walk-in_512kb.mp4" controls></video>
+    <!-- 通过source可以提高浏览器的兼容性，当第一个source可以播放，后面的就会被忽略，如果前面的无法播放，就会向下找 -->
+    <video>
+        <source src="./img/Intermission-Walk-in.ogv">
+        </source>
+        <source src="./img/Intermission-Walk-in_512kb.mp4">
+        </source>
+    </video>
+
+    <div style="position: relative; height:250px; overflow: hidden;">
+        <!-- 通过设置min-width:100%; min-height:100%;可以实现视频宽度适应整个浏览器，然后视频下面被挡住的效果 -->
+        <!-- webkit和x5等是用来适应移动端的 -->
+        <video style="min-width:100%; min-height:100%;" loop="" playsinline="true" webkit-playsinline="true"
+            x-webkit-airplay="true" x5-video-player-fullscreen="false" x5-video-player-type="h5" id="introvideo"
+            autoplay="">
+            <source src="./img/Intermission-Walk-in.ogv" type="video/mp4">
+            <source src="./img/Intermission-Walk-in_512kb.mp4" type="video/webm">
+        </video>
+    </div>
+</body>
+
+</html>

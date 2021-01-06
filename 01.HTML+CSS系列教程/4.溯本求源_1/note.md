@@ -92,7 +92,38 @@ xhtml的双标签必须要闭合：
 
 代码文件位置：[src/01_html5.html](./src/01_html5.html)，[src/02_xhtml.html](./src/02_xhtml.html)
 
+### 2、strong与b，em与i
 
+**相同点**：他们的表现形态都是文本加粗和文本斜体。
+
+**不同点**：
+
+strong和em表示的是强调，而b仅表示加粗，i仅表示斜体，因此strong和em具有语义化；
+
+利用b和i与span配合，可以简化css的选择器，更容易实现复杂的内联效果；
+
+strong在盲人用的机器上会读两遍（在论坛上看到的，目前无法验证）。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <strong>文本1</strong>
+    <b>文本2</b>
+    <em>文本3</em>
+    <i>文本4</i>
+    <span>span</span>
+</body>
+</html>
+```
+
+代码文件位置：[src/03_b和i.html](./src/03_b和i.html)
 
 
 

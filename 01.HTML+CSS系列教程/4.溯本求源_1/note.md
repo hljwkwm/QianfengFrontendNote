@@ -338,6 +338,37 @@ map的属性：
 
 代码文件位置：[src/08_map与area.html](./src/08_map与area.html)
 
+8、embed和object
+
+embed和object都表示能够嵌入一些多媒体，如flash动画、插件等。基本使用没有太多区别，主要是为了兼容不同的浏览器而已。object元素需要配合param元素一起完成。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <embed src="./img/flash.swf" type=""> -->
+        <object>
+            <param name="movie" value="./img/flash.swf">
+        </object>
+</body>
+</html>
+
+```
+
+代码文件位置：[src/09_embed与object.html](./src/09_embed与object.html)
+
+
+
+
+
+
+
 
 
 

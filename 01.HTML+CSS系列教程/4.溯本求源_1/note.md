@@ -213,13 +213,130 @@ iframe 元素会创建包含另外一个文档的内联框架（即行内框架�
 
 利用iframe，可以将第三方网站嵌入到自己的网站中进行伪装成真正的网站，但是可以在网站的登录等位置添加一个层，当点击之后，就会跳转到钓鱼网站的登录页面，通过这种方式就可以骗取用户名和密码等，因此在访问某个网页的时候，一定要看好域名。
 
+### 5、br与wbr
 
+br标签表示换行操作，而wbr标签表示软换行操作。如果单词太长，或者担心浏览器会在错误的位置换行，那么您可以使用 wbr 元素来添加Word Break Opportunity（单词换行时机）。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        hello ahsj  jdhakj  hshdhdsj  sjdhsj asdsad hello ahsjjdhakjhshdhdsj XML<wbr>HTTP<wbr>Request  sjdhsj asdsad
+    </p>
+</body>
+</html>
+```
 
+如上面代码所示，如果一行放不下XMLHTTPRequest，那么浏览器就会将这三个单词拆开，在Request前面或者在HTTP前面换行。
 
+代码文件位置：[src/06_wbr.html](./src/06_wbr.html)
 
+### 6、pre与code
 
+pre元素可定义预格式化的文本，被包围在 pre 元素中的文本通常会保留空格和换行符。只应该在表示计算机程序源代码或者其他机器可以阅读的文本内容上使用code标签。虽然code标签通常只是把文本变成等宽字体，但它暗示着这段文本是源程序代码。
 
+pre和code通常是组合使用的，pre在外面，code在里面，但是需要注意的是，即使代码在code里，特殊符号也需要用转义字符，比如`<`和`>`，需要用`&lt;`和 `&gt;`。若果想实现html的代码展示，可以如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <pre>
+        <code>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                <title>Document</title>
+            </head>
+            <body>
+                hello world
+            </body>
+            </html>
+        </code>
+    </pre>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+            &lt;html lang=&quot;en&quot;&gt;
+            &lt;head&gt;
+                &lt;meta charset=&quot;UTF-8&quot;&gt;
+                &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+                &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+                &lt;title&gt;Document&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                hello world
+            &lt;/body&gt;
+            &lt;/html&gt;
+            </code></pre>
+            
+</body>
+</html>
+```
+
+但是这样写固然是很麻烦的，可以通过一些工具来生成，比如富文本工具，或者gitbook，或者markdown等。
+
+代码文件位置：[src/07_pre和code.html](./src/07_pre和code.html)
+
+### 7、map和area
+
+`<map>`：用于定义一个客户端图像映射。图像映射（image-map）指带有可点击区域的一幅图像。
+
+`<area>`：定义`<map>`的可点击区域。
+
+当`<map>`设置name或者id属性时，`<img>`标签的usemap属性会根据`<map>`的id和name属性来关联`<map>`。img标签的usemap属性需要加个井号。
+
+map的属性：
+
+| map属性 | 解释                                                         |
+| ------- | ------------------------------------------------------------ |
+| alt     | 当图片无法加载的时候显示的提示文字                           |
+| shape   | 定义可点击区域的形状，有如下值：<br />circ或circle:圆形<br />poly或polygon:多边型<br />rect或rectangle:矩形 |
+| coords  | 定义坐标值：<br />当shape为circ或circle(圆形)时,coords的值应该为 (x,y,r) x,y是圆心的坐标,r是半径<br />当shape为rect或rectangle(矩形)时,coords的值应该为 (x1,y1,x2,y2)  x1,y1是矩形的左上角坐标  x2.y2是矩形的右下角坐标<br />当shape为poly或polygon(多边形)时,coords的值应该为 (x1,y1,x2,y2,x3,y3......) 当可点击区域为多边形时,coords的值应该为多边形各个顶点的坐标。注意:最后一个坐标应与第一个坐标一致,用于关闭多边形,就像走路,不管你怎么走,最后回到出发地点,你走过的路线才会形成一个封闭图形。 |
+| href    | 定义一个URL,当点击设定的区域时访问该URL                      |
+| target  | 规定href在何处打开：<br />`_blank`: 在新窗口打开URL。<br />`_self`: 在同级框架中打开URL。<br />`_parent`: 在父框架中打开URL。<br />`_top`: 这整个窗口中打开URL。<br />`frameName`: 在指定的框架中打开URL。 |
+
+比如我们现在要给一个图片的区域添加链接：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="./img/star.jpg" alt="" usemap="#star">
+    <map name="star">
+        <!-- 添加矩形 -->
+        <!-- <area shape="rect" coords="205,83,386,173" href="https://www.taobao.com" alt=""> -->
+        <!-- 添加圆形 -->
+        <!-- <area shape="circ" coords="300,130,50" href="" alt=""> -->
+        <!-- 添加多边形 -->
+        <area shape="poly" coords="305,99,233,156,256,250,172,197" href="" alt="">
+    </map>
+</body>
+</html>
+```
+
+代码文件位置：[src/08_map与area.html](./src/08_map与area.html)
 
 
 

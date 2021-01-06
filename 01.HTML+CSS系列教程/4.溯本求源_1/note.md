@@ -125,6 +125,56 @@ strong在盲人用的机器上会读两遍（在论坛上看到的，目前无�
 
 代码文件位置：[src/03_b和i.html](./src/03_b和i.html)
 
+### 3、引用标签
+
+使用引用标签的好处：可以规范代码，有助于多人协作，可以更好的让浏览器解析，也可以让搜索引擎更快的搜索到。
+
+- blockquote：引用大段的段落解释
+- q：引用小段的短语解释
+- abbr：缩写或首字母缩略词
+- address：引用文档地址信息
+- cite：引用著作的标题
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <abbr title="World Health Organization">WHO</abbr>成立于1948年。
+    </p>
+    <p>
+        死而后已出自诸葛亮的《出师表》：
+    </p>
+    <blockquote>
+        凡事如是，难可逆见。臣鞠躬尽瘁，死而后已；至于成败利钝，非臣之明所能逆睹也。
+    </blockquote>
+    <p>
+        WWF的目标是：<q>构建人与自然和谐共存的世界。</q>
+    </p>
+    <address>
+        网易北京公司<br>
+        地址：xxxxxxxx
+    </address>
+    <p>
+        <cite>资治通鉴</cite>由背诵司马光主编的一部多卷本编年体史书。
+    </p>
+</body>
+</html>
+
+```
+
+效果图：
+
+![image-20210106104550419](note_image/image-20210106104550419.png)
+
+代码文件位置：[src/04_引用标签.html](./src/04_引用标签.html)
+
 
 
 

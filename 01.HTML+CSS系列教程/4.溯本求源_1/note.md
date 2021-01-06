@@ -175,6 +175,48 @@ strong在盲人用的机器上会读两遍（在论坛上看到的，目前无�
 
 代码文件位置：[src/04_引用标签.html](./src/04_引用标签.html)
 
+### 4、iframe嵌套页面
+
+iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。 
+
+| 属性        | 含义                         |
+| ----------- | ---------------------------- |
+| frameborder | 规定是否显示框架周围的边框   |
+| width       | 定义iframe的宽度             |
+| height      | 定义iframe的高度             |
+| scrolling   | 规定是否在iframe中显示滚动条 |
+| src         | 规定在iframe中引入的URL      |
+| srcdoc      | 规定在iframe中显示的页面内容 |
+
+注意：当有srcdoc的时候，src就会失效。另外iframe的宽和高可以通过css来控制。
+
+应用场景：数据传输、共享代码，局部刷新、第三方介入等。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <iframe src="https://g.163.com/r?site=netease&affiliate=homepage&cat=homepage&type=logo450x40&location=1" frameborder="0" width="450" height="40"></iframe>
+</body>
+</html>
+```
+
+代码文件位置：[src/05_iframe.html](./src/05_iframe.html)
+
+**一天一个入狱小技巧——钓鱼网站：**
+
+利用iframe，可以将第三方网站嵌入到自己的网站中进行伪装成真正的网站，但是可以在网站的登录等位置添加一个层，当点击之后，就会跳转到钓鱼网站的登录页面，通过这种方式就可以骗取用户名和密码等，因此在访问某个网页的时候，一定要看好域名。
+
+
+
+
+
 
 
 

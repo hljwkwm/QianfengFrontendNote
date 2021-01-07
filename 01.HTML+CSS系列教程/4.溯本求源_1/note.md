@@ -629,7 +629,7 @@ mata可以添加一些辅助信息，比如描述和关键字，用什么内核�
 
 代码文件位置：[src/13_新的语义化标签.html](./src/13_新的语义化标签.html)
 
-14、表格的扩展
+### 14、表格的扩展
 
 - 添加单线：通过css样式来设置`border-collapse : collapse`
 - 隐藏空单元：通过CSS样式来设置`empty-cells : hide`
@@ -706,6 +706,77 @@ mata可以添加一些辅助信息，比如描述和关键字，用什么内核�
 效果图：
 
 ![image-20210107164010740](note_image/image-20210107164010740.png)
+
+### 15、表单扩展
+
+**美化表单控件**
+
+控件美化可以通过`label`+`:checked`或者是`position`+`opacity`的方式进行美化。因为label可以将子元素绑定在一起，共同实现表单控件功能。
+
+checkbox：
+
+```html
+<style>
+    label input{ display: none;}
+    label input:checked + div{ background-position: 0 0;}
+    label div{ width:28px; height:28px; background: url('./img/checkbox.png') 0 -28px; }
+</style>
+<body>
+    <label>
+        <input type="checkbox">
+        <div></div>
+    </label>
+</body>
+```
+
+upload1：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            label input{ display: none;}
+            label div{ width:86px; height: 34px; background: url('./img/upload.png');}
+        </style>
+    </head>
+    <body>
+        <label>
+            <input type="file">
+            <div></div>
+        </label>
+    </body>
+</html>
+```
+
+upload2：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            .upload{ width:86px; height:34px; position: relative;}
+            .upload div{ width:100%; height: 100%; background: url('./img/upload.png');}
+            .upload input{ width:100%; height: 100%; position: absolute; left:0; top:0; opacity: 0;}
+        </style>
+    </head>
+    <body>
+        <div class="upload">
+            <input type="file">
+            <div></div>
+        </div>
+    </body>
+</html>
+```
 
 
 

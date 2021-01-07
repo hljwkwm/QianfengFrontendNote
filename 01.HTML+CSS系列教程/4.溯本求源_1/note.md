@@ -510,6 +510,125 @@ mata可以添加一些辅助信息，比如描述和关键字，用什么内核�
 <meta http-equiv="expires" content="Wed, 20 Jun 2019 22:33:00 GMT">
 ```
 
+### 13、HTML5新的语义化标签
+
+这些语义化标签，主要是为了让文档更有结构性，可以优化SEO，这些标签的功能，理论上通过div都可以实现的。以下列出了常用的语义化标签，并不是全部。
+
+- header：页眉
+- footer：页脚
+- main：主体
+- hgroup：标题组合
+- nav ：导航
+
+**注**：header、footer、main 在一个网页中只能出现一次。
+
+- article：独立的内容
+- aside：辅助信息的内容
+- section：区域
+- figure：描述图像或视频
+- figcaption：描述图像或视频的标题部分。一般figure和figcaption配合着使用，figure中嵌套着img和figcaption，img是图片，figcaption来描述图片。
+- datalist：选项列表，一般配合input使用，可以作为input的候选项，可以通过input的list属性和datalist的id属性进行关联。
+- details / summary：文档细节 / 文档标题，一般是details嵌套着summary和p来使用，summary是一个可折叠的标题，p为具体的内容。details上可以添加属性open来设置是否折叠。
+- progress / meter：定义进度条 / 定义度量范围，progress是进度条，表示进度，可以设置属性min、max和value，分别是最小值，最大值和当前值。meter是一个度量值，可以设置min、max、value、low和high，分别代表的是最小值，最大值，当前值还有两个警戒值，超过警戒值会变色。
+- time：定义日期或时间
+- mark：带有记号的文本
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <hgroup>
+            <h1>主标题</h1>
+            <h2>副标题</h2>
+        </hgroup>
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li>论坛</li>
+                <li>关于</li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <section>
+                <input type="text" list="elems">
+                <datalist id="elems">
+                    <option value="a"></option>
+                    <option value="ab"></option>
+                    <option value="abc"></option>
+                    <option value="apple"></option>
+                    <option value="abbr"></option>
+                    <option value="around"></option>
+                </datalist>
+                <details open>
+                    <summary>HTML</summary>
+                    <p>超文本标记语言</p>
+                </details>
+                <progress min="0" max="10" value="8"></progress>
+                <meter min="0" max="100" value="80" low="10" high="60"></meter>
+                <p>
+                    今天是<time title="2-14">情人节</time>，街上人很多。
+                </p>
+                <p>
+                    今天是<mark>情人节</mark>，街上人很多。
+                </p>
+            </section>
+            <section>
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="./img/youku.jpg" alt="">
+                            <figcaption>
+                                    新水果篮子❤️高甜   
+                                    <br>
+                                    十二生肖恋上美少女！
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="./img/youku.jpg" alt="">
+                            <figcaption>
+                                    新水果篮子❤️高甜   
+                                    <br>
+                                    十二生肖恋上美少女！
+                            </figcaption>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="./img/youku.jpg" alt="">
+                            <figcaption>
+                                    新水果篮子❤️高甜   
+                                    <br>
+                                    十二生肖恋上美少女！
+                            </figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </section>
+            <section></section>
+        </article>
+        <aside>
+
+        </aside>
+    </main>
+    <footer></footer>
+</body>
+</html>
+
+```
+
+代码文件位置：[src/13_新的语义化标签.html](./src/13_新的语义化标签.html)
+
 
 
 

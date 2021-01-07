@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{ empty-cells: hide; border-collapse: collapse;}
+    table .line{ border-top:50px solid red; border-left:150px solid blue; position: relative; color:white;}
+    table .line em{ position: absolute; left:-60px; top:-40px; font-style: normal;}
+    table .line span{ position: absolute; left:-120px; top:-30px;}
+    </style>
+</head>
+<body>
+    <table border="1">
+        <caption>天气预报</caption>
+        <colgroup>
+            <col span="2" style="background:red;">
+            <col span="2" style="background:yellow;">
+        </colgroup>
+        <tHead>
+            <tr>
+                <th colspan="2">
+                    <div class="line">
+                        <em>详情</em>
+                        <span>日期</span>
+                    </div>
+                </th>
+                <th>天气情况</th>
+                <th>出行情况</th>
+            </tr>
+        </tHead>
+        <tBody>
+            <tr>
+                <td rowspan="2">2019年1月1日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td rowspan="2">2019年1月2日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>有小雨，出门请带伞</td>
+            </tr>
+        </tBody>
+        <tFood>
+        </tFood>
+    </table>
+</body>
+</html>

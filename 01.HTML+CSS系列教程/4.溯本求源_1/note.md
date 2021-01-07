@@ -629,6 +629,86 @@ mata可以添加一些辅助信息，比如描述和关键字，用什么内核�
 
 代码文件位置：[src/13_新的语义化标签.html](./src/13_新的语义化标签.html)
 
+14、表格的扩展
+
+- 添加单线：通过css样式来设置`border-collapse : collapse`
+- 隐藏空单元：通过CSS样式来设置`empty-cells : hide`
+- 斜线分类：border / rotate
+- 列分组：colgroup  / col，列分组可以对整列进行操作
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    table{ empty-cells: hide; border-collapse: collapse;}
+    table .line{ border-top:50px solid red; border-left:150px solid blue; position: relative; color:white;}
+    table .line em{ position: absolute; left:-60px; top:-40px; font-style: normal;}
+    table .line span{ position: absolute; left:-120px; top:-30px;}
+    </style>
+</head>
+<body>
+    <table border="1">
+        <caption>天气预报</caption>
+        <colgroup>
+            <col span="2" style="background:red;">
+            <col span="2" style="background:yellow;">
+        </colgroup>
+        <tHead>
+            <tr>
+                <th colspan="2">
+                    <div class="line">
+                        <em>详情</em>
+                        <span>日期</span>
+                    </div>
+                </th>
+                <th>天气情况</th>
+                <th>出行情况</th>
+            </tr>
+        </tHead>
+        <tBody>
+            <tr>
+                <td rowspan="2">2019年1月1日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>天气晴朗，适合出行</td>
+            </tr>
+            <tr>
+                <td rowspan="2">2019年1月2日</td>
+                <td>白天</td>
+                <td><img src="./img/tianqi_1.png" alt=""></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>夜晚</td>
+                <td><img src="./img/tianqi_2.png" alt=""></td>
+                <td>有小雨，出门请带伞</td>
+            </tr>
+        </tBody>
+        <tFood>
+        </tFood>
+    </table>
+</body>
+</html>
+```
+
+代码文件位置：[src/14_table.html](./src/14_table.html)
+
+效果图：
+
+![image-20210107164010740](note_image/image-20210107164010740.png)
+
+
+
 
 
 

@@ -409,6 +409,109 @@ audio标签表示嵌入音频文件，video标签表示嵌入视频文件。默�
 
 代码文件位置：[src/10_audio与video.html](./src/10_audio与video.html)
 
+### 10、文字注解和文字方向
+
+ruby标签定义ruby注释（中文注音或字符），rt标签定义字符（中文注音或字符）的解释或发音。一般情况下，这两个标签配合使用。
+
+bdo标签可覆盖默认的文本方向。
+
+此外文本的方向还可以通过css来实现。具体可以见下面的代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    span{ direction: rtl; unicode-bidi:bidi-override; }
+    </style>
+</head>
+<body>
+    <ruby>
+        寒<rt>hán</rt>冬
+    </ruby>
+    <p>
+        <bdo dir="rtl">爱神的箭</bdo>卡后端框架爱迪生
+    </p>
+    <p>
+        <span>爱神的箭</span>卡后端框架爱迪生
+    </p>
+    
+</body>
+</html>
+```
+
+效果图：
+
+![image-20210107135624229](note_image/image-20210107135624229.png)
+
+代码文件位置：[src/11_ruby.html](./src/11_ruby.html)
+
+### 11、link扩展
+
+通过link可以引入css文件，也可以设置网站标题栏前面的小图标：
+
+```html
+<link rel="icon" type="/image/x-icon" href="http://www.mobiletrain.org/favicon.ico">
+```
+
+也可以做DNS的预解析，通过添加DNS预解析，可以加快网页的访问速度，比如京东：
+
+```html
+<link rel="dns-prefetch" href="//static.360buyimg.com"/>
+<link rel="dns-prefetch" href="//misc.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img10.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img11.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img12.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img13.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img14.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img20.360buyimg.com"/>
+<link rel="dns-prefetch" href="//img30.360buyimg.com"/>
+<link rel="dns-prefetch" href="//d.3.cn"/>
+<link rel="dns-prefetch" href="//d.jd.com"/>
+```
+
+完整代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="3">
+    <meta http-equiv="expires" content="Wed, 20 Jun 2019 22:33:00 GMT">
+    <title>Document</title>
+    <link rel="icon" type="/image/x-icon" href="http://www.mobiletrain.org/favicon.ico">
+    <link rel="dns-prefetch" href="//static.360buyimg.com">
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+代码文件位置：[src/12_link.html](./src/12_link.html)
+
+### 12、meta扩展
+
+mata可以添加一些辅助信息，比如描述和关键字，用什么内核渲染（针对多内核浏览器而言），处理IE用什么版本来渲染，页面多久刷新一次，缓存设置等：
+
+```html
+<meta name="description" content="大连美团网精选大连美食餐厅,酒店预订,电影票,旅游景点,外卖订餐,大连团购信息,您可查询商家评价店铺信息。大连生活,下载美团官方APP ,吃喝玩乐1折起。">
+<meta name="keywords" content="大连美食,大连酒店,大连团购">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta http-equiv="refresh" content="3" url="">
+<meta http-equiv="expires" content="Wed, 20 Jun 2019 22:33:00 GMT">
+```
+
+
+
 
 
 

@@ -778,7 +778,126 @@ upload2：
 </html>
 ```
 
+**新的input控件**
 
+- email：电子邮件地址输入框
+- url：网址输入框
+- number：数值输入框
+- range：滑动条
+- date / month / week：日期控件	
+- search：搜索框
+- color：颜色控件
+- tel：电话号码输入框  ( 在移动端会默认调起数字键盘 )
+- time：时间控件
+
+```html
+<form action="">
+    <input type="email">
+    <input type="url">
+    <input type="number">
+    <input type="range" min="0" max="10" value="8">
+    <input type="date">
+    <input type="month">
+    <input type="week">
+    <input type="search">
+    <input type="color">
+    <input type="tel">
+    <input type="time">
+    <input type="submit">
+</form>
+```
+
+**新的表单属性**
+
+- autocomplete：自动完成，通过该属性可以控制输入框是否有历史提示，默认on，可选值off
+- autofocus：获取焦点，通过该属性可以在刷新或者加载页面后，自动获取焦点。
+- required：设置是否不能为空
+- pattern：正则验证
+
+```html
+<form action="https://www.baidu.com">
+    <input type="text" name="username" autocomplete="off" autofocus required pattern="[a-z]+">
+    <input type="submit">
+</form>
+```
+
+**表单的传输方式**
+
+method：数据传输方式，GET, POST等。
+
+enctype：数据传输类型，可以是文本，二进制等
+
+name / value：数据的键值对
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <!-- <form action="./data.php" method="GET">
+        <input type="text" name="username">
+        <input type="submit">
+   </form> -->
+   <form action="./data.php" method="POST" enctype="multipart/form-data">
+        <!-- <input type="text" name="username"> -->
+        <input type="file" name="filename">
+        <input type="submit">
+    </form>
+</body>
+</html>
+```
+
+```php
+<?php
+   /*  $username = $_GET['username'];
+    echo $username; */
+   /*  $username = $_POST['username'];
+    echo $username; */
+    $filename = $_FILES['filename'];
+    print_r( $filename );
+?>
+```
+
+数据传输代码位置：[src/服务器代码/demo.html](./src/服务器代码/demo.html)，[src/服务器代码/data.php](./src/服务器代码/data.php)
+
+**扩展标签**
+
+- fieldset：表单内元素分组
+- legend：为fieldset元素定义标题
+- optgroup：定义选项组，可以在下拉菜单中进行分组
+
+```html
+<fieldset>
+    <legend>登录</legend>
+    <p>
+        用户名：<input type="text">
+    </p>
+    <p>
+        密码：<input type="password">
+    </p>
+</fieldset>
+<select name="" id=""> 
+    <optgroup label="水果"></optgroup>
+    <option value="">苹果</option>
+    <option value="">香蕉</option>
+    <option value="">猕猴桃</option>
+    <optgroup label="蔬菜"></optgroup>
+    <option value="">黄瓜</option>
+    <option value="">白菜</option>
+    <option value="">茄子</option>
+</select>
+```
+
+效果图：
+
+![image-20210108103913947](note_image/image-20210108103913947.png)
+
+代码文件位置：[src/15_form.html](./src/15_form.html)
 
 
 

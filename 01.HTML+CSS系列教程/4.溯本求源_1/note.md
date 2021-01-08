@@ -899,21 +899,69 @@ name / value：数据的键值对
 
 代码文件位置：[src/15_form.html](./src/15_form.html)
 
+### 16、BFC规范
 
+Formatting context（格式化上下文）是W3C CSS2.1规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。
 
+BFC即Block Formatting Contexts（块级格式化上下文），它属于上述中的其中一种规范。具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且BFC具有普通容器所没有的一些特性。
 
+通过触发BFC机制，可以解决一些莫名其妙的问题，比如margin叠加问题，margin传递问题，浮动问题还有覆盖问题。
 
+**可以出发BFC机制的属性：**
 
+- 浮动元素：float除none以外的值
+- 绝对定位元素：position：absolute、fixed
+- display：inline-block、table-cells、flex
+- overflow：除了visible以外的值（hidden、auto、scroll）
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .div1{ width:100px; height:100px; background:red; margin-bottom: 30px;}
+    .div2{ width:100px; height:100px; background:blue; margin-top: 30px;}
+    .box{ display: flex;}
 
+    .div3{ width:200px; height:200px; background:red; overflow: hidden;}
+    .div4{ width:100px; height:100px; background:blue; margin-top:50px;}
 
+    .div5{ width:200px; border:1px black solid; display: inline-block;}
+    .div6{ width:100px; height:100px; background:blue; float:left;}
 
+    .div7{ width:100px; height:100px; background:red; float:left;}
+    .div8{ height:400px; background:blue; overflow: hidden;}
+    </style>
+</head>
+<body>
+    <!-- margin叠加问题 -->
+    <div class="box">
+        <div class="div1"></div>
+    </div>
+    <div class="box">
+        <div class="div2"></div>
+    </div>
 
+    <!-- margin传递问题 -->
+    <div class="div3">
+        <div class="div4"></div>
+    </div>
 
+    <!-- 浮动问题 -->
+    <div class="div5">
+        <div class="div6"></div>
+    </div>
 
+    <!-- float覆盖问题 -->
+    <div class="div7"></div>
+    <div class="div8">啊飒飒所大所多大多大时代</div>
+</body>
+</html>
+```
 
-
-
-
-
+代码文件位置：[src/16_BFC.html](./src/16_BFC.html)
 

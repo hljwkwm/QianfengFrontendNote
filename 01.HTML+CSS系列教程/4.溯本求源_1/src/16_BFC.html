@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .div1{ width:100px; height:100px; background:red; margin-bottom: 30px;}
+    .div2{ width:100px; height:100px; background:blue; margin-top: 30px;}
+    .box{ display: flex;}
+
+    .div3{ width:200px; height:200px; background:red; overflow: hidden;}
+    .div4{ width:100px; height:100px; background:blue; margin-top:50px;}
+
+    .div5{ width:200px; border:1px black solid; display: inline-block;}
+    .div6{ width:100px; height:100px; background:blue; float:left;}
+
+    .div7{ width:100px; height:100px; background:red; float:left;}
+    .div8{ height:400px; background:blue; overflow: hidden;}
+    </style>
+</head>
+<body>
+    <!-- margin叠加问题 -->
+    <div class="box">
+        <div class="div1"></div>
+    </div>
+    <div class="box">
+        <div class="div2"></div>
+    </div>
+
+    <!-- margin传递问题 -->
+    <div class="div3">
+        <div class="div4"></div>
+    </div>
+
+    <!-- 浮动问题 -->
+    <div class="div5">
+        <div class="div6"></div>
+    </div>
+
+    <!-- float覆盖问题 -->
+    <div class="div7"></div>
+    <div class="div8">啊飒飒所大所多大多大时代</div>
+</body>
+</html>

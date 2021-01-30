@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+
+    .list{ width: 250px; margin:30px auto;}
+    .list li{ height:97px; border-bottom: 1px #d0d6d9 dashed; overflow: hidden;}
+    .list li:last-child{ border-bottom: none;}
+    .list .list_photo{ float: left; width:112px; height:77px; margin:10px 9px 0 5px; position: relative;}
+    .list .list_photo .list_photo_box{ width:92px; height:57px; border:1px white solid; position: absolute; left: 9px; top:9px; transform: translate(0,-60px) rotate(-90deg); transition:1s; transform-origin: 0 0;}
+    .list .list_photo .list_photo_text{ width:100%; position: absolute; color:white; text-align: center; bottom: 15px; font-size: 14px;  transform: translate(0,100px); transition:1s;}
+    .list .list_photo img{ width:100%;}
+    .list .list_text{ float: left; width:114px; font-size:12px; line-height:21px; margin-top: 10px;}
+
+    .list li:hover .list_photo_box{ transform: translate(0,0) rotate(0);}
+    .list li:hover .list_photo_text{ transform: translate(0,0);}
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>

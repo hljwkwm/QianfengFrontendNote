@@ -284,9 +284,276 @@ transform: skew(-30deg,-30deg);
 
 代码文件位置：[src/06_斜切的导航.html](./src/06_斜切的导航.html)
 
+**变形的列表**
 
+要点：对于有动画的效果，要把最终的效果先做好，然后逆着回去做动画，这样会方便一些。比如下面的两个效果，上面是变形前的效果，下面是变形后的效果，我们需要先做变形后的效果，然后在反过来做变形前的效果：
 
+![image-20210130205123604](note_image/image-20210130205123604.png)
 
+![image-20210130205208804](note_image/image-20210130205208804.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+
+    .list{ width: 250px; margin:30px auto;}
+    .list li{ height:97px; border-bottom: 1px #d0d6d9 dashed; overflow: hidden;}
+    .list li:last-child{ border-bottom: none;}
+    .list .list_photo{ float: left; width:112px; height:77px; margin:10px 9px 0 5px; position: relative;}
+    .list .list_photo .list_photo_box{ width:92px; height:57px; border:1px white solid; position: absolute; left: 9px; top:9px; transform: translate(0,-60px) rotate(-90deg); transition:1s; transform-origin: 0 0;}
+    .list .list_photo .list_photo_text{ width:100%; position: absolute; color:white; text-align: center; bottom: 15px; font-size: 14px;  transform: translate(0,100px); transition:1s;}
+    .list .list_photo img{ width:100%;}
+    .list .list_text{ float: left; width:114px; font-size:12px; line-height:21px; margin-top: 10px;}
+
+    .list li:hover .list_photo_box{ transform: translate(0,0) rotate(0);}
+    .list li:hover .list_photo_text{ transform: translate(0,0);}
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+        <li>
+            <div class="list_photo">
+                <img src="./img/list_photo.png" alt="">
+                <div class="list_photo_box"></div>
+                <div class="list_photo_text">陌陌上市</div>
+            </div>
+            <div class="list_text">
+                <p>测试文字测试文字测试文字测试文字测试文字</p>
+            </div>
+        </li>
+    </ul>
+</body>
+</html>
+```
+
+代码文件位置：[src/07_变形的列表.html](./src/07_变形的列表.html)
+
+**变形的列表练习**
+
+html：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <ul class="list clear">
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+            <li>
+                <img src="img/img.png" height="250" width="250" alt="">
+				<div class="list_text">
+					<h2>测试文字</h2>
+					<p>测试段落测试段落测试段落测试段落测试段落</p>
+				</div>
+				<div class="list_maskUp"></div>
+				<div class="list_maskDown"></div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+css：
+
+```css
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+.clear:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#main {
+    width: 826px;
+    margin: 20px auto;
+    border: 1px #cccccc solid;
+}
+
+.list {
+    width: 830px;
+}
+
+.list li {
+    width: 250px;
+    height: 250px;
+    float: left;
+    margin: 13px;
+    position: relative;
+    overflow: hidden;
+}
+
+.list_text {
+    width: 100%;
+    height: 0px;
+    background: rgba(0, 0, 0, .5);
+    position: absolute;
+    left: 0;
+    top: 50px;
+    z-index: 2;
+    overflow: hidden;
+    transform: rotate(45deg);
+    transition: .5s;
+}
+
+.list_text h2 {
+    height: 56px;
+    border-bottom: 1px #8a7881 solid;
+    font-size: 24px;
+    color: white;
+    line-height: 56px;
+    text-align: center;
+}
+
+.list_text p {
+    border-top: 2px #b1a5ab solid;
+    line-height: 26px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding-top: 13px;
+}
+
+.list_maskUp {
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    left: 0;
+    top: -300px;
+    z-index: 1;
+    background: rgba(199, 4, 109, .5);
+    transform: rotate(45deg) translateX(-200px);
+    transition: .5s;
+}
+
+.list_maskDown {
+    width: 350px;
+    height: 350px;
+    position: absolute;
+    left: 0;
+    top: 300px;
+    z-index: 1;
+    background: rgba(199, 4, 109, .5);
+    transform: rotate(45deg) translateX(50px);
+    transition: .5s;
+}
+
+.list li:hover .list_text {
+    height: 150px;
+    transform: rotate(0deg);
+}
+
+.list li:hover .list_maskUp, .list li:hover .list_maskDown {
+    top: 0;
+}
+```
+
+代码文件位置：[src/变形练习/index.html](./src/变形练习/index.html)
 
 
 

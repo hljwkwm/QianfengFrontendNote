@@ -555,6 +555,380 @@ img {
 
 代码文件位置：[src/变形练习/index.html](./src/变形练习/index.html)
 
+### 4、animation动画
+
+animation也是一个复合样式，接下来介绍一下它的每个样式：
+
+| 名称                      | 说明                                                         |
+| ------------------------- | ------------------------------------------------------------ |
+| animation-name            | 设置动画的名字（自定义的)=）                                 |
+| animation-duration        | 动画的持续时间                                               |
+| animation-delay           | 动画的延迟时间                                               |
+| animation-iteration-count | 动画的重复次数，默认值就是1，infinite为无限次数              |
+| animation-timing-function | 动画的运动形式                                               |
+| animation-fill-mode       | 规定动画播放之前或之后，其动画效果是否可见。<br />none（默认值）：在运动结束之后回到初始位置，在延迟的情况下，让0%在延迟后生效。<br />backwards：在延迟的情况下，让0%在延迟前生效。<br />forwards：在运动结束的之后，停到结束位置<br />both：backwards和forwards同时生效。 |
+| animation-direction       | 属性定义是否应该轮流反向播放动画。<br />alternate：一次正向（0%~100%），一次反向（100%~0%）。<br />reverse：永远都是反向 , 从100%~0%。<br />normal（默认值）：永远都是正向，从0%~100%。 |
+
+**注意：**
+
+- 运动结束后，默认情况下会停留在起始位置。
+- 在关键帧中，from对应的是0%，to对应的是100%。
+- 动画的复合写法：`animation: myBox 4s 2s infinite linear;`，需要注意的是，动画的持续时间在前，延迟时间在后。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 30px auto;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            animation-name: myBox; /*设置动画的名字*/
+            animation-duration: 4s; /*动画的持续时间*/
+            animation-delay: 2s;  /*动画的延迟时间*/
+            animation-iteration-count: infinite;  /*动画的执行次数*/
+            animation-timing-function: linear;  /*动画的运动形式*/
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            animation: myBox 4s 2s infinite linear; /*动画的复合写法*/
+        }
+
+        /*  @keyframes myBox{
+        from{ transform: translate(0,0); }
+        to{ transform : translate(200px,0)}
+    } */
+
+        @keyframes myBox {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            25% {
+                transform: translate(200px, 0);
+            }
+
+            50% {
+                transform: translate(200px, 200px);
+            }
+
+            75% {
+                transform: translate(0, 200px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/08_animation.html](./src/08_animation.html)
+
+#### 划入划出的小图标
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    ul{ width:150px; margin:30px auto;}
+    ul li{ float:left; width:50px; height:50px; position: relative;}
+    ul li img{ position: absolute; left:50%; top:50%; margin:-10px 0 0 -11px;}
+    ul li:hover img{ animation: move .5s;}
+    @keyframes move{
+        0%{ transform : translate(0,0); opacity:1; }
+        60%{ transform : translate(0,-50px); opacity:0;}
+        61%{ transform : translate(0,30px);}
+        100%{ transform : translate(0,0); opacity:1;}
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <img src="./img/1.png" alt="">
+        </li>
+        <li>
+            <img src="./img/2.png" alt="">
+        </li>
+        <li>
+            <img src="./img/3.png" alt="">
+        </li>
+    </ul>
+</body>
+</html>
+```
+
+代码文件位置：[src/09_划入划出的小图标.html](./src/09_划入划出的小图标.html)
+
+#### loading效果
+
+要点：这里我们要做一圈八个圆，直接做可能会比较麻烦，我们可以先在一个正方形里放四个小圆，分别在这个正方形的左上、右上、右下、左下，然后再复制出来四个小圆，顺时针旋转45度，就可以了。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .loading{ width:40px; height:40px; margin: 30px auto; position: relative;}
+    .loading .box1, .loading .box2{ width:100%; height: 100%; position: absolute;}
+    .loading .box2{ transform:rotate(45deg);}
+    .loading .box1 div , .loading .box2 div{ width:10px; height:10px; background:blue; border-radius: 50%; position: absolute; animation:loadingMove 1.5s infinite linear;}
+    .loading .box1 div:nth-child(1) , .loading .box2 div:nth-child(1){ left:0; top:0;}
+    .loading .box1 div:nth-child(2) , .loading .box2 div:nth-child(2){ right:0; top:0;}
+    .loading .box1 div:nth-child(3) , .loading .box2 div:nth-child(3){ right:0; bottom:0;}
+    .loading .box1 div:nth-child(4) , .loading .box2 div:nth-child(4){ left:0; bottom:0;}
+
+    @keyframes loadingMove{
+        0%{ transform: scale(1);}
+        50%{ transform: scale(0);}
+        100%{ transform: scale(1);}
+    }
+
+    .loading .box1 div:nth-child(1){ animation-delay: -0;}
+    .loading .box2 div:nth-child(1){ animation-delay: -.2s;}
+    .loading .box1 div:nth-child(2){ animation-delay: -.4s;}
+    .loading .box2 div:nth-child(2){ animation-delay: -.6s;}
+    .loading .box1 div:nth-child(3){ animation-delay: -.8s;}
+    .loading .box2 div:nth-child(3){ animation-delay: -1s;}
+    .loading .box1 div:nth-child(4){ animation-delay: -1.2s; }
+    .loading .box2 div:nth-child(4){ animation-delay: -1.4s;}
+    </style>
+</head>
+<body>
+    <div class="loading">
+        <div class="box1">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="box2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/10_loading效果.html](./src/10_loading效果.html)
+
+#### loading效果2
+
+我自己写的代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            margin: 30px auto;
+           width: 200px;
+        }
+
+        li {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background-color: #FF009080;
+            float: left;
+            margin: 10px;
+            animation: load 1.5s infinite;
+        }
+        
+        @keyframes load {
+            0% {transform: scale(1);}
+            50% {transform: scale(3);}
+            100% {transform: scale(1);}
+        }
+
+        li:nth-child(1) {animation-delay: 0s;}
+        li:nth-child(2) {animation-delay: .15s;}
+        li:nth-child(3) {animation-delay: .3s;}
+        li:nth-child(4) {animation-delay: .45s;}
+        li:nth-child(5) {animation-delay: .6s;}
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>
+```
+
+代码文件位置：[src/动画练习/loading效果2（我自己写的）.html](./src/动画练习/loading效果2（我自己写的）.html)
+
+老师写的代码：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/* #box{ width:190px; margin:100px auto; display: flex; justify-content:space-between;}
+	#box div{ width:30px; height:30px; background:rgba(0,255,0,0.5); border-radius: 50%; animation:1.3s linear move infinite;}
+	
+	@keyframes move{
+		0%{ transform:scale(1); }
+		30%{ transform:scale(2);}
+		70%{ transform:scale(1);}
+		100%{ transform:scale(1);}
+	}
+	
+	#box div:nth-of-type(1){ animation-delay:-1s;}
+	#box div:nth-of-type(2){ animation-delay:-.9s;}
+	#box div:nth-of-type(3){ animation-delay:-.8s;}
+	#box div:nth-of-type(4){ animation-delay:-.7s;}
+	#box div:nth-of-type(5){ animation-delay:-.6s;} */
+
+	#box{ width:190px; margin:100px auto; display: flex; justify-content:space-between;}
+	#box div{ width:30px; height:30px; background:rgba(0,255,0,0.5); border-radius: 50%; animation:1s move infinite;}
+
+	@keyframes move{
+		0%{ transform:scale(1); }
+		50%{ transform:scale(2);}
+		100%{ transform:scale(1);}
+	}
+
+	#box div:nth-of-type(1){ animation-delay:-1s;}
+	#box div:nth-of-type(2){ animation-delay:-.9s;}
+	#box div:nth-of-type(3){ animation-delay:-.8s;}
+	#box div:nth-of-type(4){ animation-delay:-.7s;}
+	#box div:nth-of-type(5){ animation-delay:-.6s;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>
+```
+
+代码文件位置：[src/动画练习/demo.html](./src/动画练习/demo.html)
+
+#### animation扩展
+
+具体见上面的表格。代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box1,.box2,.box3,.box4{ width:100px; height:100px; background:red; margin:5px;}
+    .box1{ animation:2s move 2s;}
+    /* 在延迟的情况下，让0%在延迟前生效，所以它会先变蓝 */
+    .box2{ animation:2s move 2s; animation-fill-mode: backwards;}
+    /* 在运动结束的之后，停到结束位置 */
+    .box3{ animation: 2s move 2s; animation-fill-mode: forwards;}
+    /* 以上两种效果都会生效 */
+    .box4{ animation: 2s move 2s; animation-fill-mode: both;}
+
+    @keyframes move{
+        0%{ transform: translate(0,0); background:blue;}
+        100%{ transform: translate(300px,0);}
+    }
+
+    .box5{
+        width:100px; height:100px; background:red;
+        animation:1s move infinite;
+        animation-direction: reverse;
+    }
+
+    @keyframes move{
+        0%{ transform: translate(0,0);}
+        100%{ transform: translate(300px,0);}
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box4">4</div>
+    <div class="box5"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/11_animation扩展.html](./src/11_animation扩展.html)
+
+
+
+
+
+
+
 
 
 

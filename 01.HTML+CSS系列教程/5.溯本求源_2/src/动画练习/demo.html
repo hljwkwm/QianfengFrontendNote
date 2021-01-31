@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	/* #box{ width:190px; margin:100px auto; display: flex; justify-content:space-between;}
+	#box div{ width:30px; height:30px; background:rgba(0,255,0,0.5); border-radius: 50%; animation:1.3s linear move infinite;}
+	
+	@keyframes move{
+		0%{ transform:scale(1); }
+		30%{ transform:scale(2);}
+		70%{ transform:scale(1);}
+		100%{ transform:scale(1);}
+	}
+	
+	#box div:nth-of-type(1){ animation-delay:-1s;}
+	#box div:nth-of-type(2){ animation-delay:-.9s;}
+	#box div:nth-of-type(3){ animation-delay:-.8s;}
+	#box div:nth-of-type(4){ animation-delay:-.7s;}
+	#box div:nth-of-type(5){ animation-delay:-.6s;} */
+
+	#box{ width:190px; margin:100px auto; display: flex; justify-content:space-between;}
+	#box div{ width:30px; height:30px; background:rgba(0,255,0,0.5); border-radius: 50%; animation:1s move infinite;}
+
+	@keyframes move{
+		0%{ transform:scale(1); }
+		50%{ transform:scale(2);}
+		100%{ transform:scale(1);}
+	}
+
+	#box div:nth-of-type(1){ animation-delay:-1s;}
+	#box div:nth-of-type(2){ animation-delay:-.9s;}
+	#box div:nth-of-type(3){ animation-delay:-.8s;}
+	#box div:nth-of-type(4){ animation-delay:-.7s;}
+	#box div:nth-of-type(5){ animation-delay:-.6s;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>

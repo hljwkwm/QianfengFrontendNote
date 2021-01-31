@@ -923,9 +923,45 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 
 代码文件位置：[src/11_animation扩展.html](./src/11_animation扩展.html)
 
+### 5、animate.css动画库
 
+一款强大的预设css3动画库。官网地址：https://daneden.github.io/animate.css/
 
+**基本使用：**
 
+- 先下载库，然后引入到文件中，然后在元素上添加类即可
+- animated : 基类，基础的样式，每个动画效果都需要加
+- infinite : 动画的无限次数
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./animate.css">
+    <style>
+        /* 自己实现一个tada效果 */
+        .move { margin:100px; animation:moveTada infinite 1s;}
+        @keyframes moveTada{
+            0%{ transform: scale(1) rotate(0);}
+            10%,30%,50%{ transform: scale(1.3) rotate(5deg);}
+            20%,40%,60%{ transform: scale(1.3) rotate(-5deg);}
+            70%,90%{ transform: scale(1.1) rotate(3deg);}
+            80%,100%{ transform: scale(1.1) rotate(-3deg);}
+        }
+    </style>
+</head>
+<body>
+    <!-- 使用animation库 -->
+    <img src="./img/list_photo.png" alt="" class="animated rollIn infinite">
+    <!-- 自己实现的 -->
+    <img class="move" src="./img/list_photo.png" alt="">
+</body>
+</html>
+```
 
 
 

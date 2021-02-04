@@ -963,6 +963,114 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 </html>
 ```
 
+代码文件位置：[src/12_animate.html](./src/12_animate.html)
+
+### 6、3D属性
+
+**transform3D相关属性**：
+
+| transform样式 | 说明                             |
+| ------------- | -------------------------------- |
+| rotateX()     | 正值向上翻转，第一象限的部分往里 |
+| rotateY()     | 正值向右翻转，第一象限的部分往里 |
+| translateZ()  | 正值向前，负值向后               |
+| scaleZ()      | 立体元素的厚度                   |
+
+**3D相关样式**：
+
+| 样式                | 说明                                                         |
+| ------------------- | ------------------------------------------------------------ |
+| perspective         | 离屏幕多远的距离去观察元素，值越大离物体越远，幅度越小。     |
+| perspective-origin  | 景深-基点位置，观察元素的角度。                              |
+| transform-origin    | transform变化的基点，X和Y 可以用center，但是Z只能写数值，比如：<br />`transform-origin: center center -50px;` |
+| transform-style     | 3D空间<br />flat（默认值2d）<br />preserve-3d（3d，产生一个三维空间） |
+| backface-visibility | 背面隐藏<br />hidden：隐藏<br />visible：显示，默认值        |
+
+如果想让元素运动时有3D效果，需要加入景深相关的样式，比如perspective。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{ overflow: hidden;}
+    .box1{ width:300px; height:300px; border:1px black solid; margin: 30px auto; perspective: 100px;}
+    .box2{ width: 100px; height:100px; background:red; margin:100px; transition:1s; 
+       /*  transform:rotateX(0); */
+       /* transform: rotateY(0); */
+       transform: translateZ(0);
+    }
+    .box1:hover .box2{
+       /*  transform:rotateX(180deg); */
+       /* transform: rotateY(180deg); */
+       transform: translateZ(-50px);
+    }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2">aaaa</div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/13_3d语法.html](./src/13_3d语法.html)
+
+**制作一个立方体**：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    .box{ width:300px; height:300px; border:1px black solid; margin:30px auto; perspective: 200px;}
+    .box ul{ width:100px; height:100px; margin:100px; position: relative; transform-style:preserve-3d; transition:2s; transform-origin: center center -50px;}
+    .box ul li{ width:100px; height:100px; position: absolute; line-height: 100px; text-align: center; color:white;font-size: 26px;}
+
+    .box ul li:nth-child(1){ background:red; left: 0; top: 0;}
+    .box ul li:nth-child(2){ background:blue; left: 100px; top: 0; transform-origin: left; transform: rotateY(90deg);}
+    .box ul li:nth-child(3){ background:yellow; left: -100px; top: 0; transform-origin: right; transform: rotateY(-90deg);}
+    .box ul li:nth-child(4){ background:green; left: 0; top: -100px; transform-origin: bottom; transform:rotateX(90deg);}
+    .box ul li:nth-child(5){ background:pink; left: 0; top: 100px; transform-origin: top; transform:rotateX(-90deg);}
+    .box ul li:nth-child(6){ background:gray; left: 0; top: 0;
+    /* 通过translateZ和rotateY组合，可以让文字正过来 */
+    transform:translateZ(-100px) rotateY(180deg);}
+
+    .box:hover ul{ transform: rotateY(360deg);}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/14_立方体.html](./src/14_立方体.html)
+
+
+
+
+
 
 
 

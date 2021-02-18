@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    img{ display: block;}
+    .parent{ width:640px; height:320px; margin: 30px auto; position: relative; perspective: 600px;}
+    .parent div{ width:100%; height:100%; position: absolute; left: 0; top: 0; backface-visibility: hidden; transition: .5s;}
+
+    .parent div:first-child{ transform: rotateY(0); }
+    .parent div:last-child{ transform: rotateY(-180deg);}
+
+    .parent:hover div:first-child{ transform: rotateY(180deg); }
+    .parent:hover div:last-child{ transform: rotateY(0);}
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div>
+            <img src="./img2/img1.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img2/img2.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

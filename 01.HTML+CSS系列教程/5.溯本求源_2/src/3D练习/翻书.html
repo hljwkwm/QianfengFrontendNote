@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{ perspective:600px; perspective-origin:bottom;}
+	#box{ width:300px; height:150px; border:1px black solid; margin:100px auto; position: relative; transform-style:preserve-3d; transform:rotateX(30deg);}
+	#box div{ width:150px; height:150px; position: absolute; left: 150px; line-height: 100px; text-align: center; transform-origin:left;}
+	#box div:nth-of-type(1){ background:blue; color:white; z-index:4; animation:3s move1 forwards;}
+	#box div:nth-of-type(2){ background:white; color:blue; border:1px blue solid; z-index:3;animation:3s move2 3s forwards;}
+	#box div:nth-of-type(3){ background:white; color:blue; border:1px blue solid; z-index:2;animation:3s move3 6s forwards;}
+	#box div:nth-of-type(4){ background:white; color:blue; border:1px blue solid; z-index:1;animation:3s move4 9s forwards;}
+
+
+	@keyframes move1{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:1;}
+	}
+	@keyframes move2{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:2;}
+	}
+	@keyframes move3{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:3;}
+	}
+	@keyframes move4{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:4;}
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div>封面</div>
+		<div>第一页</div>
+		<div>第二页</div>
+		<div>第三页</div>
+	</div>
+</body>
+</html>

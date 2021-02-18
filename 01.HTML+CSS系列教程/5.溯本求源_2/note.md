@@ -976,6 +976,14 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 | translateZ()  | 正值向前，负值向后               |
 | scaleZ()      | 立体元素的厚度                   |
 
+**3D的写法：**
+
+| 写法          | 说明                                                         |
+| ------------- | ------------------------------------------------------------ |
+| scale3d()     | 里面是三个值，分别为x、y、z                                  |
+| translate3d() | 里面是三个值，分别为x、y、z                                  |
+| rotate3d()    | 里面是四个值：<br />0\|1(x轴是否添加旋转角度)<br />0\|1(y轴是否添加旋转角度)<br />0\|1(z轴是否添加旋转角度)<br />旋转的角度 |
+
 **3D相关样式**：
 
 | 样式                | 说明                                                         |
@@ -983,10 +991,10 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 | perspective         | 离屏幕多远的距离去观察元素，值越大离物体越远，幅度越小。     |
 | perspective-origin  | 景深-基点位置，观察元素的角度。                              |
 | transform-origin    | transform变化的基点，X和Y 可以用center，但是Z只能写数值，比如：<br />`transform-origin: center center -50px;` |
-| transform-style     | 3D空间<br />flat（默认值2d）<br />preserve-3d（3d，产生一个三维空间） |
+| transform-style     | 3D空间<br />flat（默认值2d）<br />preserve-3d（3d，产生一个三维空间），如果想制作立体图形，需要使用这个参数。 |
 | backface-visibility | 背面隐藏<br />hidden：隐藏<br />visible：显示，默认值        |
 
-如果想让元素运动时有3D效果，需要加入景深相关的样式，比如perspective。
+如果想让元素运动时有3D效果，需要加入景深相关的样式，比如perspective。一般来说，如果是做平面的3D运动，使用精深就可以了，但是如果做立体图形，就需要用到`transform-style`。一般精深加在外层元素上，3D空间加到立体图形上。
 
 ```html
 <!DOCTYPE html>
@@ -1066,6 +1074,55 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 ```
 
 代码文件位置：[src/14_立方体.html](./src/14_立方体.html)
+
+3D属性的扩展：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    .box{ width:300px; height:300px; border:1px black solid; margin:30px auto; perspective: 200px; perspective-origin: top right;}
+    .box ul{ width:100px; height:100px; margin:100px; position: relative; transform-style:preserve-3d; transition:2s; transform-origin: center center -50px; 
+        /* transform: scaleZ(.5); */
+        /* transform: scale3d(2,.5,2); */
+       /*  transform: translate3d(100px,100px,100px); */
+       transform: rotate3d(1,1,1,30deg);
+    }
+    .box ul li{ width:100px; height:100px; position: absolute; line-height: 100px; text-align: center; color:white;font-size: 26px; opacity: 0.5; backface-visibility: hidden;}
+
+    .box ul li:nth-child(1){ background:red; left: 0; top: 0;}
+    .box ul li:nth-child(2){ background:blue; left: 100px; top: 0; transform-origin: left; transform: rotateY(90deg);}
+    .box ul li:nth-child(3){ background:yellow; left: -100px; top: 0; transform-origin: right; transform: rotateY(-90deg);}
+    .box ul li:nth-child(4){ background:green; left: 0; top: -100px; transform-origin: bottom; transform:rotateX(90deg);}
+    .box ul li:nth-child(5){ background:pink; left: 0; top: 100px; transform-origin: top; transform:rotateX(-90deg);}
+    .box ul li:nth-child(6){ background:gray; left: 0; top: 0; transform:translateZ(-100px) rotateY(180deg);}
+
+    .box:hover ul{ transform: rotate3d(1,1,1,300deg);}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/15_立方体扩展.html](./src/15_立方体扩展.html)
 
 
 

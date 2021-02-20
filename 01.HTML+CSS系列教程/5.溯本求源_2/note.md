@@ -1429,6 +1429,83 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 
 代码文件位置：[src/渐变练习/一道光.html](./src/渐变练习/一道光.html)
 
+### 9、字体图标
+
+font-face是CSS3中的一个模块，他主要是把自己定义的Web字体嵌入到你的网页中。它有以下好处：
+
+可以非常方便的改变大小和颜色，通过font-size和color就可以修改；放大后不会失真；减少请求次数和提高加载速度；简化网页布局；减少设计师和前端工程师的工作量；可使用计算机没有提供的字体。
+
+使用方法：通过`@font-face`语法来使用，如下所示：
+
+```css
+<style>
+    @font-face{
+        font-family:hello;
+        src:url(https://at.alicdn.com/t/font_1401963178_8135476.eot);
+        src:url(https://at.alicdn.com/t/font_1401963178_8135476.eot?#iefix) format('embedded-opentype'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.woff) format('woff'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.ttf) format('truetype'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.svg#iconfont) format('svg')
+    }
+
+    div{
+        font-family: hello;
+    }
+    span{
+        font-family: hello;
+        font-size:30px;
+        color:red;
+    }
+    .gouwuche:after{ content:"󰅈";}
+    </style>
+<body>
+    <div>󰅈</div>
+    <span>㑈</span>
+    <div class="gouwuche"></div>
+</body>
+```
+
+`@font-face`中的`font-family`是为该字体起的名字，起到一个映射作用，src是引入字体文件，字体文件包括eot、woff、ttf、svg等，主要是做平台兼容。在使用时，只要输入图标对应的文字，并且给它设置好字体，就可以使用了。字体的名称就是`@font-face`中的`font-family`的值。每次都输入字符会很麻烦，可以通过类加after伪类的方法来实现。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    @font-face{
+        font-family:hello;
+        src:url(https://at.alicdn.com/t/font_1401963178_8135476.eot);
+        src:url(https://at.alicdn.com/t/font_1401963178_8135476.eot?#iefix) format('embedded-opentype'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.woff) format('woff'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.ttf) format('truetype'),
+        url(https://at.alicdn.com/t/font_1401963178_8135476.svg#iconfont) format('svg')
+    }
+
+    div{
+        font-family: hello;
+    }
+    span{
+        font-family: hello;
+        font-size:30px;
+        color:red;
+    }
+    .gouwuche:after{ content:"󰅈";}
+    </style>
+</head>
+<body>
+    <div>󰅈</div>
+    <span>㑈</span>
+    <div class="gouwuche"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/21_字体图标.html](./src/21_字体图标.html)
+
 
 
 

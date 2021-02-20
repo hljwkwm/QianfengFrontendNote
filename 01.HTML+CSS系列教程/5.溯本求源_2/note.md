@@ -1323,9 +1323,111 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 
 代码文件位置：[src/18_CSS3背景.html](./src/18_CSS3背景.html)
 
+### 8、渐变
 
+渐变是一个函数，作为颜色来使用的。
 
+**线性渐变：**
 
+线性渐变的格式：`linear-gradient(point||angle, color1 percentage1, color2, percentage2, ...)`。
+
+- point||angle可以省略，省略后，颜色的变化方向是从上到下。也可以使用to right，to tight bottom等值，表示的是从做到右，从左上到右下等。还可以使用角度，但是使用角度的时候，需要加上单位deg，比如0deg。0deg时，表示的是从下到上，正值会按照顺时针旋转，负值按逆时针旋转。
+- color1为颜色值，可以用rgba、#或者是单词等值。
+- percentage表示的是这个颜色的位置，单位是%，需要注意的是需要加上单位，而且值可以比0%小，也可以比100%大。
+
+**径向渐变：**
+
+径向渐变的格式：`radial-gradient(shape size at position, start-color percentage1, ..., last-color percentageN)`
+
+- shape可以省略，表示的是圆的类型，ellipse表示为椭圆形的径向渐变，该值为默认值，circle表示的是圆形的径向渐变。
+- size表示渐变的大小。farthest-corner（默认值）：指定径向渐变的半径长度为从圆心到离圆心最远的角；closest-side：指定径向渐变的半径长度为从圆心到离圆心最近的边；closest-corner：指定径向渐变的半径长度为从圆心到离圆心最近的角；farthest-side：指定径向渐变的半径长度为从圆心到离圆心最远的边。
+- position表示渐变的中心位置，可以设置单词，比如center，top等，也可以使用数值，比如50% 50%。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* .box{ width:300px; height:300px; border:1px black solid; background-image:linear-gradient(red , blue , yellow , green)} */
+    /* .box{ width:300px; height:300px; border:1px black solid; background-image:linear-gradient(to right bottom ,red , blue)} */
+
+    /* .box{ width:300px; height:300px; border:1px black solid; background-image:linear-gradient( 45deg ,red , blue)} */
+
+    /* .box{ width:300px; height:300px; border:1px black solid; 
+        background-image:linear-gradient(red 25% , blue 75%)
+    } */
+
+    /* .box{ width:300px; height:300px; border:1px black solid; 
+        background-image:linear-gradient(red 50% , blue 50%)
+    } */
+
+    .box{ width:300px; height:300px; border:1px black solid; 
+        background-image:radial-gradient(red 25%,blue 50%,yellow 75%);
+    }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/19_渐变.html](./src/19_渐变.html)
+
+**渐变练习：进度条**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .progress{ width:300px; height:30px; border:1px black solid; margin:100px; background-image:linear-gradient( to right top, #999 25%, #080 25% , #080 50%, #999 50%, #999 75%,  #080 75% ); background-size:30px; animation: move infinite 5s linear;}
+    @keyframes move{
+        0%{ background-position: 0 0;}
+        100%{ background-position: 300px 0;}
+    }
+    </style>
+</head>
+<body>
+    <div class="progress"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/20_渐变的进度条.html](./src/20_渐变的进度条.html)
+
+**渐变练习：一道光**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#box{ width:640px; height:320px; position: relative; overflow: hidden;}
+	#box div{ width:30px; height:200%; position: absolute; left: 100px; top: -50px; background-image:linear-gradient(to right,rgba(255,255,255,0),rgba(255,255,255,.8),rgba(255,255,255,0)); transform: translateX(-300px) rotate(30deg); transition: 1s;}
+	#box:hover div{transform:translateX(600px) rotate(30deg);}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="img1.jpg" height="320" width="640" alt="">
+		<div></div>
+	</div>
+</body>
+</html>
+```
+
+代码文件位置：[src/渐变练习/一道光.html](./src/渐变练习/一道光.html)
 
 
 

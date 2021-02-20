@@ -1271,7 +1271,57 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 
 代码文件位置：[src/3D练习/翻书.html](./src/3D练习/翻书.html)
 
+### 7、背景样式扩展
 
+**background-size：背景图的尺寸**
+
+数值：数值可以设置x和y指定的大小；cover：覆盖；contain：包含。
+
+![image-20210220144357414](note_image/image-20210220144357414.png)
+
+**background-origin：背景图的填充位置，就是背景图的起点位置**
+
+- padding-box：填充位置是从padding区域开始，此值为填充的默认值。
+- border-box：填充位置从边框区域开始。
+- content-box：填充区域从内容区域开始。
+
+注意：这个设置的位置是背景图的起点位置，如果不设置clip，默认情况下，是会铺满边框和padding区域的。
+
+**background-clip：背景图的裁切方式**
+
+- padding-box：从padding区域裁切。
+- border-box：从边框区域裁切，此值是默认值。
+- content-box：从内容区域裁切。
+
+注：复合样式的时候，第一个是位置，第二个是裁切。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:300px; height:300px; border:1px solid black; background: url('./img/list_photo.png') no-repeat;
+        /* background-size:50px 200px; */
+        /* background-size:cover; */
+        background-size:contain;
+    }
+   /*  .box2{ width:300px; height:300px; border:40px solid rgba(0,0,0,.5); padding:30px; background: url('./img/list_photo.png'); background-origin: content-box; background-clip:padding-box;} */
+
+   .box2{ width:300px; height:300px; border:40px solid rgba(0,0,0,.5); padding:30px; background: url('./img/list_photo.png') content-box padding-box;}
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/18_CSS3背景.html](./src/18_CSS3背景.html)
 
 
 

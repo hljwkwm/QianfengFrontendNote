@@ -1124,6 +1124,151 @@ animation也是一个复合样式，接下来介绍一下它的每个样式：
 
 代码文件位置：[src/15_立方体扩展.html](./src/15_立方体扩展.html)
 
+**3D旋转木马效果：**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+    .parent{ width:600px; height:300px; border:1px black solid; margin: 30px auto; perspective: 700px;}
+    .parent ul{ width:128px; height:94px; margin: 100px auto; position: relative; transform-style: preserve-3d; transition: 2s;}
+    .parent ul li{  width:100%; height:100%; position: absolute; left: 0; top: 0;}
+    .parent ul li:nth-child(1){ transform: rotateY(0) translateZ(200px);}
+    .parent ul li:nth-child(2){ transform: rotateY(60deg) translateZ(200px);}
+    .parent ul li:nth-child(3){ transform: rotateY(120deg) translateZ(200px);}
+    .parent ul li:nth-child(4){ transform: rotateY(180deg) translateZ(200px);}
+    .parent ul li:nth-child(5){ transform: rotateY(240deg) translateZ(200px);}
+    .parent ul li:nth-child(6){ transform: rotateY(300deg) translateZ(200px);}
+
+    .parent:hover ul{ transform:rotateY(360deg);}
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <ul>
+            <li>
+                <img src="./img2/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="./img2/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="./img2/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="./img2/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="./img2/5.jpg" alt="">
+            </li>
+            <li>
+                <img src="./img2/6.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/16_3D选择木马效果.html](./src/16_3D选择木马效果.html)
+
+**图片翻转效果：**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    img{ display: block;}
+    .parent{ width:640px; height:320px; margin: 30px auto; position: relative; perspective: 600px;}
+    .parent div{ width:100%; height:100%; position: absolute; left: 0; top: 0; backface-visibility: hidden; transition: .5s;}
+
+    .parent div:first-child{ transform: rotateY(0); }
+    .parent div:last-child{ transform: rotateY(-180deg);}
+
+    .parent:hover div:first-child{ transform: rotateY(180deg); }
+    .parent:hover div:last-child{ transform: rotateY(0);}
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div>
+            <img src="./img2/img1.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img2/img2.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/17_3D图片翻转效果.html](./src/17_3D图片翻转效果.html)
+
+**翻书效果：**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{ perspective:600px; perspective-origin:bottom;}
+	#box{ width:300px; height:150px; border:1px black solid; margin:100px auto; position: relative; transform-style:preserve-3d; transform:rotateX(30deg);}
+	#box div{ width:150px; height:150px; position: absolute; left: 150px; line-height: 100px; text-align: center; transform-origin:left;}
+	#box div:nth-of-type(1){ background:blue; color:white; z-index:4; animation:3s move1 forwards;}
+	#box div:nth-of-type(2){ background:white; color:blue; border:1px blue solid; z-index:3;animation:3s move2 3s forwards;}
+	#box div:nth-of-type(3){ background:white; color:blue; border:1px blue solid; z-index:2;animation:3s move3 6s forwards;}
+	#box div:nth-of-type(4){ background:white; color:blue; border:1px blue solid; z-index:1;animation:3s move4 9s forwards;}
+
+
+	@keyframes move1{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:1;}
+	}
+	@keyframes move2{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:2;}
+	}
+	@keyframes move3{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:3;}
+	}
+	@keyframes move4{
+		0%{ transform:rotateY(0) skewY(-20deg);}
+		99%{ transform:rotateY(-180deg) skewY(0deg);}
+		100%{ transform:rotateY(-180deg) skewY(0deg); z-index:4;}
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div>封面</div>
+		<div>第一页</div>
+		<div>第二页</div>
+		<div>第三页</div>
+	</div>
+</body>
+</html>
+```
+
 
 
 

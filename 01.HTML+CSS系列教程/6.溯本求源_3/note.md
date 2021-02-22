@@ -25,9 +25,33 @@ div
 
 代码文件位置：[src/01_文字阴影.html](./src/01_文字阴影.html)
 
+### 2、盒子阴影
 
+盒子阴影的属性为box-shadow，格式如下：`box-shadow: x y blur spread color inset, x y blur spread color inset, ...;`。
 
+x，y，blur和color同文字阴影；spread表示扩展，可以让阴影在原有的基础上，向外扩展多少；inset为内阴影，默认情况下为外阴影，如果想使用外阴影，不需要写任何值，但是如果写了outset，阴影就会失效。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:200px; height:200px; background:red; margin: 100px;
+        box-shadow: 10px 10px 10px 5px blue , 10px 10px 10px 5px green inset;
+    }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>
+```
+
+代码文件位置：[src/02_盒子阴影.html](./src/02_盒子阴影.html)
 
 
 

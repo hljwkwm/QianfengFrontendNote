@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* IE6 */
+    .box{ width:100px; height:100px; background: red; _background:blue;}
+    /* IE6 7 */
+    .box{ width:100px; height:100px; background: red; +background:blue;}
+    .box{ width:100px; height:100px; background: red; *background:blue;}
+    /* IE6~9 */
+    .box{ width:100px; height:100px; background: red; background:blue\9;}
+    /* IE8~11 */
+    .box{ width:100px; height:100px; background: red; background:blue\0;}
+
+    /* IE6 */
+    *html .box{ width:100px; height:100px; background:red;}
+    /* IE7 */
+    *+html .box{ width:100px; height:100px; background:red;}
+    /* IE9及高级浏览器 */
+    :root .box{ width:100px; height:100px; background:red;}
+
+    .box{ width:100px; height:100px; background:red;}
+    </style>
+</head>
+<body>
+    <!--[if gte IE 7]>
+    <div class="box"></div>
+    <![endif]-->
+</body>
+</html>

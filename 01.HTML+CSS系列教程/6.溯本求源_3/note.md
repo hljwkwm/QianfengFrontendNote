@@ -136,11 +136,198 @@ url为引入的遮罩图片，一般为镂空图片，有像素的地方为显�
 
 代码文件位置：[src/04_mask遮罩.html](./src/04_mask遮罩.html)
 
+### 4、倒影
 
+倒影的属性为box-reflect，格式为：`box-reflect: above|below|left|right distance mask|gradient;`。需要注意的是，该属性也需要加上浏览器前缀。
 
+第一个参数表示为往哪边倒影，第二个表示具体原图有多远，第三个参数为遮罩或者渐变，遮罩直接使用url引入即可，渐变可以使用gradient函数。例如：
 
+```css
+.box{ margin:50px auto; width:300px; -webkit-box-reflect: below 20px;}
+.box{ margin:50px auto; width:300px; -webkit-box-reflect: below 20px url('./img/love.png');}
+.box{ margin:50px auto; width:300px; -webkit-box-reflect: below 20px linear-gradient( rgba(255,255,255,0) 50% , rgba(255,255,255,1) );}
+```
 
+**扩展：**
 
+图像的翻转还可以通过scale来实现，只需要把值改为负数即可，在scale中的`scale(x, y)`通过单独控制x或者y，可以实现只对一个轴的翻转，比较灵活。
+
+代码文件位置：[src/05_倒影.html](./src/05_倒影.html)
+
+### 5、模糊
+
+模糊一般通过filter属性来控制，使用blur函数，格式如下：`filter: blur(像素值);`。
+
+### 6、运算
+
+运算的函数为calc，可以进行四则运算，并且可以进行百分比和像素之间的运算，比如：`width:calc(100% - 100px);`。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    img{ filter:blur(20px);}
+    .parent{ width:800px; height:300px; border:1px solid black;}
+    .box{ height:100px; width:calc(100% - 100px); background:red;}
+    </style>
+</head>
+<body>
+    <img src="./img/girl.jpg" alt="">
+
+    <div class="parent">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/06_模糊.html](./src/06_模糊.html)
+
+### 7、分栏布局
+
+| 属性         | 说明                                                         |
+| ------------ | ------------------------------------------------------------ |
+| column-count | 分栏的个数                                                   |
+| column-width | 分栏的宽度                                                   |
+| column-gap   | 分栏的间距                                                   |
+| column-rule  | 分栏的边线，设置方法类似设置边框                             |
+| column-span  | 合并分栏，比如给外层的div分栏，里面有p和h2，把合并分栏添加到h2上，就不会被分栏。 |
+
+ 注：column-width和column-count不要一起去设置。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:600px; height:400px; border:1px black solid; margin: 30px auto;
+        column-count: 4;
+       /*  column-width: 100px; */
+        column-gap : 40px;
+        column-rule : 1px red dashed;
+    }
+    .box h2{ column-span: all;  text-align: center;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>恶劣天气导致美国新冠疫苗供应受阻</h2>
+        <p>新华社北京2月21日新媒体专电 据塔斯社华盛顿2月20日报道，美国白宫新冠疫情应对团队高级顾问安迪·斯拉维特当地时间19日在例行记者会上称，猛烈的暴风雪导致50个州近600万剂新冠疫苗供应受阻。</p>
+        <p>斯拉维特表示：“目前恶劣的天气导致我们约有600万剂疫苗的运送被推迟。全部50个州均受影响。600万剂差不多是3天积压的疫苗数量。许多州都通过原有储备弥补了送货延迟导致的短缺部分。”</p>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/07_分栏布局.html](./src/07_分栏布局.html)
+
+### 8、伪类与伪元素
+
+在CSS2.1中对伪类和伪元素的区别比较模糊。CSS3中对这两个概念做了相对较清晰地解释，并且在语法上也做了很明显的区分。CSS3中规定伪类由一个冒号开始，然后为伪类的名称；伪元素由两个冒泡开始，然后为伪元素的名称。
+
+伪类本质上是为了弥补常规CSS选择器的不足，以便获取到更多信息。通常表示获取不存在与DOM树中的信息，或获取不能被常规CSS选择器获取的信息。比如hover、focus、empty等。
+
+伪元素本质上是创建了一个有内容的虚拟容器。这个容器不包含任何DOM元素，但是可以包含内容。另外，开发者还可以为伪元素定制样式。比如selection、first-line、first-letter、before、after等。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:300px; height:300px; border:1px black solid;}
+    .box:hover{ background:pink;}
+    .box::selection{ background:red; color:yellow;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        据塔斯社华盛顿2月20日报道，美国白宫新冠疫情应对团队高级顾问安迪·斯拉维特当地时间19日在例行记者会上称，猛烈的暴风雪导致50个州近600万剂新冠疫苗供应受阻。
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/08_伪元素.html](./src/08_伪元素.html)
+
+### 9、CSS Hack
+
+CSS Hack用来解决浏览器的兼容性问题，为不同版本的浏览器定制编写不同的CSS效果，使用每个浏览器单独识别的样式代码，控制浏览器的显示样式。Hack有CSS属性前缀法、选择器前缀法、IE条件注释法。
+
+为了测试IE效果，可以下载IETester，通过该软件可以模拟各种IE环境，下载地址如下：https://www.my-debugbar.com/wiki/IETester/HomePage
+
+为了避免出现错误，可以将网页放在服务器环境下，比如PHP集成环境、wamp、xampp、phpstudy等。
+
+**CSS属性前缀法：**
+
+属性前缀法是在CSS样式属性名前加上一些只有特定浏览器才能识别的hack前缀，以达到预期的页面展现效果。
+
+| **前缀标识** | 兼容浏览器           |
+| ------------ | -------------------- |
+| `_`          | IE6                  |
+| `+、*`       | IE6、IE7             |
+| `\9`         | IE6、IE7、IE8、IE9   |
+| `\0`         | IE8、IE9、IE10、IE11 |
+
+```CSS
+/* IE6 */
+.box{ width:100px; height:100px; background: red; _background:blue;}
+/* IE6 7 */
+.box{ width:100px; height:100px; background: red; +background:blue;}
+.box{ width:100px; height:100px; background: red; *background:blue;}
+/* IE6~9 */
+.box{ width:100px; height:100px; background: red; background:blue\9;}
+/* IE8~11 */
+.box{ width:100px; height:100px; background: red; background:blue\0;}
+```
+
+**选择器前缀法：**
+
+| 前缀标识 | 兼容浏览器          |
+| -------- | ------------------- |
+| `*html`  | IE6                 |
+| `*+html` | IE7                 |
+| `:root`  | IE9以上及现代浏览器 |
+
+```css
+/* IE6 */
+*html .box{ width:100px; height:100px; background:red;}
+/* IE7 */
+*+html .box{ width:100px; height:100px; background:red;}
+/* IE9及高级浏览器 */
+:root .box{ width:100px; height:100px; background:red;}
+```
+
+**IE条件注释法：**
+
+这种方式是IE浏览器专有的Hack方式，微软官方推荐使用的hack方式。这种方式在给html标签添加注释的方式。这种方式只适合IE9以及IE9以下的浏览器，IE10及以上不适用。
+
+| 前缀标识                          | 兼容浏览器                                    |
+| --------------------------------- | --------------------------------------------- |
+| `<!--[if IE]>…<![endif]-->`       | IE6 - IE9                                     |
+| `<!--[if IE 7]>…<![endif]-->`     | IE7                                           |
+| `<!--[if lte IE 7]>…<![endif]-->` | lte表示小于等于，即IE7及以下，gte表示大于等于 |
+| `<!--[if ! IE 7]>…<![endif]-->`   | 非IE7                                         |
+
+```html
+<!--[if gte IE 7]>
+<div class="box"></div>
+<![endif]-->
+```
+
+代码文件位置：[src/09_hack.html](./src/09_hack.html)
 
 
 

@@ -86,13 +86,55 @@ x，y，blur和color同文字阴影；spread表示扩展，可以让阴影在原
 
 代码文件位置：[src/03_小米官网浮动效果.html](./src/03_小米官网浮动效果.html)
 
+### 3、遮罩
 
+遮罩的属性为mask，目前还mask还不是通用属性，需要加上浏览器前缀，格式如下：
 
+`-webkit-mask: url repeat x y / width height, url repeat x y / width height, ...;`
 
+url为引入的遮罩图片，一般为镂空图片，有像素的地方为显示区域，镂空的地方不会显示， repeat是是否平铺，x和y表示起始位置，可以是数字也可以是单词，width和height表示宽高。遮罩的效果如下：
 
+![image-20210222111232268](note_image/image-20210222111232268.png)
 
+注意：如果直接以文件的形式打开，可能无法正常显示图片。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mask {
+            width: 300px;
+            height: 300px;
+            background: url('./img/girl.jpg');
+            -webkit-mask: url('./img/car.png') no-repeat center center / 200px 200px, 
+            url('./img/love.png') no-repeat left center / 100px 100px, 
+            url('./img/love.png') no-repeat right center / 100px 100px;
+            transition: .5s;
+        }
+
+        .mask:hover {
+            -webkit-mask: url('./img/love.png') no-repeat center center / 100px 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask">
+
+    </div>
+</body>
+
+</html>
+
+```
+
+代码文件位置：[src/04_mask遮罩.html](./src/04_mask遮罩.html)
 
 
 

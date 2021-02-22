@@ -53,9 +53,38 @@ x，y，blur和color同文字阴影；spread表示扩展，可以让阴影在原
 
 代码文件位置：[src/02_盒子阴影.html](./src/02_盒子阴影.html)
 
+**盒子阴影练习：**
 
+小米官网划入会浮动并有阴影效果：
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    ul{ list-style: none;}
+    li{ float:left; margin:50px; cursor: pointer; position: relative; top: 0; transition: .5s; border-radius: 3px;}
+    li:hover{ top:-3px; box-shadow: 0px 5px 10px 3px #ccc;}
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+            <img src="./img/mi_1.png" alt="">
+        </li>
+        <li>
+            <img src="./img/mi_2.png" alt="">
+        </li>
+    </ul>
+</body>
+</html>
+```
 
+代码文件位置：[src/03_小米官网浮动效果.html](./src/03_小米官网浮动效果.html)
 
 
 

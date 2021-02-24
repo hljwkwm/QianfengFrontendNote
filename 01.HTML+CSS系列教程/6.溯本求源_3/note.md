@@ -329,6 +329,121 @@ CSS Hack用来解决浏览器的兼容性问题，为不同版本的浏览器定
 
 代码文件位置：[src/09_hack.html](./src/09_hack.html)
 
+### 10、IE低版本常见BUG
+
+透明度
+
+```css
+/* opacity IE8及以下版本不识别 */
+.box{ width:100px; height:100px; background:red; opacity:0.5;}
+/* 解决方法：filter:alpha(opacity=50)，这里的取值是1-100 */
+.box{ width:100px; height:100px; background:red; opacity:0.5; filter:alpha(opacity=50);}
+```
+
+双边距BUG
+
+```css
+/* IE6下的双边距BUG，使用margin-left和float，IE6下会出现左侧边距是设定的两倍 */
+.box{ float:left; width:100px; height:100px; background:red; margin-left: 50px; }
+/* 解决方法 */
+.box{ float:left; width:100px; height:100px; background:red; margin-left: 50px; _display:inline;}
+```
+
+最小高度问题
+
+```css
+/* IE6下的最小高度BUG , IE6下的最小高为19px，如果设置的值小于19，那么会有溢出 */
+.box{ width:300px; height:3px; background:red;}
+/* 解决方法 */
+.box{ width:300px; height:3px; background:red; overflow: hidden;}
+```
+
+img边框问题
+
+```html
+<style>
+    /* img边框问题，IE浏览器下，给img添加a标签，会出现边框，IE6是红色，IE7-IE9是蓝色，解决方法如下： */
+    img{ border:none;}
+</style>
+<a href="#">
+    <img src="https://img.alicdn.com/tfscom/i2/256691439/TB2wjP9bXgkyKJjSspfXXcj1XXa_!!256691439.jpg_180x180xzq90.jpg" alt="">
+</a>
+```
+
+代码文件位置：[src/10_IE常见BUG.html](./src/10_IE常见BUG.html)
+
+### 11、渐进增强与优雅降级
+
+渐进增强：针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+
+优雅降级：一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。
+
+### 12、等高布局
+
+要实现的效果：有两列内容，如果左侧的内容比较长，那么右侧的长度也和左侧保持一致，如果右侧的内容比较长，那么左侧的长度和右侧保持一致。
+
+实现原理：现在有一个parent的div和一个child的div，默认情况下，parent的div的高度是由child的div撑开的。此时如果给child设置一个margin-bottom的负值，那么parent的高度就是用child的div的高度减去margin-bottom，如果在加上padding-bottom，那么parent的高度就是div减去margin-bottom再加上padding-bottom。所以只要设置一个足够大的margin-bottom和padding-bottom，并把child的div设置为0，然后再用实际的内容撑开，再设置parent的div隐藏溢出内容即可。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    /* #parent{ border:10px black solid; overflow: hidden;}
+    #box1{ float:left; width:100px; height:200px; background:red;}
+    #box2{ float:right; width:100px; height:300px; background:blue;} */
+
+    *{ margin:0; padding:0;}
+    #parent{ border:10px black solid; overflow: hidden;}
+    #box1{ float:left; width:100px; background:red; margin-bottom: -2000px; padding-bottom: 2000px;}
+    #box2{ float:right; width:100px; background:blue; margin-bottom: -2000px; padding-bottom: 2000px;}
+    </style>
+</head>
+<body>
+    <!-- <div id="parent">
+        <div id="box1"></div>
+        <div id="box2"></div>
+    </div> -->
+    
+    <div id="parent">
+        <div id="box1">
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+            <p>111</p>
+        </div>
+        <div id="box2">
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+            <p>222222222</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210224164151446](note_image/image-20210224164151446.png)
+
+代码文件位置：[src/11_等高布局.html](./src/11_等高布局.html)
+
 
 
 

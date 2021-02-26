@@ -444,21 +444,83 @@ img边框问题
 
 代码文件位置：[src/11_等高布局.html](./src/11_等高布局.html)
 
+### 13、双飞翼布局
 
+三栏布局，就是左右固定，中间自适应的一种布局。这种布局可以用很多种方法实现，比如BFC方式，定位的方式，双飞翼布局，圣杯布局，flex弹性布局等。
 
+双飞翼布局的实现原理是利用浮动加margin负值的方式。首先需要写一个父容器，在容器里面添加三个div，先写center，然后是left，最后是right，这个三个div都添加float为left的浮动，并给center设置宽度为100%。此时对left设置负值的margin-left，当值比较大时，就会和center同一行，如果设置的值为-100%，就会跑到最左面，right只需要再给一个和它宽度相同的负值即可。然后center里，可以再添加一个容器，设置一下该容器的margin让其居中。
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    .header{ height:100px; background:red;}
+    .container{}
+    .container .center{ height:200px; float:left; width:100%;}
+    .container .center p{ background:yellow; height:100%; margin: 0 150px 0 100px;}
+    .container .left{ float:left; width:100px; height:200px; background:blue; margin-left: -100%;}
+    .container .right{ float:left; width:150px; height:200px; background:green; margin-left:-150px;}
 
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="container">
+        <div class="center">
+            <p>内容部分</p>
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
+```
 
+![image-20210226105023499](note_image/image-20210226105023499.png)
 
+代码文件位置：[src/12_双飞翼布局.html](./src/12_双飞翼布局.html)
 
+### 14、圣杯布局
 
+圣杯布局的原理是在双飞翼布局的基础上实现的。里面的center不需要再加额外的容器了，而是把宽度和颜色等直接加在父容器container上。但是需要注意的是，现在center、left和right是脱离文档流的，因此外面的container是无法撑开的，需要清浮动，可以用after来清浮动。这样基本就搞定了，接下来需要让left和right跑到最左面和最右面，可以在left和right上加上相对定位，然后给left设置一个left值，这个值为left的宽度，然后给right设置一个right值，这个值为right的宽度。具体实现如下：
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    .clear:after{ content:""; display: block; clear:both;}
+    .header{ height:100px; background:red;}
+    .container{ background:yellow; margin: 0 150px 0 100px;}
+    .container .center{ height:200px; float:left; width:100%;}
+    .container .left{ float:left; width:100px; height:200px; background:blue; margin-left: -100%; position: relative; left:-100px;}
+    .container .right{ float:left; width:150px; height:200px; background:green; margin-left:-150px; position: relative; right:-150px;}
 
+    </style>
+</head>
+<body>
+    <div class="header"></div>
+    <div class="container clear">
+        <div class="center">
+            å†…å®¹éƒ¨åˆ†
+        </div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
+```
 
-
-
-
-
-
-
+代码文件位置：[src/13_圣杯布局.html](./src/13_圣杯布局.html)
 

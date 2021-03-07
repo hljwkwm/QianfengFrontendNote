@@ -349,6 +349,201 @@ align-content可以看成和justify-content是相似且对立的属性，如果�
 
 ![image-20210228145855884](note_image/image-20210228145855884.png)
 
+#### flex-grow
+
+属性中的grow是扩展的意思，扩展的就是flex子项所占据的宽度，扩展所侵占的空间就是除去元素外的剩余的空白间隙。默认值为0。这个属性只有在容器中有空隙才能生效。如果只给一个元素设置该值，如果设置为1，那么就会把整个空隙填满，如果设置0.5，那么会填充空隙的一半。如果有多个容器设置，如果总和小于1，那么它们一共填的空隙就是百分之该值乘以100，如果大于1，那么他们就会按照比例填充满。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+        }
+
+        #box div:nth-child(2) {
+            background: yellow;
+            color: black;
+            flex-grow: 1;
+        }
+
+        #box div:nth-child(3) {
+            background: blue;
+            color: black;
+            flex-grow: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+</body>
+
+</html>
+```
+
+![image-20210307201654080](note_image/image-20210307201654080.png)
+
+#### flex-shrink
+
+属性中的shrink是“收缩”的意思，flex-shrink主要处理当flex容器空间不足时候，单个元素的收缩比例。默认值是1。如果设置为0，那么该元素就会保持原来的宽度或者高度不变，如果设置为大于1的数，那么它会收缩的更厉害，具体怎么换算的，我也不知道~
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+        }
+
+        #box div:nth-child(2) {
+            background: yellow;
+            color: black;
+            flex-shrink: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+
+</html>
+```
+
+![image-20210307202737636](note_image/image-20210307202737636.png)
+
+#### flex-basis
+
+flex-basis定义了在分配剩余空间之前元素的默认大小。当有剩余空间时，可以通过它来充当宽度或者高度的设置，如果flex-basis和宽度或者高度同时存在，那么flex-basis优先于宽度或者高度。但是它的值也不是无限大，当超过一定值充满了整个容器，那么会就开始自适应。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 20px auto;
+            display: flex;
+        }
+
+        #box div {
+            width: 50px;
+            height: 50px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+        }
+
+        #box div:nth-child(2) {
+            background: yellow;
+            color: black;
+            flex-basis: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+      
+    </div>
+</body>
+
+</html>
+```
+
+![image-20210307203534716](note_image/image-20210307203534716.png)
+
+#### flex
+
+flex属性是flex-grow，flex-shrink和flex-basis的缩写。默认值：`flex：0 1 auto;`。
+
+flex也可以用一个值来表示：
+
+`flex: 1;`等价于`flex-grow: 1; flex-shrink: 1; flex-basis: 0%;`
+
+`flex: 0;`等价于`flex-grow: 0; flex-shrink: 0; flex-basis: 0;`
+
+
+
 
 
 

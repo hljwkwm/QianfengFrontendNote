@@ -729,6 +729,193 @@ align-self指控制单独某一个flex子项的垂直对齐方式。align-self�
 
 代码文件位置：[src/4_自适应.html](./src/4_自适应.html)
 
+### Grid布局
+
+Grid布局是一个二维的布局方法，纵横两个方向总是同时存在。
+
+### grid布局：作用在gird容器上的
+
+| 作用在grid容器上      |
+| --------------------- |
+| grid-template-columns |
+| grid-template-rows    |
+| grid-template-areas   |
+| grid-template         |
+| grid-column-gap       |
+| grid-row-gap          |
+| grid-gap              |
+| justify-items         |
+| align-items           |
+| place-items           |
+| justify-content       |
+| align-content         |
+| place-content         |
+
+#### grid-template-columns和grid-template-rows
+
+对网格进行横纵划分，形成二维布局。单位可以是像素，百分比，自适应以及fr单位（网格剩余空间比例单位），fr类似于flex布局中的flex-grow，也是会计算剩余空间，如果不足1，就会有空余，大于等于一会按照比例填充。
+
+通过这两个属性，可以设置网格一共有几行几列，每行每列的宽度和高度各是多少。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{ width:500px; height:500px; border:1px gray dotted; display: grid;
+        grid-template-rows: 100px auto 25%;
+        grid-template-columns: 100px 100px 200px 100px;
+       
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+    </div>
+</body>
+</html>
+```
+
+像上面这个，一共设置了三行四列，这三行高度分别为100px，自适应以及25%，这四列的宽度分别为100px，100px，200px和100px，如图：
+
+![image-20210308111949147](note_image/image-20210308111949147.png)
+
+假设现在有几个元素，三行三列，让他们每行和每列都相等，那么可以写成如下的代码：
+
+```css
+grid-template-rows: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr 1fr;
+```
+
+有时候，我们网格的划分是很规律的，如果需要添加多个横纵网格时，可以利用repeat()语法进行简化操作。上面的代码就可以简化成如下代码，其中的3就是表示有三行或者三列，第二个参数就是设置它们的宽或者高：
+
+```css
+grid-template-rows: repeat(3 , 1fr);
+grid-template-columns: repeat(3 , 1fr);
+```
+
+#### grid-template-areas和grid-template
+
+area是区域的意思，grid-template-areas就是给我们的网格划分区域的。此时grid子项只要使用grid-area属性指定其隶属于那个区。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{   
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 1fr);
+            grid-template-columns: repeat(3 , 1fr);
+            grid-template-areas: 
+            "a1 a1 a1"
+            "a2 a2 a3"
+            "a2 a2 a3";
+        }
+        .box div{ background-color: lightgoldenrodyellow; border:1px black solid;}
+        .box div:nth-child(1){ grid-area: a1;}
+        .box div:nth-child(2){ grid-area: a2;}
+        .box div:nth-child(3){ grid-area: a3;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308132641179](note_image/image-20210308132641179.png)
+
+但是需要注意的是，区域需要设置为规则的矩形，特殊形状是会出问题的。
+
+grid-template是grid-template-rows，grid-template-columns和grid-template-areas属性的缩写。上面分区域的代码就可以简化为以下代码：
+
+```css
+grid-template:
+"a1 a1 a1" 1fr
+"a2 a2 a3" 1fr
+"a2 a2 a3" 1fr
+/1fr 1fr 1fr;
+```
+
+前三行设置的是每行的区域和宽度，最后一行用一个斜线，然后是设置列。
+
+#### grid-column-gap，grid-row-gap和grid-gap
+
+grid-column-gap和grid-row-gap属性用来定义网格中网格间隙的尺寸。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{   
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            margin: 100px auto;
+            grid-template-rows: repeat(3 , 1fr);
+            grid-template-columns: repeat(3 , 1fr);
+            grid-template-areas: 
+            "a1 a1 a1"
+            "a2 a2 a3"
+            "a2 a2 a3";
+            grid-column-gap: 10px;
+            grid-row-gap: 20px;
+        }
+        .box div{ background-color: navajowhite; border:1px black solid;}
+        .box div:nth-child(1){ grid-area: a1;}
+        .box div:nth-child(2){ grid-area: a2;}
+        .box div:nth-child(3){ grid-area: a3;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308134537088](note_image/image-20210308134537088.png)
+
+CSS grid-gap属性是grid-column-gap和grid-row-gap属性的缩写。
+
+grid-gap属性是grid-column-gap和grid-row-gap属性的缩写，上面的样式用该属性的写法如下：
+
+```css
+grid-gap:20px 10px;
+```
+
+
+
+
+
 
 
 

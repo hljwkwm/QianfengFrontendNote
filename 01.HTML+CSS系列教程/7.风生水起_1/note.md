@@ -912,6 +912,61 @@ grid-gap属性是grid-column-gap和grid-row-gap属性的缩写，上面的样式
 grid-gap:20px 10px;
 ```
 
+#### justify-items，align-items和place-items
+
+justify-items指定了网格元素的水平呈现方式，是水平拉伸显示，还是左中右对齐。align-items指定了网格元素的垂直呈现方式，是垂直拉伸显示，还是上中下对齐。
+
+| 取值    | 含义                                 |
+| ------- | ------------------------------------ |
+| stretch | 默认值，拉伸。表现为水平或垂直填充。 |
+| start   | 表现为容器左侧或顶部对齐。           |
+| end     | 表现为容器右侧或底部对齐。           |
+| center  | 表现为水平或垂直居中对齐。           |
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box3{
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 100px);
+            grid-template-columns: repeat(3 , 100px);
+            justify-items: end;
+            align-items:end;
+        }
+        .box3 div{ background:red; border:1px black solid;}
+    </style>
+</head>
+<body>
+    <div class="box3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308172231007](note_image/image-20210308172231007.png)
+
+place-items可以让align-items和justify-items属性写在单个声明中。需要注意的是，这个的符合写法，第一个参数是影响纵向的，第二个参数是影响横向的：
+
+```css
+place-items: start end;
+```
+
+![image-20210308172633608](note_image/image-20210308172633608.png)
+
 
 
 

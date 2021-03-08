@@ -967,7 +967,421 @@ place-items: start end;
 
 ![image-20210308172633608](note_image/image-20210308172633608.png)
 
+#### justify-content，align-content和place-content
 
+justify-content指定了网格元素的水平分布方式。align-content指定了网格元素的垂直分布方式。place-content可以让align-content和justify-content属性写在一个CSS声明中，和上面一样，也是纵向在前，横向在后。和items不同的是，content是网格和网格之间的关系，而items是网格内的关系。content的取值，和flex的类似。
+
+| 取值          | 含义                                 |
+| ------------- | ------------------------------------ |
+| stretch       | 默认值，拉伸。表现为水平或垂直填充。 |
+| start         | 表现为容器左侧或顶部对齐。           |
+| end           | 表现为容器右侧或底部对齐。           |
+| center        | 表现为水平或垂直居中对齐。           |
+| space-between | 表现为两端对齐。                     |
+| space-around  | 享有独立不重叠的空白空间。           |
+| space-evenly  | 平均分配空白空间。                   |
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box3{
+            width:500px; height:500px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 100px);
+            grid-template-columns: repeat(3 , 100px);
+            justify-content: space-around;
+            align-content: space-around;
+        }
+        .box3 div{ background:red; border:1px black solid;}
+    </style>
+</head>
+<body>
+    <div class="box3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308200702087](note_image/image-20210308200702087.png)
+
+### 作用在grid子项上的CSS属性
+
+| 取值              | 含义                                               |
+| ----------------- | -------------------------------------------------- |
+| grid-column-start | 水平方向上占据的起始位置。                         |
+| grid-column-end   | 水平方向上占据的结束位置。（span属性）             |
+| grid-row-start    | 垂直方向上占据的起始位置。                         |
+| grid-row-end      | 垂直方向上占据的结束位置。（span属性）             |
+| grid-column       | grid-column-start + grid-column-end的缩写。        |
+| grid-row          | grid-row-start + grid-row-end的缩写。              |
+| grid-area         | 表示当前网格所占用的区域，名字和位置两种表示方法。 |
+| justify-self      | 单个网格元素的水平对齐方式。                       |
+| align-self        | 单个网格元素的垂直对齐方式。                       |
+| place-self        | align-self和justify-self的缩写。                   |
+
+#### grid-column和grid-row相关
+
+默认状态下，gird的网格都有自己的标识，如下图所示：
+
+![image-20210308202233671](note_image/image-20210308202233671.png)
+
+通过grid-column-start和grid-column-end可以设置该元素的列开始位置和列结束位置，grid-column-end如果加上span，那么就表示该元素占据多少个网格。
+
+通过grid-row-start和grid-row-end可以设置该元素的列开始位置和列结束位置，grid-row-end如果加上span，那么就表示该元素占据多少个网格。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 1fr);
+            grid-template-columns: repeat(3 , 1fr);
+        }
+    .box div{
+        background:red; border:1px black solid;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 4; 
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+    </div
+</body>
+</html>
+```
+
+![image-20210308202619539](note_image/image-20210308202619539.png)
+
+以上写法还可以用以下的代码替代：
+
+```css
+grid-column-start: 2;
+grid-column-end: 3;
+grid-row-start: 2;
+grid-row-end: span 2;
+```
+
+```css
+grid-column: 2 / 3;
+grid-row: 2 / span 2;
+```
+
+#### grid-area
+
+grid-area表示当前网格所占用的区域，名字和位置两种表示方法。名字在前面有演示，就是先通过grid-template-areas设置区域名字，然后在grid-area中引用即可：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{   
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 1fr);
+            grid-template-columns: repeat(3 , 1fr);
+            grid-template-areas: 
+            "a1 a1 a1"
+            "a2 a2 a3"
+            "a2 a2 a3";
+        }
+        .box div{ background-color: lightgoldenrodyellow; border:1px black solid;}
+        .box div:nth-child(1){ grid-area: a1;}
+        .box div:nth-child(2){ grid-area: a2;}
+        .box div:nth-child(3){ grid-area: a3;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+</html>
+```
+
+也可以使用数字来表示，如果使用数字，分别代表的是上、左、下、右：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width:300px; height:300px; border:1px gray dotted; display: grid;
+            grid-template-rows: repeat(3 , 1fr);
+            grid-template-columns: repeat(3 , 1fr);
+        }
+    .box div{
+        background:red; border:1px black solid;
+        grid-area: 3 / 2 / 4 / 4;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+    </div
+</body>
+</html>
+```
+
+![image-20210308204547463](note_image/image-20210308204547463.png)
+
+#### justify-self，align-self和place-self
+
+这三个值与justify-items，align-items和place-items类似，只不过这三个值是针对某一个元素而言的，这里不再赘述。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box2{
+        width:300px; height:300px; border:1px gray dotted; display: grid;
+        grid-template-rows: repeat(3 , 1fr);
+        grid-template-columns: repeat(3 , 1fr);
+    }
+    .box2 div{ background:red; border:1px black solid;}
+    .box2 div:nth-child(2){ place-self:end start ; }
+    </style>
+</head>
+<body>
+    <div class="box2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308213730874](note_image/image-20210308213730874.png)
+
+### grid练习——骰子
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+    }
+    .box div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box div:nth-child(1){ grid-area: 2 / 2 / 3 / 3; }
+
+    .box2{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+    }
+    .box2 div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box2 div:nth-child(2){ grid-area: 3 / 3 / 4 / 4; }
+
+    .box3{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+        grid-template-areas: 
+        "a1 a2 a3"
+        "a4 a5 a6"
+        "a7 a8 a9";
+    }
+    .box3 div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box3 div:nth-child(2){ grid-area: a5; }
+    .box3 div:nth-child(3){ grid-area: a9; }
+
+    .box4{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+        grid-template-areas: 
+        "a1 a2 a3"
+        "a4 a5 a6"
+        "a7 a8 a9";
+    }
+    .box4 div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box4 div:nth-child(2){ grid-area: a3; }
+    .box4 div:nth-child(3){ grid-area: a7; }
+    .box4 div:nth-child(4){ grid-area: a9; }
+
+    .box5{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+        grid-template-areas: 
+        "a1 a2 a3"
+        "a4 a5 a6"
+        "a7 a8 a9";
+    }
+    .box5 div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box5 div:nth-child(2){ grid-area: a3; }
+    .box5 div:nth-child(3){ grid-area: a7; }
+    .box5 div:nth-child(4){ grid-area: a9; }
+    .box5 div:nth-child(5){ grid-area: a5; }
+
+    .box6{ width:100px; height:100px; border:1px black solid; border-radius: 5px;
+        display:grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(3 , 1fr);
+        place-items: center center;
+        grid-template-areas: 
+        "a1 a2 a3"
+        "a4 a5 a6"
+        "a7 a8 a9";
+    }
+    .box6 div{ width:20px; height:20px; background:black; border-radius: 50%;}
+    .box6 div:nth-child(2){ grid-area: a3; }
+    .box6 div:nth-child(3){ grid-area: a7; }
+    .box6 div:nth-child(4){ grid-area: a9; }
+    .box6 div:nth-child(5){ grid-area: a4; }
+    .box6 div:nth-child(6){ grid-area: a6; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+    </div>
+    <div class="box2">
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box3">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box4">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box5">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div class="box6">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308214842243](note_image/image-20210308214842243.png)
+
+代码文件位置：[src/7_骰子grid.html](./src/7_骰子grid.html)
+
+### gird——百度风云榜
+
+示例图：
+
+![image-20210308215638554](note_image/image-20210308215638554.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{ width:280px; height:352px; margin:20px auto; display: grid;
+        grid-template-columns: repeat(3 , 1fr);
+        grid-template-rows: repeat(4 , 1fr);
+        grid-template-areas: 
+        "a1 a2 a2"
+        "a3 a2 a2"
+        "a4 a4 a5"
+        "a6 a7 a7";
+        grid-gap: 6px 6px;
+    }
+    .box div{ background:red;}
+    .box div:nth-child(1){ grid-area: a1;}
+    .box div:nth-child(2){ grid-area: a2;}
+    .box div:nth-child(3){ grid-area: a3;}
+    .box div:nth-child(4){ grid-area: a4;}
+    .box div:nth-child(5){ grid-area: a5;}
+    .box div:nth-child(6){ grid-area: a6;}
+    .box div:nth-child(7){ grid-area: a7;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
+```
+
+![image-20210308215805786](note_image/image-20210308215805786.png)
+
+代码文件位置：[src/8_百度风云榜.html](./src/8_百度风云榜.html)
 
 
 

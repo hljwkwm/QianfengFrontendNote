@@ -542,7 +542,192 @@ flex也可以用一个值来表示：
 
 `flex: 0;`等价于`flex-grow: 0; flex-shrink: 0; flex-basis: 0;`
 
+#### align-self
 
+align-self指控制单独某一个flex子项的垂直对齐方式。align-self类似于align-items，只不过align-self是针对单个元素，align-items是针对每条轴上的所有元素。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box2 {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 20px auto;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        #box2 div {
+            width: 50px;
+            color: white;
+            line-height: 50px;
+            text-align: center;
+            background: red;
+        }
+
+        #box2 div:nth-child(2) {
+            background: yellow;
+            color: black;
+            align-self: stretch;
+        }
+
+        #box2 div:nth-child(1) {
+            align-self: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box2">
+        <div>1</div>
+        <div>测试文字</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</body>
+
+</html>
+```
+
+### flex练习
+
+#### 骰子的制作：
+
+需要注意的是，骰子的制作属于二维层面的布局，用grid更适合，而flex适合做一维布局。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box1{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; justify-content: center; align-items: center;}
+    #box1 div{ width:30%; height:30%; background:black; border-radius: 50%;}
+
+    #box2{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; justify-content: space-between;}
+    #box2 div{ width:30%; height:30%; background:black; border-radius: 50%;}
+    #box2 div:last-child{ align-self: flex-end;}
+
+    #box3{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; justify-content: space-between; align-items: center;}
+    #box3 div{ width:30%; height:30%; background:black; border-radius: 50%;}
+    #box3 div:first-child{ align-self: flex-start;}
+    #box3 div:last-child{ align-self: flex-end;}
+
+    #box4{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; flex-wrap:wrap;}
+    #box4 div{ width:100%; display: flex; justify-content: space-between;}
+    #box4 div:last-child{ align-items: flex-end;}
+    #box4 i{ display: block; width:30%; height:60%; background:black; border-radius: 50%;}
+
+    #box5{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; flex-wrap:wrap;}
+    #box5 div{ width:100%; display: flex; justify-content: center; align-items: center;}
+    #box5 div:first-child{ align-items: flex-start; justify-content: space-between;}
+    #box5 div:last-child{ align-items: flex-end; justify-content: space-between;}
+    #box5 i{ display: block; width:30%; height:90%; background:black; border-radius: 50%;}
+
+    #box6{ width:100px; height:100px; border:1px black solid; border-radius: 5px; display: flex; flex-wrap:wrap;}
+    #box6 div{ width:100%; display: flex; justify-content: space-between;}
+    #box6 div:first-child{ align-items: flex-start; }
+    #box6 div:last-child{ align-items: flex-end;}
+    #box6 i{ display: block; width:30%; height:90%; background:black; border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div></div>
+    </div>
+    <div id="box2">
+        <div></div>
+        <div></div>
+    </div>
+    <div id="box3">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="box4">
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+    <div id="box5">
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+        <div>
+            <i></i>
+        </div>
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+    <div id="box6">
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+        <div>
+            <i></i>
+            <i></i>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/3_骰子.html](./src/3_骰子.html)
+
+#### 自适应：
+
+左右宽度固定，中间自适应。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    #main{ display: flex;}
+    #left{ width:200px; height:200px; background:red;}
+    #center{ flex:1; height:300px; background:yellow;}
+    #right{ width:150px; height:200px; background:blue;}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="left"></div>
+        <div id="center"></div>
+        <div id="right"></div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/4_自适应.html](./src/4_自适应.html)
 
 
 

@@ -1383,7 +1383,40 @@ grid-area表示当前网格所占用的区域，名字和位置两种表示方�
 
 代码文件位置：[src/8_百度风云榜.html](./src/8_百度风云榜.html)
 
+### Viewport视口
 
+在移动端viewport视口就是浏览器显示页面内容的屏幕区域。在viewport中有两种视口，分别表示为， visual viewport（可视视口）和layout viewport（布局视口）。      visual viewport 固定大小跟屏幕大小相同，在上面，而layout viewport 可改变大小，在下面。Layout viewport默认宽度为980像素，如果网页没有做任何设置，那么网页就会把宽度设置为980，然后压缩到屏幕大小，这个值可通过document.documentElement.clientWidth获取。现代网页需要将layout viewport设置成跟visual viewport等同大小，方便进行网页制作。
+
+**Viewport设置方法**：通过`<meta>`标签进行设置，name属性指定viewport值，content属性进行视口配置。
+
+| 取值          | 含义                                                      |
+| ------------- | --------------------------------------------------------- |
+| width         | 设置layout viewport的宽度特定值，device-width表示设备宽。 |
+| height        | 设置layout viewport的高度特定值，一般不进行设置。         |
+| initial-scale | 设置页面的初始缩放。                                      |
+| minimum-scale | 设置页面的最小缩放。                                      |
+| maximum-scale | 设置页面的最大缩放。                                      |
+| user-scalable | 设置页面能否进行缩放。                                    |
+
+一般网页视口的设置举例：
+
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+```
+
+百度手机端设置：
+
+```html
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+```
+
+淘宝手机端设置：
+
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+```
+
+`viewport-fit=cover`的作用是针对iPhone X以上的设备，默认状态下，手机最下面是功能区，通过这个设置，可以让网页填满功能区，让网页浏览体验更好。
 
 
 

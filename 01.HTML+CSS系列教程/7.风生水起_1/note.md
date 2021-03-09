@@ -1385,7 +1385,7 @@ grid-area表示当前网格所占用的区域，名字和位置两种表示方�
 
 ### Viewport视口
 
-在移动端viewport视口就是浏览器显示页面内容的屏幕区域。在viewport中有两种视口，分别表示为， visual viewport（可视视口）和layout viewport（布局视口）。      visual viewport 固定大小跟屏幕大小相同，在上面，而layout viewport 可改变大小，在下面。Layout viewport默认宽度为980像素，如果网页没有做任何设置，那么网页就会把宽度设置为980，然后压缩到屏幕大小，这个值可通过document.documentElement.clientWidth获取。现代网页需要将layout viewport设置成跟visual viewport等同大小，方便进行网页制作。
+在移动端viewport视口就是浏览器显示页面内容的屏幕区域。在viewport中有两种视口，分别表示为， visual viewport（可视视口）和layout viewport（布局视口）。visual viewport固定大小跟屏幕大小相同，在上面，而layout viewport 可改变大小，在下面。Layout viewport默认宽度为980像素，如果网页没有做任何设置，那么网页就会把宽度设置为980，然后压缩到屏幕大小，这个值可通过document.documentElement.clientWidth获取。现代网页需要将layout viewport设置成跟visual viewport等同大小，方便进行网页制作。
 
 **Viewport设置方法**：通过`<meta>`标签进行设置，name属性指定viewport值，content属性进行视口配置。
 
@@ -1417,6 +1417,94 @@ grid-area表示当前网格所占用的区域，名字和位置两种表示方�
 ```
 
 `viewport-fit=cover`的作用是针对iPhone X以上的设备，默认状态下，手机最下面是功能区，通过这个设置，可以让网页填满功能区，让网页浏览体验更好。
+
+### 移动端适配方案
+
+现在移动端的适配方案主要有两种，一种是百分比布局，也叫流式布局。这种布局的元素大小不变，通过元素之间的空隙来适配，代表网站有优酷、百度、天猫、腾讯等。
+
+还有一种布局是等比缩放布局，也叫rem布局，这种布局是元素之间的间隔保持一定比例不变，元素通过等比缩放的方式来进行适配，代表网站有网易、爱奇艺、淘宝、美团等。
+
+![image-20210309220712647](note_image/image-20210309220712647.png)
+
+![image-20210309220718641](note_image/image-20210309220718641.png)
+
+### 流式布局原则
+
+![image-20210309220743262](note_image/image-20210309220743262.png)
+
+好处：大屏幕下显示更多的内容。 坏处：宽屏下比例会有一些不协调。
+
+**练习——拉勾网：**
+
+代码文件位置：[src/lagou/index.html](./src/lagou/index.html)
+
+### rem布局
+
+这种布局是元素之间的间隔保持一定比例不变，元素通过等比缩放的方式来进行适配。这里需要了解几个单位：
+
+em：是一个相对单位，1em等于当前元素或父元素的font-size值，如果当前元素设置了font-size，那么会优先使用当前元素设置的值。
+
+rem：是一个相对单位，1rem等于根元素的font-size值。这里的根元素说的就是html元素。其他元素或者当前元素设置的font-size值，对它没有影响。
+
+vw / vh：把屏幕分为100份，1vw等于屏幕宽的1%。 
+
+那么怎么可以做到等比例放大呢？等比例缩放的元素就可以不用px单位了，而改用rem单位，比如一个元素的宽高，边框的宽度等，都可以使用rem来设置。然后在不同的设备上，通过JS或者是VW方式，动态设置font-size的大小。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html{ font-size:50px;}
+    #box1{ font-size: 30px;}
+    #box2{ width:100px; height:100px; background:red; border-left:1em solid black; 
+    border-right:1rem solid black;}
+    /* rem -> root + em */
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+</body>
+</html>
+```
+
+代码文件位置：[src/10_rem单位.html](./src/10_rem单位.html)
+
+#### 通过JS动态设置font-size大小
+
+我们知道，iPhone 6/7/8的尺寸为`375*667`，iPhone 6/7/8 plus的尺寸为`414*736`，我们以淘宝网为例，淘宝网在375的尺寸下，html的font-size为100px，414尺寸下，html的font-size为110.4px，`375/3.75=100`，`414/3.75=110.4`。因此我们可以通过JS动态获取设备的宽度，然后设置html的font-size，代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{ width:1.8462rem; height:1rem; background:red;}
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var fontsize = document.documentElement.clientWidth / 3.75;
+        document.documentElement.style.fontSize = fontsize + 'px';
+    </script>
+</body>
+</html>
+```
+
+代码文件位置：[src/11_动态设置fontSize.html](./src/11_动态设置fontSize.html)
+
+
 
 
 

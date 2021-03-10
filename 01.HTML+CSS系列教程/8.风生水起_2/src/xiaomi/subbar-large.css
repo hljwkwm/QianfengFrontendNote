@@ -1,0 +1,4 @@
+.subbar{ position: fixed; bottom: 100px; right:0; text-align: center;}
+.subbar li{ width:80px; height:80px; border:1px #ccc solid; text-align: center; line-height: 30px;}
+.subbar li i{ font-size:30px;}
+.subbar li p{}

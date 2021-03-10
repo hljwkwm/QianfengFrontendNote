@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    .container{ padding-left:15px; padding-right:15px; margin-left:auto; margin-right:auto;}
+
+    @media all and ( min-width : 768px ){
+        .container{ max-width : 720px; }
+    }
+
+    @media all and ( min-width : 992px ){
+        .container{ max-width : 960px; }
+    }
+
+    @media all and ( min-width : 1200px ){
+        .container{ max-width : 1140px; }
+    }
+
+    .mt-50{ 
+        margin-top: 50px; 
+    }
+
+    @media all and ( min-width : 768px ){
+        .mt-md-50{ margin-top:50px;}
+    }
+    @media all and ( min-width : 992px ){
+        .mt-lg-50{ margin-top:50px;}
+    }
+    @media all and ( min-width : 1200px ){
+        .mt-xl-50{ margin-top:50px;}
+    }
+    </style>
+</head>
+<body>
+    <div class="container mt-md-50" style="border:1px black solid;">hello media</div>
+</body>
+</html>

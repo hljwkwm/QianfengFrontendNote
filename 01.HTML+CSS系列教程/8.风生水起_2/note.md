@@ -276,6 +276,37 @@ subbar-large.css：
 
 文件代码位置：[src/xiaomi/index.html](./src/xiaomi/index.html)
 
+### Bootstrap简介
+
+Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。它具有以下的特点：响应式布局，有基于lfex的栅格系统，有丰富的组件和工具方法，有常见的交互功能。Bootstrap的官网为：https://getbootstrap.com。Bootstrap的css部分使用Sass开发的，JS部分是基于jQuery的。
+
+我们在下载Bootstrap时，可以下载完整的源码，完整的源码中含有源码和编译好的文件，编译好的文件在dist文件夹中。在dist中的css下，有很多个文件，其中bootstrap.css是编译好的完整文件，bootstrap.min.css是压缩后的文件，bootstrap-grid.css是栅格系统文件，bootstrap-reboot.css是重置样式文件，其中bootstrap.css里面已经包含了栅格系统和重置样式，如果想使用Bootstrap的完整功能，只需要引入bootstrap.css即可。
+
+简单的使用：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        aaaaa
+    </div>
+    <div class="container-fluid">
+        bbbbb
+    </div>
+</body>
+</html>
+```
+
+文件代码位置：[src/3_boot.html](./src/3_boot.html)
+
 
 
 

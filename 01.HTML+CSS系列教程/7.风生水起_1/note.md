@@ -1504,23 +1504,19 @@ vw / vh：把屏幕分为100份，1vw等于屏幕宽的1%。
 
 代码文件位置：[src/11_动态设置fontSize.html](./src/11_动态设置fontSize.html)
 
+这里推荐一个VS Code插件，叫`px to rem`，通过这个插件，就可以快速的对一个px值或者一堆px值转换成rem，该软件的转换快捷键为`Alt+Z`。需要注意的是，要在插件的设置中，给出正确的font-size值，这里推荐使用100。
 
+#### 通过vw/vh动态设置font-size大小
 
+vw和vh就是将屏幕的宽度和屏幕的高度分成一百份，1vw就是屏幕宽的一百分之一。那么如果想将字体的大小在iPhone 6下设置为100px，我们可以来换算一下，iPhone 6的屏幕宽度为375px，则1vw的值为3.75px，100/3.75就是26.66667，因此在iPhone 6下26.66667vw就代表了100px。而26.66667乘以4.14，值就是110.4。所以这里我们可以把html的font-size设置为26.66667vw。
 
+还有一点需要注意的是，给html设置完了font-size，还需要在body上重新设置一下font-size为16px，恢复成默认大小，防止字体大小出现问题。
 
+代码文件位置：[src/12_动态设置fontSize.html](./src/12_动态设置fontSize.html)
 
+### 用rem设计案例——拉勾网
 
+其实用rem设计很简单。根据设计师给的设计稿，调好模拟器的宽度和高度，然后根据设计稿的实际尺寸来设计，这里都使用px单位。然后根据设计稿的宽度，计算好在html里面的font-size的vw值，再给body设置一个font-size的默认值，然后再用VS Code插件，批量将px转换为rem就可以了。
 
-
-
-
-
-
-
-
-
-
-
-
-
+代码文件位置：[src/lagou/index-rem.html](./src/lagou/index-rem.html)
 

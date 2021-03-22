@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.css">
+    <style>
+    [class*=col]{ border:1px black solid;}
+    
+    </style>
+</head>
+<body>
+    <!-- sm 、md 、lg 、xl -->
+    <div class="container">
+        <div class="row">
+            <div class="col">aaaaa</div>
+            <div class="col">bbbbb</div>
+            <div class="w-100"></div>
+            <div class="col">ccccc</div>
+        </div>
+        <div class="row">
+            <div class="col-sm">ddddd</div>
+            <div class="col-sm">eeeee</div>
+            <div class="col-sm">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-4">ddddd</div>
+            <div class="col-4">eeeee</div>
+            <div class="col-4">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-5">ddddd</div>
+            <div class="col-5">eeeee</div>
+            <div class="col-5">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-6">ddddd</div>
+            <div class="col-6">eeeee</div>
+            <div class="col-6">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-auto">ddddd</div>
+            <div class="col-auto">eeeee</div>
+            <div class="col-auto">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">ddddd</div>
+            <div class="col-md-auto">eeeee</div>
+            <div class="col-md-auto">fffff</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-3">ddddd</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">eeeee</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">fffff</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">ddddd</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">eeeee</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">fffff</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">ddddd</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">eeeee</div>
+            <div class="col-md-6 col-lg-4 col-xl-3">fffff</div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">aaaaa</div>
+            <div class="col">bbbbb</div>
+            <div class="col">ccccc</div>
+        </div>
+        <div class="row justify-content-end align-items-center" style="height:100px; border:1px red solid;">
+            <div class="col-4" style="height:30px;">11111</div>
+            <div class="col-4 align-self-end" style="height:30px;">22222</div>
+        </div>
+    </div>
+
+    mr-auto : margin-right : auto;
+    mt-5 : margin-top : 5rem;
+    mt-md-5 : margin-top : 5rem; md响应式范围内添加
+    mx-5 : margin-left : 5rem; margin-right : 5rem;
+    my-5 : margin-top : 5rem; margin-bottom : 5rem;
+    mt-n5 : margin-top : -5rem;
+    py-5 : padding-top : 5rem; padding-bottom : 5rem;
+</body>
+</html>

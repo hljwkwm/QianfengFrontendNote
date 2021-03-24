@@ -549,6 +549,513 @@ css：
 
 ```
 
+#### LESS和SASS合并，媒体查询
+
+LESS和SASS可以将一个属性的值合并起来，具体见代码；此外在媒体查询方面，也有简便写法：
+
+LESS：
+
+```less
+.box9{
+    // 可以将两个值合并起来，中间用逗号隔开
+    background+ : url(a.png);
+    background+ : url(b.png);
+    // 可以将两个值合并起来，中间用空格隔开
+    transform+_ : scale(2);
+    transform+_ : rotate(30deg);
+}
+
+// 媒体查询的写法
+.box10{
+    width : 100px;
+    @media all and ( min-width : 768px ){
+        width : 600px;
+    }
+    @media all and ( min-width : 1440px ){
+        width : 900px;
+    }
+}
+```
+
+CSS：
+
+```css
+box9 {
+  background: url(a.png), url(b.png);
+  transform: scale(2) rotate(30deg);
+}
+.box10 {
+  width: 100px;
+}
+@media all and (min-width: 768px) {
+  .box10 {
+    width: 600px;
+  }
+}
+@media all and (min-width: 1440px) {
+  .box10 {
+    width: 900px;
+  }
+}
+```
+
+SCSS：
+
+```scss
+// SCSS是通过键值对实现的
+$background : (
+    a : url(a.png),
+    b : url(b.png)
+);
+$tranform : (
+    a : scale(2),
+    b : rotate(30deg)
+);
+
+.box9{
+    // 使用SCSS的函数，编译后有逗号
+    background : map-values($background);
+    // 编译后无逗号
+    transform : zip(map-values($tranform)...);
+}
+
+// 媒体查询
+.box10{
+    width : 100px;
+    @media all and ( min-width : 768px ){
+        width : 600px;
+    }
+    @media all and ( min-width : 1440px ){
+        width : 900px;
+    }
+}
+```
+
+CSS：
+
+```css
+.box9 {
+  background: url(a.png), url(b.png);
+  transform: scale(2) rotate(30deg);
+}
+
+.box10 {
+  width: 100px;
+}
+
+@media all and (min-width: 768px) {
+  .box10 {
+    width: 600px;
+  }
+}
+
+@media all and (min-width: 1440px) {
+  .box10 {
+    width: 900px;
+  }
+}
+```
+
+LESS和SASS条件，循环
+
+条件：
+
+LESS：
+
+```less
+@count : 3;
+// 如果大于4，就走上面，如果小于4就走下面
+.get(@cn) when ( @cn > 4 ){
+    width : 100px + @cn;
+}
+.get(@cn) when ( @cn < 4 ){
+    width : 10px + @cn;
+}
+.box11{
+    .get(@count);
+}
+```
+
+SCSS：
+
+```scss
+// SCSS的写法更加人性化
+$count : 3;
+.box11{
+    @if($count > 4){
+        width : 100px + $count;
+    }
+    @else{
+        width : 10px + $count;
+    }
+}
+```
+
+ 循环：
+
+LESS的循环需要用递归来实现：
+
+LESS：
+
+```less
+@count2 : 0;
+.get2(@cn) when (@cn < 3){
+    // 递归实现
+    .get2((@cn+1));
+    .box-@{cn}{
+        width: 100px + @cn;
+    }
+}
+
+.get2(@count2);
+```
+
+CSS：
+
+```
+.box-2 {
+  width: 102px;
+}
+.box-1 {
+  width: 101px;
+}
+.box-0 {
+  width: 100px;
+}
+```
+
+而SCSS可以通过for循环来实现：
+
+SCSS：
+
+```scss
+@for $i from 0 through 2{
+    .box-#{$i}{
+        width : 100px + $i;
+    }
+}
+```
+
+CSS：
+
+```
+.box-0 {
+  width: 100px;
+}
+
+.box-1 {
+  width: 101px;
+}
+
+.box-2 {
+  width: 102px;
+}
+```
+
+#### LESS和SASS导入
+
+两个语言写法相同：
+
+```scss
+@import './reset.scss';
+```
+
+### PostCSS
+
+PostCSS 本身是一个功能比较单一的工具。它提供了一种方式用 JavaScript 代码来处理 CSS。利用PostCSS可以实现一些工程化的操作，如：自动添加浏览器前缀，代码合并，代码压缩等。
+
+官方网址：https://postcss.org/
+
+安装方法：`npm  install  postcss-cli –g`
+
+如果要为PostCSS添加插件，需要创建一个`postcss.config.js`文件，然后将配置写在该文件中。这里介绍六中插件。
+
+#### autoprefixer
+
+该插件可以自动为css属性添加适当的浏览器前缀，但是具体添加什么前缀，需要在配置文件中配置。该插件的安装方法为`npm i autoprefixer`，接下来的几个插件安装方法是一样的。
+
+postcss.config.js：
+
+```js
+const autoprefixer = require('autoprefixer');
+
+module.exports = {
+    plugins : [
+        autoprefixer({
+            // 如果填>0%，则表示要适配100%的浏览器
+            "overrideBrowserslist": [
+                "> 0%"
+              ]
+        })
+    ]
+};
+```
+
+原始CSS：
+
+```
+div{
+    width:300px;
+    height:300px;
+    transform: rotate(30deg);
+}
+```
+
+编译后的CSS：
+
+```
+div{
+    width:300px;
+    height:300px;
+    -webkit-transform: rotate(30deg);
+       -moz-transform: rotate(30deg);
+        -ms-transform: rotate(30deg);
+         -o-transform: rotate(30deg);
+            transform: rotate(30deg);
+}
+```
+
+#### postcss-import
+
+通过这个插件，可以让css文件导入其他文件：
+
+原始CSS：
+
+```
+@import './reset';
+```
+
+编译后的css文件就会将reset.css导入到该CSS中，类似于预编译。
+
+#### cssnano
+
+通过该插件，可以对css进行压缩。
+
+#### postcss-cssnext
+
+通过该插件，可以增强css的兼容性。
+
+原始CSS：
+
+```
+:root{
+    --color : red;
+}
+
+div{
+    background : var(--color);
+    color : var(--color);
+    border : 1px var(--color) solid;
+}
+```
+
+编译后的CSS：
+
+```css
+div{
+    background : red;
+    color : red;
+    border : 1px red solid;
+}
+```
+
+#### stylelint
+
+该插件可以规范CSS代码，类似ESLint，如果有代码不符合配置，那么控制台将会输出错误信息。
+
+配置示例：
+
+```js
+const stylelint = require('stylelint');
+
+module.exports = {
+    plugins : [
+        stylelint({
+            "rules" : {
+                "color-no-invalid-hex" : true
+            }
+        })
+    ]
+};
+```
+
+postcss-sprites
+
+该插件可以自动将背景图转为精灵图。
+
+配置示例：
+
+```js
+const sprites = require('postcss-sprites');
+
+module.exports = {
+    plugins : [
+        sprites({
+            spritePath : './dist'
+        })
+    ]
+};
+```
+
+原始CSS：
+
+```
+div{
+    background : url('./icon/1.jpg');
+}
+
+p{
+    color : #000;
+    background : url('./icon/2.jpg');
+}
+```
+
+编译后的CSS：
+
+```
+div{
+    background-image : url(../dist/sprite.png);
+    background-position : 0px 0px;
+    background-size : 51px 22px;
+}
+
+p{
+    color : #000;
+    background-image : url(../dist/sprite.png);
+    background-position : -25px 0px;
+    background-size : 51px 22px;
+}
+```
+
+最后，给出完整的配置示例：
+
+```js
+const autoprefixer = require('autoprefixer');
+const pcImport = require('postcss-import');
+const cssnano = require('cssnano');
+const cssnext = require('postcss-cssnext');
+const stylelint = require('stylelint');
+const sprites = require('postcss-sprites');
+
+module.exports = {
+    plugins : [
+        autoprefixer({
+            browsers : [' > 0% ']
+        }),
+        pcImport,
+        cssnano,
+        cssnext,
+        stylelint({
+            "rules" : {
+                "color-no-invalid-hex" : true
+            }
+        }),
+        sprites({
+            spritePath : './dist'
+        })
+    ]
+};
+```
+
+### CSS架构
+
+在一个大型项目中，由于页面过多，导致CSS代码难以维护和开发。所以CSS架构可以帮助我们解决文件管理与文件划分等问题。首先要对CSS进行模块化处理，一个模块负责一类操作行为。可利用Sass或Less来实现。
+
+| 文件夹     | 含义                                                         |
+| ---------- | ------------------------------------------------------------ |
+| base       | 一些初始的通用CSS，如重置默认样式，动画，工具，打印等。      |
+| components | 用于构建页面的所有组件，如按钮，表单，表格，弹窗等。         |
+| layout     | 用于布局页面的不同部分，如页眉，页脚，弹性布局，网格布局等。 |
+| pages      | 放置页面之间不同的样式，如首页特殊样式，列表页特殊样式等。   |
+| themes     | 应用不同的主题样式时，如管理员，买家，卖家等。               |
+| abstracts  | 放置一些如：变量，函数，响应式等辅助开发的部分。             |
+| vendors    | 放置一些第三方独立的CSS文件，如bootstrap，iconfont等。       |
+
+文件树示例：
+
+```
+│  main.scss
+│  
+├─abstracts
+│      _functions.scss
+│      _media.scss
+│      _variables.scss
+│      
+├─base
+│      _animate.scss
+│      _reset.scss
+│      _typography.scss
+│      _utilities.scss
+│      
+├─components
+│      _alert.scss
+│      _button.scss
+│      _form.scss
+│      _table.scss
+│      
+├─layout
+│      _flex.scss
+│      _footer.scss
+│      _grid.scss
+│      _header.scss
+│      
+├─pages
+│      _detail.scss
+│      _goods.scss
+│      _index.scss
+│      _list.scss
+│      
+├─themes
+│      _admin.scss
+│      _buyer.scss
+│      _seller.scss
+│      _tourist.scss
+│      
+└─vendors
+        boostrap.css
+        iconfont.css
+```
+
+main.scss的内容：
+
+```scss
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/media";
+
+@import "base/reset";
+@import "base/typography";
+@import "base/animate";
+@import "base/utilities";
+
+@import "components/alert";
+@import "components/button";
+@import "components/form";
+@import "components/table";
+
+@import "layout/flex";
+@import "layout/grid";
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/index";
+@import "pages/list";
+@import "pages/detail";
+@import "pages/goods";
+
+@import "themes/admin";
+@import "themes/buyer";
+@import "themes/seller";
+@import "themes/tourist";
+
+```
+
+这里需要注意的是，文件前加下划线表示该文件为私有文件，不能单独使用，需要引入使用。在main.scss中引入时，不需要加下划线和缩略名，在编译时，可以自动识别。
+
+
+
+
+
 
 
 

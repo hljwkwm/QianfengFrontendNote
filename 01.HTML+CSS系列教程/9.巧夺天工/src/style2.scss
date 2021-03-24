@@ -1,0 +1,133 @@
+.box{ width:200px;}
+
+// 单行注释，不会被编译出来
+
+/*
+    多行注释，就是CSS的注释方式，会被编译出来
+*/
+
+$number : 123px;
+$key : margin;
+$i : 2;
+
+.box#{$i}{
+    width : $number;
+    height : $number;
+    #{$key} : auto;
+}
+
+// Sass的作用于是有顺序的
+.box3{
+    $number : 456px;
+    height: $number;
+    width : $number;
+}
+
+ul{
+    list-style:none;
+    li{
+        float:left;
+        div{ margin:10px;}
+        p{ margin:20px;}
+    }
+    &:hover{
+        color : red;
+        font : {
+            size : 10px;
+            weight : bold;
+            family : 宋体;
+        }
+    }
+}
+
+$num : 100px;
+
+.box4{
+    width : $num * 3;
+    //Sass中如果单位不同的话，是不能运算
+    //height : $num + 20em;
+    font : 20px / 1.5;
+    // 默认 / 是分割的操作
+    padding : (20px / 1.5);
+    color : #010203 * 2;
+}
+
+@function sum($n,$m){
+    @return $n + $m;
+}
+
+.box5{
+    width : round(3.4px);
+    height : percentage(0.2);
+    margin : random();
+    padding : sqrt(25%);
+    font-size : sum(4px , 5px);
+}
+
+@mixin show {
+    display : block;
+}
+@mixin hide($color) {
+    display : none;
+    color : $color;
+}
+
+.box6{
+    width : 100px;
+    @include show;
+    @include hide(red);
+}
+
+%line{
+    display : inline;
+}
+
+.box7{
+    @extend %line;
+}
+.box8{
+    @extend %line;
+}
+
+$background : (
+    a : url(a.png),
+    b : url(b.png)
+);
+$tranform : (
+    a : scale(2),
+    b : rotate(30deg)
+);
+
+.box9{
+    background : map-values($background);
+    transform : zip(map-values($tranform)...);
+}
+
+.box10{
+    width : 100px;
+    @media all and ( min-width : 768px ){
+        width : 600px;
+    }
+    @media all and ( min-width : 1440px ){
+        width : 900px;
+    }
+}
+
+$count : 3;
+
+.box11{
+    @if($count > 4){
+        width : 100px + $count;
+    }
+    @else{
+        width : 10px + $count;
+    }
+}
+
+@for $i from 0 through 2{
+    .box-#{$i}{
+        width : 100px + $i;
+    }
+}
+
+@import './reset.scss';

@@ -1,0 +1,22 @@
+/* @import './reset';
+div{
+    width:300px;
+    height:300px;
+    transform: rotate(30deg);
+} */
+
+:root{
+    --color : red;
+}
+
+div{
+    /* background : var(--color); */
+    color : var(--color);
+    border : 1px var(--color) solid;
+    background : url('./icon/1.jpg');
+}
+
+p{
+    color : #000;
+    background : url('./icon/2.jpg');
+}

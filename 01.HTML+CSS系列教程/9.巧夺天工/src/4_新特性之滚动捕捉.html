@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    #main{ 
+        width:600px; height:100px; border:1px black solid; margin:100px; overflow: auto;
+        scroll-snap-type: x mandatory;
+    }
+    #main ul{ width:4000px;}
+    #main li{ width:300px; height:100px; background: red; float: left; margin:0 100px;
+        scroll-snap-align: end;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul>
+            <li>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+            <li>4444</li>
+            <li>5555</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1052,7 +1052,213 @@ main.scss的内容：
 
 这里需要注意的是，文件前加下划线表示该文件为私有文件，不能单独使用，需要引入使用。在main.scss中引入时，不需要加下划线和缩略名，在编译时，可以自动识别。
 
+### CSS新特性之自定义属性
 
+CSS 自定义属性(也称为“CSS 变量”)，在目前所有的现代浏览器中都得到了支持。CSS自定义属性是通过在变量前面添加两个减号来实现的。使用时添加到var()中。
+
+如果定义变量的时候加了单位，那么直接使用var()即可，如果没加单位，需要使用calc()来实现，具体见下面的代码。
+
+此外还可以设置默认值，如果能找到该变量，那么就使用设置的变量值，如果找不到该变量，就可以使用默认值，具体见代码。
+
+变量也有作用域，也是就近原则，也和HTML的层级有关系，比如设置在同级或者父级div上，就会优先与`:root`上。
+
+```css
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    div{
+        --color : yellow;
+    }
+
+    :root{
+        --color : red;
+        --number : 100px;
+        --number2 : 100;
+        --size : 50px;
+    }
+
+    #box{
+        /* --color : blue; */
+        background: var(--color);
+        /* 如果变量有符号，这样写就可以 */
+        width : va没r(--number);
+         /* 如果变量有符号，这样写 */
+        height : calc(var(--number2) * 1px);
+         /* 设置默认值 */
+        font-size : var(--size , 100px);
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="box">aaaaaaaaaaaaa</div>
+</body>
+</html>
+```
+
+### CSS新特性之shapes
+
+CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。
+
+shape-outside：设置文字环绕方式，默认是none，可选值有margin-box、padding-box、border-box、content-box等。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #parent{ width:300px; height: 300px; border:1px black solid; margin:20px;}
+    #shape{
+        width: 100px; height:100px;
+        padding:10px;
+        border:10px black solid;
+        margin:10px;
+        float:left;
+        border-radius: 50%;
+        shape-outside: margin-box;
+    } 
+    
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="shape">aaaaa</div>
+        CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。
+
+    </div>
+</body>
+</html>
+```
+
+![image-20210324185048499](note_image/image-20210324185048499.png)
+
+此外还可以使用clip-path来给图形化区域，使用shape-outside来自定义环绕范围：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #parent{ width:300px; height: 300px; border:1px black solid; margin:20px;}
+    #shape{
+        width: 100px; height:100px;
+        padding:10px;
+        border:10px black solid;
+        margin:10px;
+        float:left;
+        background: red;
+        clip-path: polygon(0 0,0 100px,100px 100px);
+        shape-outside: polygon(0 0,0 100px,100px 100px);
+        shape-margin:15px;
+    }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="shape">aaaaa</div>
+        CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。
+
+    </div>
+</body>
+</html>
+```
+
+![image-20210324185336130](note_image/image-20210324185336130.png)
+
+### CSS新特性之scrollbar
+
+CSS scrollbar用于实现自定义滚动条样式。
+
+- `::-webkit-scrollbar`可以设置滚动条的宽高等。
+- `::-webkit-scrollbar-thumb`设置滚动条可拖拽的部分的样式。
+- `::-webkit-scrollbar-track`设置滑道的样式。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    body{ height:2000px;}
+    html::-webkit-scrollbar{
+        width:10px;
+        /* height:1px; */
+    }
+    html::-webkit-scrollbar-thumb{
+        background: #f90;
+        border-radius: 15px;
+    }
+    html::-webkit-scrollbar-track{
+        background:#dedede;
+        box-shadow: inset 0 0 5px gary;
+    }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+```
+
+### CSS新特性之Scroll Snap
+
+CSS Scroll Snap（CSS 滚动捕捉）允许你在用户完成滚动后多锁定特定的元素或位置。
+
+`scroll-snap-type: x或y mandatory;`：该属性设置在容器上，设置吸附的容器。
+
+`scroll-snap-align`：设置吸附的位置。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    #main{ 
+        width:600px; height:100px; border:1px black solid; margin:100px; overflow: auto;
+        scroll-snap-type: x mandatory;
+    }
+    #main ul{ width:4000px;}
+    #main li{ width:300px; height:100px; background: red; float: left; margin:0 100px;
+        scroll-snap-align: end;
+    }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul>
+            <li>1111</li>
+            <li>2222</li>
+            <li>3333</li>
+            <li>4444</li>
+            <li>5555</li>
+        </ul>
+    </div>
+</body>
+</html>
+```
 
 
 

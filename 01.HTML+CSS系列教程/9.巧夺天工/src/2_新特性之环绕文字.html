@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #parent{ width:300px; height: 300px; border:1px black solid; margin:20px;}
+    /* #shape{
+        width: 100px; height:100px;
+        padding:10px;
+        border:10px black solid;
+        margin:10px;
+        float:left;
+        border-radius: 50%;
+        shape-outside: margin-box;
+    } */
+    #shape{
+        width: 100px; height:100px;
+        padding:10px;
+        border:10px black solid;
+        margin:10px;
+        float:left;
+        background: red;
+        clip-path: polygon(0 0,0 100px,100px 100px);
+        shape-outside: polygon(0 0,0 100px,100px 100px);
+        shape-margin:15px;
+    }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div id="shape">aaaaa</div>
+        CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。CSS Shapes布局可以实现不规则的文字环绕效果，需要和浮动配合使用。
+
+    </div>
+</body>
+</html>

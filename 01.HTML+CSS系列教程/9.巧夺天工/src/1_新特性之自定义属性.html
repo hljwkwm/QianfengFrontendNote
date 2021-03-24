@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    div{
+        --color : yellow;
+    }
+
+    :root{
+        --color : red;
+        --number : 100px;
+        --number2 : 100;
+        --size : 50px;
+    }
+
+    #box{
+        /* --color : blue; */
+        background: var(--color);
+        width : var(--number);
+        height : calc(var(--number2) * 1px);
+        font-size : var(--size , 100px);
+    }
+    
+    </style>
+</head>
+<body>
+    <div id="box">aaaaaaaaaaaaa</div>
+</body>
+</html>

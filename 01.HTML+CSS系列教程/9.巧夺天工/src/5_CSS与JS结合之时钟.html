@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    #time{ width:300px; height:300px; border:5px black solid; margin:30px auto; border-radius: 50%;position: relative;}
+    #time ul{ width:100%; height:100%; position: relative;}
+    #time ul li{ width:2px; height:8px; background:black; position: absolute; left:50%; top:0; transform-origin: center 150px;}
+   /*  #time ul li:nth-child(2){ transform: rotate(6deg);}
+    #time ul li:nth-child(3){ transform: rotate(12deg);} */
+    #hour{ width: 6px; height:50px; background:black; position: absolute; left:50%; top:50%; margin:-50px 0 0 -3px; transform-origin: center bottom;}
+    #minu{ width: 4px; height:80px; background:black; position: absolute; left:50%; top:50%; margin:-80px 0 0 -2px; transform-origin: center bottom;}
+    #seco{ width: 2px; height:120px; background:black; position: absolute; left:50%; top:50%; margin:-120px 0 0 -1px; transform-origin: center bottom;}
+    #ball{ width:20px; height:20px; background:blue; position: absolute; left:50%; top:50%; margin:-10px; border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div id="time">
+        <ul>
+            <!-- <li></li>
+            <li></li>
+            <li></li> -->
+        </ul>
+        <div id="hour"></div>
+        <div id="minu"></div>
+        <div id="seco"></div>
+        <div id="ball"></div>
+    </div>
+    <script>
+    
+    var ul = document.querySelector('ul');
+    var hour = document.querySelector('#hour');
+    var minu = document.querySelector('#minu');
+    var seco = document.querySelector('#seco');
+
+    for(var i=0;i<60;i++){
+        var li = document.createElement('li');
+        li.style.transform = 'rotate('+ ( i*6 ) +'deg)';
+        if(i%5 === 0){
+            li.style.height = '15px';
+        }
+        ul.appendChild(li);
+    }
+
+    run();
+    setInterval(run,1000);
+
+    function run(){
+        var date = new Date();
+        var iH = date.getHours();
+        var iM = date.getMinutes();
+        var iS = date.getSeconds()
+
+        hour.style.transform = 'rotate('+ ( iH * 30 + iM/2 ) +'deg)';
+        minu.style.transform = 'rotate('+ ( iM * 6 ) +'deg)';
+        seco.style.transform = 'rotate('+ ( iS * 6 ) +'deg)';
+
+    }
+    
+    </script>
+</body>
+</html>

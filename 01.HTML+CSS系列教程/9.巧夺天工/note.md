@@ -1260,21 +1260,130 @@ CSS Scroll Snap（CSS 滚动捕捉）允许你在用户完成滚动后多锁定�
 </html>
 ```
 
+### CSS和JS结合——时钟
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    #time{ width:300px; height:300px; border:5px black solid; margin:30px auto; border-radius: 50%;position: relative;}
+    #time ul{ width:100%; height:100%; position: relative;}
+    #time ul li{ width:2px; height:8px; background:black; position: absolute; left:50%; top:0; transform-origin: center 150px;}
+   /*  #time ul li:nth-child(2){ transform: rotate(6deg);}
+    #time ul li:nth-child(3){ transform: rotate(12deg);} */
+    #hour{ width: 6px; height:50px; background:black; position: absolute; left:50%; top:50%; margin:-50px 0 0 -3px; transform-origin: center bottom;}
+    #minu{ width: 4px; height:80px; background:black; position: absolute; left:50%; top:50%; margin:-80px 0 0 -2px; transform-origin: center bottom;}
+    #seco{ width: 2px; height:120px; background:black; position: absolute; left:50%; top:50%; margin:-120px 0 0 -1px; transform-origin: center bottom;}
+    #ball{ width:20px; height:20px; background:blue; position: absolute; left:50%; top:50%; margin:-10px; border-radius: 50%;}
+    </style>
+</head>
+<body>
+    <div id="time">
+        <ul>
+            <!-- <li></li>
+            <li></li>
+            <li></li> -->
+        </ul>
+        <div id="hour"></div>
+        <div id="minu"></div>
+        <div id="seco"></div>
+        <div id="ball"></div>
+    </div>
+    <script>
+    
+    var ul = document.querySelector('ul');
+    var hour = document.querySelector('#hour');
+    var minu = document.querySelector('#minu');
+    var seco = document.querySelector('#seco');
 
+    for(var i=0;i<60;i++){
+        var li = document.createElement('li');
+        li.style.transform = 'rotate('+ ( i*6 ) +'deg)';
+        if(i%5 === 0){
+            li.style.height = '15px';
+        }
+        ul.appendChild(li);
+    }
 
+    run();
+    setInterval(run,1000);
 
+    function run(){
+        var date = new Date();
+        var iH = date.getHours();
+        var iM = date.getMinutes();
+        var iS = date.getSeconds()
 
+        hour.style.transform = 'rotate('+ ( iH * 30 + iM/2 ) +'deg)';
+        minu.style.transform = 'rotate('+ ( iM * 6 ) +'deg)';
+        seco.style.transform = 'rotate('+ ( iS * 6 ) +'deg)';
 
+    }
+    
+    </script>
+</body>
+</html>
+```
 
+### CSS和JS结合——折叠菜单
 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    #menu{ width:300px; height:300px; border:1px black solid; perspective: 500px;}
+    #list{ width:200px; height:50px; background:red; margin:30px auto; transform: rotateY(-40deg); transform-style: preserve-3d;}
+    #list div{ width:100%; height:100%; background:red; color:white; text-align: center; line-height: 50px; transform-origin: top; margin-top:10px; transform: rotateX(180deg); transform-style: preserve-3d;}
+    #list > div{ position: relative; top:50px;}
+    </style>
+</head>
+<body>
+    <button id="btn">展开</button>
+    <div id="menu">
+        <div id="list">
+            <div>
+                第一项
+                <div>
+                    第二项
+                    <div>
+                        第三项
+                        <div>
+                            第四项
+                            <div>
+                                第五项
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    var btn = document.getElementById('btn');
+    var list = document.getElementById('list');
+    var listItems = list.getElementsByTagName('div');
 
-
-
-
-
-
-
-
-
+    btn.onclick = function(){
+        for(var i=0;i<listItems.length;i++){
+            listItems[i].style.transition = '1s '+ (i*150) +'ms';
+            listItems[i].style.transform = 'rotateX(0)';
+        }
+    };
+    </script>
+</body>
+</html>
+```
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                强制数据类型转换：
+
+                    Boolean()  将其他的数据类型强制转换成布尔值
+                       口诀： 非0即真，非空即真。
+
+                    Number()   将其他的数据类型强制转换成数字
+                        【注】只有纯数字字符组成的字符串转数字，才能转为数字，其他都为NaN.
+                    parseInt() 
+                        1、取整
+                        2、将别的进制转成十进制  必须传入字符串
+
+
+                    parseFloat()  取浮点数
+             */
+            /* 
+                52 
+                二进制数  110100
+                八进制    64
+                十六进制   34
+             */
+            var str1 = "110100";
+            // alert(parseInt(str1, 2))
+            var str2 = "64";
+            // alert(parseInt(str2, 8))
+            var str3 = "34";
+            alert(parseInt(str3, 16));
+
+            // alert(Number("100"));
+            // alert(Number("100a"));
+            /* alert(parseInt("c10b0a"));
+            alert(parseInt(3.14)); */
+
+            /* alert(parseInt("3.14a"));
+            alert(parseFloat("3.14a")); */
+
+
+            //数字
+            /* alert(Boolean(-100));
+            alert(Boolean(3.14));
+            alert(Boolean(0)); */
+
+            //字符串
+           /*  alert(Boolean("11"));
+            alert(Boolean("hello"));
+            alert(Boolean("")); //空字符串 */
+
+            /* alert(Boolean(null));
+            alert(Boolean(undefined));
+            alert(Boolean(NaN)); */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

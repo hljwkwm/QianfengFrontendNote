@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                1.入职薪水10K，每年涨幅入职薪水的5%，50年后工资多少？
+             */
+            var money = 10000;
+            // money = money + money * 0.05 * 50;
+            money += money * 0.05 * 50;
+            // alert(money);
+
+
+            /* 
+                2.为抵抗洪水，战士连续作战89小时，编程计算共多少天零多少小时？
+             */
+            
+            var total = 89;
+            var day = parseInt(total / 24); //取整
+            var hours = total % 24;
+
+            // alert("一共花了" + day + "天," + hours + "小时");
+
+            /* 
+                3.小明要到美国旅游，可是那里的温度是以华氏度为单位记录的。
+                它需要一个程序将华氏温度（80度）转换为摄氏度，并以华氏度和摄氏度为单位分别显示该温度。
+                提示：摄氏度与华氏度的转换公式为：摄氏度 = 5/9.0*(华氏度-32)
+             */
+            var Fahrenhite = 80;
+            var centigrade = (Fahrenhite - 32) * 5 / 9.0;
+            // alert("摄氏度是：" + centigrade + "°");
+
+
+            /* 
+                4.给定一个三位数，分别把这个数字的百位、十位、个位算出来并显示。
+                123
+             */
+             var num = 123;
+             var a = num % 10;
+             var b = parseInt(num / 10) % 10;
+             var c = parseInt(num / 100);
+
+
+             alert("百位是:" + c + ", 十位是:" + b + ",个位是：" + a);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

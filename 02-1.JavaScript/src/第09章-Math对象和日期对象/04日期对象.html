@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                日期对象声明
+                1、没有传入参数，默认当前系统时间
+                    Wed Oct 09 2019 09:06:49 GMT+0800 (中国标准时间)
+                    GMT 格林尼治时间
+                2、传入参数
+                    "2000-01-01"
+                    "2000/01/01"
+                    按照顺序，分别传入参数  年 月 日 时 分 秒 毫秒
+                    【注】在国外月份是从0开始数的 0~11
+                    直接传入毫秒数   1秒 = 1000毫秒  （已1970年1月1日 0:0:0 为参照时间点去进行换算）
+                    小彩蛋：linux的创始人
+             */
+            // var d = new Date();
+
+            // var d = new Date("2000-01-01");
+            // var d = new Date("2000/01/01");
+            // var d = new Date(2000, 0, 1, 8, 30, 50);
+            var d = new Date(1000);
+            alert(d);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

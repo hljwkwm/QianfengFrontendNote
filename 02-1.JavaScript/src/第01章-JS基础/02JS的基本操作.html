@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <style type = 'text/css'></style>
+        <link rel="stylesheet" href=""/>
+        <title>Document</title>
+        <script type = 'text/javascript'>
+            /* 
+                ECMA
+
+                javascript组成
+                    1、ECMAScript  3，4  5，6，7
+                    2、DOM  文档
+                    3、BOM  浏览器
+
+                【注】所有的js代码在一个script标签中编写
+                    属性：
+                        1、type = 'text/javascript'  声明当前标签内写的文本格式（省略）
+                        2、src = 'demo.js' 引入外部的.js文件
+
+                    注意点：
+                        1、可以有多个script标签，多个script标签是自上而下顺序执行
+                        2、一个script标签只能专心的做一个事情
+
+                
+                alert()  在当前页面上弹出一个警告框，警告框中显示要显示的内容
+             */
+             alert("hello world");
+        </script>
+        <script>
+            alert(2);
+        </script>
+        <script>
+            alert(3);
+        </script>
+        <script src = 'demo.js'>
+            alert("执行不到这里的代码");
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 100px; height: 30px; border: 1px solid black; text-align: center; line-height: 30px; font-size: 18px}
+        </style>
+        <script src = 'tool.js'></script>
+        <script>
+            /* 
+                事件驱动函数
+
+               【注】通过id获取页面上对应的标签
+                document.getElementById(id); 
+
+                node.innerHTML  标签间的内容
+             */
+            function btnClick(){
+                //拿到div这个标签
+                var oDiv = document.getElementById("div1");
+                // alert(oDiv.innerHTML);  取值
+                // oDiv.innerHTML = '赋值';
+
+                oDiv.innerHTML = testCode(6);
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>000000</div>
+        <!-- 点击按钮，就会执行后面字符串中的代码 -->
+        <button onclick = 'btnClick();'>获取验证码</button>
+    </body>
+</html>

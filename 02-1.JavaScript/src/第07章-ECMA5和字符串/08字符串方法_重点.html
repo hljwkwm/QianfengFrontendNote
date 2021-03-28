@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                replace()
+                    格式：supStr.replace(oldStr, newStr);
+                    功能：用newStr将oldStr，替换掉，生成新字符串。
+                    参数：
+                        第一个参数传入的是字符串只能替换一次。
+                        第一个参数  正则表达式
+                            /xxx/ig    i忽略大小   g全局匹配
+                    返回值：替换成的新字符串。
+
+                正则表达式（专门讲） super string
+            */
+           /*  var str = "how are aRe are you";
+            // var newStr = str.replace("are", "old are");
+            var newStr = str.replace(/are/gi, "old are");
+            alert(newStr);
+            alert(str); */
+
+
+            /* 
+                split()  字符串分割
+                    格式：字符串.split(分割符, length)
+                    参数：
+                        第一个参数，用这个分割符对原字符串进行分割
+                        第二个参数，控制返回的数组的元素格式，一般情况下不用。
+                    功能：用分割符对原字符串，进行字符串分割，将分割完毕以后的子串，放在数组中返回。
+                    返回值：数组
+
+                注意：
+                    1、相邻的两个分割符，会产生空字符串  ""
+                    2、分割符是空字符串"",直接将每一个字符，单独分割成子串，放在数组中返回
+            */
+            /* var str = "how  are you";
+            // var arr = str.split(" ", 2);
+            var arr = str.split(" ");
+            alert(arr); //how,"",are,you
+            alert(str); //how are you */
+
+            /* var str = "how are you";
+            var arr = str.split("");
+            alert(arr); //h,o,w, ,a,r,e, ,y,o,u */
+
+
+
+            /* 
+                toLowerCase() 转成全小写
+                toUpperCase() 转成全大写
+            */
+            var str = "helloWORLD";
+            alert(str.toLowerCase());
+            alert(str.toUpperCase());
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

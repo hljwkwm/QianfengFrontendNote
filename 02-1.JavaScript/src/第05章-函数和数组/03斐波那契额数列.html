@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                一月兔          二月兔         三月兔          成熟兔  总数
+        一月       1              0            0              0      1
+        二月       0              1            0              0      1
+        三月       0              0            1              0      1
+        四月       1              0            0              1      2
+        五月       1              1            0              1      3
+        六月       1              1            1              1      4
+        七月       2              1            1              2      6
+        八月       3              2            1              3      9
+        九月       4              3            2              4      13
+
+            
+             */
+            /* 
+                递归：
+                    方法:
+                    1. 首先去找临界值，即无需计算，获得的值。
+                    2. 找这一次和上一次的关系
+                    3. 假设当前函数已经可以使用，调用自身计算上一次
+
+                rabbit(4) = rabbit(3) + rabbit(1);
+                rabbit(n) = rabbit(n - 1) + rabbit(n - 3);
+
+             */
+            function rabbit(n){
+                if(n < 4){
+                    return 1;
+                }
+                return rabbit(n - 1) + rabbit(n - 3);
+            }
+
+            alert(rabbit(8));
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

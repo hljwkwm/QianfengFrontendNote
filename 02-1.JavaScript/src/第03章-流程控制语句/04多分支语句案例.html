@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            var score = 90;
+            if(score > 85){
+                alert("优秀");
+                //再去进行判断
+                if(score > 95 && score <= 100){
+                    alert("奖励1000块");
+                }else if(score > 90 && score <= 95){
+                    alert("奖励800块");
+                }else{
+                    alert("奖励300块");
+                }
+            }else if(score >= 75 && score <= 85){
+                alert("良好");
+            }else if(score >= 60 && score < 75){
+                alert("及格");
+            }else{
+                alert("不及格");
+            }
+
+
+
+            /* 
+                【注】什么时候用判断语句，我们就编写if语句。
+                代码规范：
+             */
+
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                循环嵌套：不是语法。
+                【注】代码规范。
+             */
+            // 确定输出的行
+            for(var i = 1; i <= 5; i++){
+                //圆圈个数
+                for(var j = 1; j <= i; j++){
+                    document.write("⭕️");
+                }
+
+                document.write("<br/>");
+            }
+
+
+
+            /* 
+                输出空格个数 = 5 - 当前行的圆圈数
+                            5 - i
+                &nbsp; 空格  半角空格
+                &ensp; 空格  全角空格
+
+
+                循环中用于计数的数  下标(index)
+                命名： i j k l m n  (习惯性)
+             */
+            
+             for(var i = 1; i <= 5; i++){
+                //空格数
+                for(var k = 1; k <= 5 - i; k++){
+                    // document.write("&ensp;&ensp;&nbsp;");
+                    document.write("😁");
+                }
+
+                //圆圈个数
+                for(var j = 1; j <= i; j++){
+                    document.write("⭕️");
+                }
+
+                document.write("<br/>");
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

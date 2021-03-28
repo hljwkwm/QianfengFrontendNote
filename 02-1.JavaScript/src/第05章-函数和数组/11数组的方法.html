@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                join()
+                    格式：数组.join(字符串)
+                    功能：将数组中的元素，用传入的拼接符，拼接成一个字符串
+                    返回值：拼接好的字符串。
+             */
+           /*  var arr = [10, 20, 30];
+            // alert(arr);
+            var str = arr.join("==xxx");
+            alert(str);
+            alert(arr); */
+
+
+
+            /* 
+                reverse  逆序
+             */
+            /* var arr = [true, "hello", 100];
+            arr.reverse();
+            alert(arr); */
+
+
+            /* 
+                数组排序
+                sort
+                格式：数组.sort()  默认从小到大排序，按照字符串排序。
+                参数：一个函数，代表要怎么去进行排序（固定用法）
+
+             */
+            /* var arr = [30, 20, 50, 10, 40, 60];
+            arr.sort();
+            alert(arr); //10,20,30,40,50,60 */
+
+            /* var arr = [1, 10, 20, 15, 25, 5];
+            arr.sort();
+            alert(arr); //1,10,15,20,25,5 */
+
+
+            /* 
+                数值大小排序
+             */
+             var arr = [1, 10, 20, 15, 25, 5];
+             /* arr.sort(function(value1, value2){
+                return value1 - value2;
+             }) */
+             arr.sort(function(value1, value2){
+                return value2 - value1;
+             })
+             alert(arr);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

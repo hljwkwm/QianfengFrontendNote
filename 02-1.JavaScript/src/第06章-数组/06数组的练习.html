@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                 随机给出一个五位以内的数，然后输出该数共有多少位，每位分别是什么
+
+                12345
+                
+            */
+
+            /* function countOfNum(num){
+                //1、声明一个数组，存放取下的数
+                var arr = [];
+                while(1){
+                    arr.push(num % 10);
+                    num = parseInt(num / 10);
+                    if(num == 0){
+                        break;
+                    }
+                }
+                arr.reverse();
+                alert("一共是：" + arr.length + "位" + "，每一位分别是" + arr);
+            } */
+
+            /* function countOfNum(num){
+                //1、声明一个数组，存放取下的数
+                var arr = [];
+                while(1){
+                    arr.push(num % 10);
+                    num = parseInt(num / 10);
+                    if(!num){
+                        break;
+                    }
+                }
+                arr.reverse();
+                alert("一共是：" + arr.length + "位" + "，每一位分别是" + arr);
+            } */
+
+            function countOfNum(num){
+                //1、声明一个数组，存放取下的数
+                var arr = [];
+                while(num){
+                    arr.push(num % 10);
+                    num = parseInt(num / 10);
+                }
+                arr.reverse();
+                alert("一共是：" + arr.length + "位" + "，每一位分别是" + arr);
+            }
+
+            // countOfNum(12345);
+
+
+            /* 
+                 有一个从小到大排好序的数组。现输入一个数，要求按原来的规律将它插入数组中。[2,3,4,56,67,98]    //63
+                 2,3,4,56,63,67,98
+            */
+           var arr = [2,3,4,56,67,98];
+           var num = 63;
+           for(var i = 0; i < arr.length; i++){
+               if(arr[i] > num){
+                   arr.splice(i, 0, num);
+                   break;
+               }
+           }
+           alert(arr);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

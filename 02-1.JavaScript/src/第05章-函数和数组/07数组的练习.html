@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                   3.以下通过循环给数组每个元素赋值，随机数。
+
+                   Math.random()  随机 [0,1)
+                   //随机0~9的整数
+
+                   parseInt(Math.random() * 10);
+            */
+        //    document.write(Math.random());
+
+            // document.write(parseInt(Math.random() * 10));
+
+
+            //1、长度是10的数组
+            var arr = new Array(10);
+            for(var i = 0; i < arr.length; i++){
+                arr[i] = parseInt(Math.random() * 10);
+            }
+            alert(arr);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

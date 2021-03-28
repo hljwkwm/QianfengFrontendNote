@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <style>
+            #div1{width: 200px; height: 200px; background-color: lightblue; border: 1px solid black; text-align: center; padding: 50px; margin: 100px auto}
+            #div1 input{width: 200px; height: 30px; font-size: 18px; margin-top: 10px}
+            #div1 span{font-size: 14px; color: red}
+        </style>
+        <script>
+            /* 
+                事件驱动函数 onclick
+                           onblur  失去焦点
+             */
+            function func(){
+                var oUsername = document.getElementById("username");
+                var oUsernameSpan = document.getElementById("username_span");
+
+                //1、拿到输入框的内容
+                var oValue = oUsername.value;
+
+                //2、判断
+                //<1> 用户名长度是否符合要求
+                if(oValue.length < 6 || oValue.length > 18){
+                    oUsernameSpan.innerHTML = "❗️长度应为6~18个字符";
+
+                    //<2>首字符是否是字母
+                }else if(!isABC(oValue[0])){
+                    oUsernameSpan.innerHTML = "❗️邮件地址必需以英文字母开头";
+                }else{
+                    //<3>是否都是数字、字母、下划线组成
+                    var isYes = true; //假设符合要求
+                    for(var i = 0; i < oValue.length; i++){
+                        if(!isDEF(oValue[i])){
+                            isYes = false;
+                            break;
+                        }
+                    }
+                    if(isYes){
+                        oUsernameSpan.innerHTML = "✅恭喜，该邮件地址可注册";
+                    }else{
+                        oUsernameSpan.innerHTML = "❗️邮件地址需由字母、数字或下划线组成";
+                    }
+                }
+            }
+
+            //判断单个字符是否是字母
+            function isABC(charStr){
+                if(charStr >= "a" && charStr <= "z" || charStr >= "A" && charStr <= "Z"){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+            //判断单个字符是否符合数字字母下划线
+            function isDEF(charStr){
+                if(charStr >= "a" && charStr <= 'z' || charStr >= "A" && charStr <= "Z" || charStr >= "0" && charStr <= "9" || charStr == "_"){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id = 'div1'>
+            <input id = 'username' type="text" placeholder="用户名" onblur="func();" />
+            <span id = 'username_span'>6~18个字符，可使用字母、数字、下划线，需以字母开头</span>
+            <input type="text" placeholder="密码"/>
+        </div>
+    </body>
+</html>

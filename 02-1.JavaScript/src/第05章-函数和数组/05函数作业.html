@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <script>
+        /* 
+            某个公司采用公用电话传递数据，数据是四位的整数，在传递过程中是加密的，
+            加密规则如下：每位数字都加上5,然后用除以10的余数代替该数字，再将第一位和第四位交换，
+            第二位和第三位交换，请编写一个函数，传入原文，输出密文
+
+         */
+        //1234
+        function encryption(num){
+            var a = (num % 10 + 5) % 10;
+            var b = (parseInt(num / 10) % 10 + 5) % 10;
+            var c = (parseInt(num / 100) % 10 + 5) % 10;
+            var d = (parseInt(num / 1000) + 5) % 10;
+            return Number("" + a + b + c + d);
+        }
+
+        alert(encryption(5555));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

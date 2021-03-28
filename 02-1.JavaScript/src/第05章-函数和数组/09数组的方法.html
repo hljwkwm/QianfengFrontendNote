@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                栈结构：
+                栈：木盆
+                结构：从同一头进，从同一头出。
+                特点：先进后出。
+            */
+
+            /* 
+                数组的两个方法形成栈结构：
+                    push
+                        格式：数组.push(参数1, 参数2...);
+                        功能：给数组的末尾添加元素。
+                        返回值：插完元素以后数组的长度。
+
+                    pop
+                        格式：数组.pop()
+                        参数：没有参数
+                        返回值：取下一个元素
+                        功能：从数组末尾取下一个元素
+            */
+
+            /* var arr = ["北京", "上海", "广州"];
+            var res = arr.push("深圳", "天津", "成都");
+            alert(arr);
+            alert(res); */
+
+            /* var arr = ["北京", "上海", "广州"];
+            var res = arr.pop();
+            alert(res);
+            alert(arr); */
+
+
+            /* 
+                队列结构
+                结构：从末尾进，从头部出。
+                特点：先进先出
+
+                    push
+
+                    shift()
+                        格式：数组.shift()
+                        参数：没有参数
+                        功能：从数组的头部取下一个元素
+                        返回值：取下的元素
+
+                    unshift()
+                        格式：数组.unshift(参数1, 参数2...)
+                        功能：从数组的头部插入元素
+                        返回值：插完元素以后数组的长度。
+
+            */
+           /*  var arr = ["唐朝", "元朝", "清朝"];
+            var res = arr.shift();
+            alert(res);
+            alert(arr); */
+            var arr = ["唐朝", "元朝", "清朝"];
+            var res = arr.unshift("隋朝", "商汤");
+            alert(res);
+            alert(arr);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                输如月份，显示当月的天数 
+                    要求：1) 利用case穿透简化代码
+             */
+            var month = 4;
+            var year = 2000;
+            switch(month){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    alert("31天");
+                    break;
+                case 2:
+                    if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                        alert("29天");
+                    }else{
+                        alert("28天");
+                    }
+                    break;
+                default:
+                    alert("30天");
+                    break;
+            }
+
+            /* 
+                问题  输入年、月、日，计算某一天是该年的第几天（周）
+             */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                例题：按照考试成绩的等级，输出百分制数段.
+             */
+            
+            var grade = "E";
+           
+            switch(grade){
+                case "A":
+                    alert("80~100");
+                    break;
+                case "B":
+                    alert("70~79");
+                    break;
+                case "C":
+                    alert("60~69");
+                    break;
+                case "D":
+                    alert("<60");
+                    break;
+                default:
+                    alert("error");
+                    break;
+            }
+
+
+            /* 
+                注意：
+                    1、一般情况下不要省略break;
+                        break代表的是终止当前的switch语句
+                    2、一般情况下不要省略default；
+             */
+
+            /* 
+                if的多分支语句和switch语句的编写
+            1、如果是匹配确定的结果，优先使用switch
+            2、需要判断的题目，只能用if语句。
+
+             */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+               1、 找出所有的水仙花数，三位数，各位立方和等于该数本身。153 = 1 ^ 3 + 5 ^ 3 + 3 ^ 3
+             */
+            // Math.pow(x, y);  求x的y次方
+            
+            
+
+            function narcissus(){
+                for(var i = 100; i < 1000; i++){
+                    //1、每一位取出
+                    var a = i % 10;
+                    var b = parseInt(i / 10) % 10;
+                    var c = parseInt(i / 100);
+                    //2、立方和
+                    var sum = Math.pow(a, 3) + Math.pow(b, 3) + Math.pow(c, 3);
+                    if(i == sum){
+                        document.write(i + "<br/>");
+                    }
+                }
+            }
+
+            // narcissus();
+
+
+            /* 
+                2、输入两个数，求两个数的最大公约数（能够同时整除两个数的最大数）
+                思路：
+                先找出两个数中最小的那个数
+
+                最大公约数，最小是1，最大只能两个数中的较小数。
+             */
+            
+
+            function commonDivisor(num1, num2){
+                var min = num1 > num2 ? num2 : num1;
+                while(1){
+                    //判断是否能够整除这两个数
+                    if(num1 % min == 0 && num2 % min == 0){
+                        break;
+                    }
+                    min--;
+                }
+                return min;
+            }
+
+            alert(commonDivisor(6, 12));
+            alert(commonDivisor(6, 8));
+
+            // alert("两者的最大公约数是：" + min);
+
+
+            /* 
+                3. 输入两个数，求两个数的最小公倍数 （能够同时被两个数整除的最小数）
+                思路：
+                1.先找出两个数中的最大数
+                2.最大数++，直到找出能被两个数整除的数(退出循环)
+
+                最小公倍数：最大两个数的积， 最小两个数中的较大数。
+             */
+             var num1 = 6;
+             var num2 = 8;
+             var max = num1 > num2 ? num1 : num2;
+             while(1){
+                 if(max % num1 == 0 && max % num2 == 0){
+                     break;
+                 }
+                 max++;
+             }
+
+            //  alert("两者的最小公倍数：" + max);
+
+
+            /* 
+              4. 输入两个数n，a，如果n==3，a==2；
+                    输出 2 + 22 + 222 的值。（不用输出式子）
+                    如果n==4，a==3；
+                    输出 3 + 33 + 333 + 3333的值。
+                思路：
+                1. n = 3,相加三次,每次相加比前一次相加的数,多一位
+                2. 每次多的这个位数的值为a
+             */
+
+            
+
+            alert(sumFunc(3, 2));
+            alert(sumFunc(4, 3));
+             
+            
+            function sumFunc(n, a){
+                var tmp = a; //tmp是每一次累加的数
+                var sum = 0;
+                for(var i = 0; i < n; i++){
+                    sum += tmp;
+                    // alert(tmp);
+                    tmp = tmp * 10 + a;
+                }
+                return sum;
+            }
+
+            
+
+            /* 
+              5. 五位数中，对称的数称为回文数，找出所有的回文数。 如12321
+                    思路：
+                    1. 先找出五位数中的第一位和第五位数比较
+                    2. 在找出五位数中第二位和第四位比较。
+                12345
+             */
+            
+
+            function symmetryNum(){
+                for(var i = 10000; i < 100000; i++){
+                    var a = i % 10;  //个位
+                    var b = parseInt(i / 10) % 10; //十位
+                    var c = parseInt(i / 1000) % 10; //千位
+                    var d = parseInt(i / 10000); //万位
+
+                    if(a == d && b == c){
+                        document.write(i + "<br/>");
+                    }
+                }
+            }
+
+            // symmetryNum();
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

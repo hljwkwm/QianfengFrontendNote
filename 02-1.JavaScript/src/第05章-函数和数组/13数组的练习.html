@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                2. 定义一个含有30个整型元素的数组，按顺序分别赋予从2开始的偶数；
+                然后按顺序每五个数求出一个平均值，放在另一个数组中并输出。试编程。
+             */
+            //1、声明数组
+            var arr = new Array(30);
+            for(var i = 0; i < arr.length; i++){
+                arr[i] = i * 2 + 2;
+            }
+            // alert(arr);
+            //2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,52,54,56,58,60
+            /* 
+                第一组数 0~5
+                第二组数 5~10
+                第三组数 10~15
+             */
+
+            //2、求平均数
+            var averageArr = [];
+            for(var i = 0; i < 6; i++){
+                //3、取出求平均数的这组数
+                // var newArr = arr.splice(0, 5);
+                var newArr = arr.slice(i * 5, (i + 1) * 5);
+                alert(newArr);
+                //4、求平均值
+                var sum = 0; //求和数
+                for(var j = 0; j < newArr.length; j++){
+                    sum += newArr[j];
+                }
+                averageArr.push(sum / 5);
+            }
+
+            alert(averageArr);  //6,16,26,36,46,56
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                与运算
+                    格式：
+                        表达式1 && 表达式2
+                    规律：只有当两个表达式都为true的时候，整个表达式才为真。
+                    短路操作：当表达式1为false的时候，表达式2就不执行了，就直接得出结果为false。（后面会用）
+                
+
+                或运算：
+                    格式：
+                        表达式1 || 表达式2
+                    规律：只有当两个表达式都为false的时候，整个表达式才为假。
+                    短路操作：当表达式1为true的时候，表达式2就不执行了，直接得出结果为true。（后面会用）
+
+                非运算：
+                    格式：
+                        !表达式
+                    规律：现将表达式的值自动数据类型转换成布尔值，然后，再取反。
+                    【注】非0即真，非空即真。
+
+                规律：
+                    1.操作数是一个空字符串，返回 true；
+                    2.操作数是一个非空字符串，返回 false；
+                    3.操作数是数值 0，返回 true；
+                    4.操作数是任意非 0 数值(包括 Infinity)，false；
+                    5.操作数是 NaN，返回 true；
+                    6.操作数是 undefined，返回 true；
+             */
+            alert(!"");
+            alert(!"ss");
+            alert(!0);
+            alert(!10);
+            alert(!Infinity);
+            alert(!NaN);
+            alert(!null);
+            alert(!undefined);
+
+            // alert(num);
+
+            // alert(10 > 5 && alert(num));
+            //  alert(10 > 5 && 4 < 6);
+
+            // alert(10 < 5 || alert(num));
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

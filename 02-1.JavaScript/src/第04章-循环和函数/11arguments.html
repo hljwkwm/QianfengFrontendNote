@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                【注】每一个函数内部都有有一个arguments，系统内置的。
+
+                【注】arguments是用来存储实际传入的参数。
+
+                    属性：
+                        arguments.length 输出当前里面存储的参数个数
+                    访问某一个数据：
+                        arguments[下标]; 
+                        【注】下标是从0开始的。
+                
+                【注】优先使用形参，除非特殊情况。
+             */
+            /* function show(){
+                alert(arguments.length);
+                alert(arguments[1]);
+            }
+
+            show(10, true, "hello", 40, 50); */
+
+
+            /* 
+                例子：求传入任意个数字的和？
+             */
+            function sum(){
+                //  alert(arguments.length);
+                var res = 0; //求和的数
+                for(var i = 0; i < arguments.length; i++){
+                    res += arguments[i];
+                }
+                return res;
+            }
+             
+
+             var num = sum(10, 20, 30, 40, 50);
+             alert(num);
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

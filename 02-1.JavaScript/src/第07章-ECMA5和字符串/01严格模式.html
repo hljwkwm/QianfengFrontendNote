@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            /* 
+                严格模式：写在哪个作用域下，在哪个作用域下生效。
+                    "use strict"
+                【注】尽量注意不要严格模式写在全局。
+
+                用了严格模式，会有什么好处：
+                    1、全局变量声明时，必须加var
+                    2、函数内重名属性
+                    3、arguments对象不允许被动态改变
+                    4、新增保留字：implements, interface, let, package, private, protected, public, static, yield。
+             */
+
+            /*  "use strict";
+            var interface = 10;
+            alert(interface);
+ */
+
+            /* function show(num1, num2){
+                "use strict";
+                num1 = "hello";
+                alert(num1 + ", " + num2);
+                alert(arguments[0] + ", " + arguments[1]);
+            }
+
+            show(10, 20); */
+
+
+
+            /* function show(){
+                num = 10; //强制声明称全局变量
+            }
+
+            show();
+            alert(num); */
+
+            /* function show(){
+                "use strict";
+                var num = 10; //强制声明称全局变量
+                alert(num);
+            }
+
+            show();
+            alert(num); */
+
+            /* function show(num1, num1, num2){
+                "use strict";
+                alert(num1 + ", " + num2);
+            }
+            show(10, 20, 30); */
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>

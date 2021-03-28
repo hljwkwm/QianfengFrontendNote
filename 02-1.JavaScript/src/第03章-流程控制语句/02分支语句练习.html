@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>Document</title>
+        <script>
+            
+            /* 
+                2、求两个数的最大数； 
+                3、判断一个年份是闰年还是平年；
+                    【注】能被4整除且不能被100整除，或者能被400整除;
+             */
+            /* var num1 = 10, num2 = 20;
+            if(num1 > num2){
+                alert("最大数是num1:" + num1);
+            }else{
+                alert("最大数是num2:" + num2);
+            } */
+
+            var year = 2020;
+            if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+                alert("这是一个闰年：" + year);
+            }else{
+                alert("这是一个平年：" + year);
+            }
+
+           
+
+
+
+            /* 
+                代码规范：
+                    阅读代码时间要占到编写代码时间的10倍。
+                    1、运算符前后，都要加空格
+                    2、;或者, 后面只需要加一个空格
+                    3、代码缩进
+             */
+
+            
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
